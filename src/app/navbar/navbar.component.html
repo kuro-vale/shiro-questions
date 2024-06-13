@@ -1,0 +1,20 @@
+<nav class="flex sticky top-0 h-14 bg-[--navbar] text-[--primary]">
+  <ul class="w-full h-10 flex self-center items-center">
+    <li class="w-10"><a routerLink="/" class="flex">
+      <mat-icon inline [svgIcon]="Icons.AppLogo" aria-hidden="false" aria-label="Home"></mat-icon>
+    </a></li>
+    <li>
+      <form
+        class="flex items-center rounded-full border-2 border-transparent h-10 bg-[--search-bg] focus-within:border-[--primary] transition-all duration-300"
+      >
+        <mat-icon class="mx-1 text-[--search-icon]">search</mat-icon>
+        <input
+          class="bg-inherit rounded-r-full focus:outline-none placeholder-[--search-placeholder] text-[--search-text]"
+          type="text"
+          placeholder="Search..."
+        >
+      </form>
+    </li>
+    <li>1</li>
+  </ul>
+</nav>

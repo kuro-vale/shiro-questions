@@ -1,20 +1,38 @@
+<div
+  class="fixed top-0 bottom-0 left-0 right-0 transition-colors duration-300"
+  [ngClass]="focused ? 'bg-[--backdrop]' : ''"
+><!-- Overlay backdrop --></div>
 <nav class="flex sticky top-0 h-14 bg-[--navbar] text-[--primary]">
-  <ul class="w-full h-10 flex self-center items-center">
-    <li class="w-10"><a routerLink="/" class="flex">
+  <ul class="mx-auto w-full h-10 flex self-center items-center justify-end px-4">
+    <li class="mr-4 transition-all" [ngClass]="focused ? 'w-0' : 'w-10'"><a routerLink="/" class="flex">
       <mat-icon inline [svgIcon]="Icons.AppLogo" aria-hidden="false" aria-label="Home"></mat-icon>
     </a></li>
-    <li>
+    <li class="focus-within:grow transition-all duration-300">
       <form
         class="flex items-center rounded-full border-2 border-transparent h-10 bg-[--search-bg] focus-within:border-[--primary] transition-all duration-300"
       >
-        <mat-icon class="mx-1 text-[--search-icon]">search</mat-icon>
+        <mat-icon class="mx-1 text-[--search-icon]" (click)="q.focus()">search</mat-icon>
         <input
-          class="bg-inherit rounded-r-full focus:outline-none placeholder-[--search-placeholder] text-[--search-text]"
+          id="q" #q
+          class="bg-inherit rounded-r-full w-full focus:outline-none placeholder-[--search-placeholder] text-[--search-text]"
           type="text"
-          placeholder="Search..."
+          placeholder="Search questions"
+          (focus)="focused = true"
+          (blur)="focused = false"
         >
       </form>
     </li>
-    <li>1</li>
+    <li>
+      <button type="button" mat-icon-button class="ml-4 transition-transform" aria-label="menu">
+        <mat-icon
+          class="absolute transition-all duration-300"
+          [ngClass]="focused ? 'visible opacity-100' : 'invisible opacity-0'" fontIcon="close"
+        ></mat-icon>
+        <mat-icon
+          class="transition-all duration-300"
+          [ngClass]="focused ? 'invisible opacity-0' : 'visible opacity-100'" fontIcon="menu"
+        ></mat-icon>
+      </button>
+    </li>
   </ul>
 </nav>

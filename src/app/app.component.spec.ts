@@ -1,29 +1,30 @@
-import {TestBed} from "@angular/core/testing";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {AppComponent} from "./app.component";
+import {provideRouter} from "@angular/router";
+import {provideHttpClient} from "@angular/common/http";
 
 describe("AppComponent", () => {
+  let component: AppComponent;
+  let compiled: HTMLElement;
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
+      providers: [provideRouter([]), provideHttpClient()]
     }).compileComponents();
+
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    compiled = fixture.nativeElement;
+    fixture.detectChanges();
   });
 
   it("should create the app", () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
-  it(`should have the 'shiro-questions' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual("shiro-questions");
-  });
-
-  it("should render title", () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector("h1")?.textContent).toContain("shiro-questions");
+  it("should render navbar", () => {
+    expect(compiled.querySelector("app-navbar")).toBeTruthy();
   });
 });

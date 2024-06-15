@@ -1,8 +1,6 @@
 import {Component} from "@angular/core";
 import {RouterOutlet} from "@angular/router";
 import {NavbarComponent} from "./navbar/navbar.component";
-import {MatIconRegistry} from "@angular/material/icon";
-import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: "app-root",
@@ -11,7 +9,4 @@ import {DomSanitizer} from "@angular/platform-browser";
   templateUrl: "./app.component.html"
 })
 export class AppComponent {
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
-    iconRegistry.addSvgIcon("app-logo", sanitizer.bypassSecurityTrustResourceUrl("logo.svg"))
-  }
 }

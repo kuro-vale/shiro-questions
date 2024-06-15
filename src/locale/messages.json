@@ -9,6 +9,9 @@
     "nav_join": "JOIN FOR FREE",
     "nav_menu_new_question": "Ask a question",
     "nav_menu_login": "Login",
-    "nav_menu_register": "Register"
+    "nav_menu_register": "Register",
+    "footer_author": "Made by kurovale.",
+    "footer_license": "Code licensed under an MIT-style License.",
+    "footer_silvervale": "Go follow someone cute. 💙"
   }
 }

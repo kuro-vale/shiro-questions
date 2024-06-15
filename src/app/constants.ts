@@ -1,3 +1,7 @@
+export const Paths = {
+  Home: "",
+} as const;
+
 export const Icons = {
   AppLogo: "app-logo",
   Search: "search",

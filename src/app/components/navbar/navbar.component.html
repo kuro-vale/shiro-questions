@@ -9,7 +9,7 @@
   >
     <!-- LOGO BUTTON -->
     <li [ngClass]="focused ? 'w-0 md:w-12' : 'w-12'" class="mr-4 transition-all duration-300">
-      <a [ngClass]="focused ? 'w-0 md:w-12' : 'w-12'" class="flex duration-200" routerLink="/">
+      <a [ngClass]="focused ? 'w-0 md:w-12' : 'w-12'" [routerLink]="Paths.Home" class="flex duration-200">
         <mat-icon
           [svgIcon]="Icons.AppLogo" aria-hidden="false" aria-label="Home"
           i18n-aria-label="@@nav_home" inline

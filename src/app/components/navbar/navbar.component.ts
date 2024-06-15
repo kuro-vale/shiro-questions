@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {MatIcon, MatIconRegistry} from "@angular/material/icon";
-import {Icons} from "../constants";
+import {Icons, Paths} from "../../constants";
 import {RouterModule} from "@angular/router";
 import {NgClass} from "@angular/common";
 import {MatButton, MatIconButton} from "@angular/material/button";
@@ -16,6 +16,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 })
 export class NavbarComponent {
   protected readonly Icons = Icons;
+  protected readonly Paths = Paths;
   protected focused = false;
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {

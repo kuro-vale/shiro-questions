@@ -3,12 +3,13 @@ import {MatIcon} from "@angular/material/icon";
 import {Icons} from "../constants";
 import {RouterModule} from "@angular/router";
 import {NgClass} from "@angular/common";
-import {MatIconButton} from "@angular/material/button";
+import {MatButton, MatIconButton} from "@angular/material/button";
+import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 
 @Component({
   selector: "app-navbar",
   standalone: true,
-  imports: [MatIcon, RouterModule, NgClass, MatIconButton],
+  imports: [MatIcon, RouterModule, NgClass, MatIconButton, MatMenu, MatMenuTrigger, MatMenuItem, MatButton],
   templateUrl: "./navbar.component.html",
   styleUrl: "navbar.component.css",
 })

@@ -1,0 +1,14 @@
+{
+  "locale": "es",
+  "translations": {
+    "nav_home": "Inicio",
+    "nav_search": "Buscar preguntas",
+    "nav_menu": "Menú",
+    "nav_new_question": "HAZ UNA PREGUNTA",
+    "nav_login": "ENTRAR",
+    "nav_join": "ÚNETE GRATIS",
+    "nav_menu_new_question": "Haz una pregunta",
+    "nav_menu_login": "Entrar",
+    "nav_menu_register": "Registrarse"
+  }
+}

@@ -1,17 +1,22 @@
 <div
   [ngClass]="focused ? 'bg-[--backdrop]' : ''"
-  class="fixed bottom-0 left-0 right-0 top-0 transition-colors duration-300"
+  class="pointer-events-none fixed bottom-0 left-0 right-0 top-0 transition-colors duration-300"
 ><!-- OVERLAY BACKDROP --></div>
 <nav class="sticky top-0 flex h-14 bg-[--navbar] text-[--primary]">
   <ul
     [ngClass]="focused ? 'pr-4 md:px-4' : 'px-4'"
     class="mx-auto flex h-10 w-full max-w-7xl items-center justify-end self-center transition-all duration-300"
   >
+    <!-- LOGO BUTTON -->
     <li [ngClass]="focused ? 'w-0 md:w-12' : 'w-12'" class="mr-4 transition-all duration-300">
       <a [ngClass]="focused ? 'w-0 md:w-12' : 'w-12'" class="flex duration-200" routerLink="/">
-        <mat-icon [svgIcon]="Icons.AppLogo" aria-hidden="false" aria-label="Home" inline></mat-icon>
+        <mat-icon
+          [svgIcon]="Icons.AppLogo" aria-hidden="false" aria-label="Home"
+          i18n-aria-label="@@nav_home" inline
+        ></mat-icon>
       </a>
     </li>
+    <!-- SEARCH -->
     <li class="w-full focus-within:grow">
       <form
         (click)="q.focus()"
@@ -21,14 +26,15 @@
         <input
           #q (blur)="focused = false" (focus)="focused = true"
           class="w-full rounded-r-full bg-inherit text-[--search-text] placeholder-[--search-placeholder] focus:outline-none"
-          id="q" placeholder="Search questions" type="text"
+          i18n-placeholder="@@nav_search" id="q" placeholder="Search questions" type="text"
         />
       </form>
     </li>
+    <!-- MENU BUTTON -->
     <li class="ml-4 md:hidden">
       <button
         [matMenuTriggerFor]="focused ? null : menu"
-        aria-label="menu" mat-icon-button type="button"
+        aria-label="Menu" i18n-aria-label="@@nav_menu" mat-icon-button type="button"
       >
         <mat-icon
           [fontIcon]="Icons.Close" [ngClass]="focused ? 'visible opacity-100' : 'invisible opacity-0'"
@@ -41,13 +47,13 @@
       </button>
     </li>
     <li class="ml-4 hidden lg:block">
-      <button class="w-max" mat-button type="button">ASK A QUESTION</button>
+      <button class="w-max" i18n="@@nav_new_question" mat-button type="button">ASK A QUESTION</button>
     </li>
     <li class="ml-4 hidden md:block">
-      <button class="w-max" mat-button type="button">LOG IN</button>
+      <button class="w-max" i18n="@@nav_login" mat-button type="button">LOG IN</button>
     </li>
     <li class="ml-4 hidden md:block">
-      <button class="w-max" mat-flat-button type="button">JOIN FOR FREE</button>
+      <button class="w-max" i18n="@@nav_join" mat-flat-button type="button">JOIN FOR FREE</button>
     </li>
   </ul>
 </nav>
@@ -56,14 +62,14 @@
 <mat-menu #menu="matMenu">
   <button mat-menu-item>
     <mat-icon [fontIcon]="Icons.Add"></mat-icon>
-    <span>Ask a question</span>
+    <span i18n="@@nav_menu_new_question">Ask a question</span>
   </button>
   <button mat-menu-item>
     <mat-icon [fontIcon]="Icons.Login"></mat-icon>
-    <span>Login</span>
+    <span i18n="@@nav_menu_login">Login</span>
   </button>
   <button mat-menu-item>
     <mat-icon [fontIcon]="Icons.Register"></mat-icon>
-    <span>Register</span>
+    <span i18n="@@nav_menu_register">Register</span>
   </button>
 </mat-menu>

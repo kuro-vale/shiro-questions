@@ -1,18 +1,19 @@
 {
   "locale": "es",
   "translations": {
-    "nav_home": "Inicio",
+    "home": "Inicio",
     "nav_search": "Buscar preguntas",
-    "nav_menu": "Menú",
+    "menu": "Menú",
     "nav_new_question": "HAZ UNA PREGUNTA",
     "nav_login": "ENTRAR",
     "nav_join": "ÚNETE GRATIS",
-    "nav_menu_new_question": "Haz una pregunta",
-    "nav_menu_login": "Entrar",
-    "nav_menu_register": "Registrarse",
+    "new_question": "Haz una pregunta",
+    "login": "Entrar",
+    "register": "Registrarse",
     "footer_author": "Hecho por kurovale.",
     "footer_license": "Código bajo licencia MIT.",
     "footer_silvervale": "Ve y sigue a una lindura. 💙",
-    "home-component_title": "shiro-questions | Pregunte con confianza"
+    "home-component_title": "shiro-questions | Pregunte con confianza",
+    "home_desc": "Un lugar para preguntar con confianza"
   }
 }

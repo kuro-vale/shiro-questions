@@ -1,8 +1,8 @@
 <div
   [ngClass]="focused ? 'bg-[--backdrop]' : ''"
-  class="pointer-events-none fixed bottom-0 left-0 right-0 top-0 transition-colors duration-300"
+  class="pointer-events-none fixed bottom-0 left-0 right-0 top-0 z-10 transition-colors duration-300"
 ><!-- OVERLAY BACKDROP --></div>
-<nav class="sticky top-0 flex h-14 bg-[--navbar] text-[--primary]">
+<nav class="sticky top-0 z-20 flex h-14 bg-[--navbar] text-[--primary]">
   <ul
     [ngClass]="focused ? 'pr-4 md:px-4' : 'px-4'"
     class="mx-auto flex h-10 w-full max-w-7xl items-center justify-end self-center transition-all duration-300"
@@ -12,7 +12,7 @@
       <a [ngClass]="focused ? 'w-0 md:w-12' : 'w-12'" [routerLink]="Paths.Home" class="flex duration-200">
         <mat-icon
           [svgIcon]="Icons.AppLogo" aria-hidden="false" aria-label="Home"
-          i18n-aria-label="@@nav_home" inline
+          i18n-aria-label="@@home" inline
         ></mat-icon>
       </a>
     </li>
@@ -34,7 +34,7 @@
     <li class="ml-4 md:hidden">
       <button
         [matMenuTriggerFor]="focused ? null : menu"
-        aria-label="Menu" i18n-aria-label="@@nav_menu" mat-icon-button type="button"
+        aria-label="Menu" i18n-aria-label="@@menu" mat-icon-button type="button"
       >
         <mat-icon
           [fontIcon]="Icons.Close" [ngClass]="focused ? 'visible opacity-100' : 'invisible opacity-0'"
@@ -62,14 +62,14 @@
 <mat-menu #menu="matMenu">
   <button mat-menu-item>
     <mat-icon [fontIcon]="Icons.Add"></mat-icon>
-    <span i18n="@@nav_menu_new_question">Ask a question</span>
+    <span i18n="@@new_question">Ask a question</span>
   </button>
   <button mat-menu-item>
     <mat-icon [fontIcon]="Icons.Login"></mat-icon>
-    <span i18n="@@nav_menu_login">Login</span>
+    <span i18n="@@login">Login</span>
   </button>
   <button mat-menu-item>
     <mat-icon [fontIcon]="Icons.Register"></mat-icon>
-    <span i18n="@@nav_menu_register">Register</span>
+    <span i18n="@@register">Register</span>
   </button>
 </mat-menu>

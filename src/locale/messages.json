@@ -1,18 +1,19 @@
 {
   "locale": "en-US",
   "translations": {
-    "nav_home": "Home",
+    "home": "Home",
     "nav_search": "Search questions",
-    "nav_menu": "Menu",
+    "menu": "Menu",
     "nav_new_question": "ASK A QUESTION",
     "nav_login": "LOG IN",
     "nav_join": "JOIN FOR FREE",
-    "nav_menu_new_question": "Ask a question",
-    "nav_menu_login": "Login",
-    "nav_menu_register": "Register",
+    "new_question": "Ask a question",
+    "login": "Login",
+    "register": "Register",
     "footer_author": "Made by kurovale.",
     "footer_license": "Code licensed under an MIT-style License.",
     "footer_silvervale": "Go follow someone cute. 💙",
-    "home-component_title": "shiro-questions | Ask with confidence"
+    "home-component_title": "shiro-questions | Ask with confidence",
+    "home_desc": "A place to ask with confidence"
   }
 }

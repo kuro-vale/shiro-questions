@@ -3,13 +3,16 @@
   class="fixed bottom-0 left-0 right-0 top-0 transition-colors duration-300"
 ><!-- OVERLAY BACKDROP --></div>
 <nav class="sticky top-0 flex h-14 bg-[--navbar] text-[--primary]">
-  <ul class="mx-auto flex h-10 w-full max-w-7xl items-center justify-end self-center px-4">
-    <li [ngClass]="focused ? 'w-0 md:w-10' : 'w-10'" class="mr-4 transition-all">
-      <a [ngClass]="focused ? 'w-0 md:w-10' : 'w-10'" class="flex transition-all" routerLink="/">
+  <ul
+    [ngClass]="focused ? 'pr-4 md:px-4' : 'px-4'"
+    class="mx-auto flex h-10 w-full max-w-7xl items-center justify-end self-center transition-all duration-300"
+  >
+    <li [ngClass]="focused ? 'w-0 md:w-12' : 'w-12'" class="mr-4 transition-all duration-300">
+      <a [ngClass]="focused ? 'w-0 md:w-12' : 'w-12'" class="flex duration-200" routerLink="/">
         <mat-icon [svgIcon]="Icons.AppLogo" aria-hidden="false" aria-label="Home" inline></mat-icon>
       </a>
     </li>
-    <li class="w-full transition-all duration-300 focus-within:grow">
+    <li class="w-full focus-within:grow">
       <form
         (click)="q.focus()"
         class="flex h-10 items-center rounded-full border-2 border-transparent bg-[--search-bg] transition-all duration-300 focus-within:border-[--primary] hover:bg-[--search-hover] hover:focus-within:bg-[--search-bg]"
@@ -25,8 +28,7 @@
     <li class="ml-4 md:hidden">
       <button
         [matMenuTriggerFor]="focused ? null : menu"
-        aria-label="menu" class="transition-transform"
-        mat-icon-button type="button"
+        aria-label="menu" mat-icon-button type="button"
       >
         <mat-icon
           [fontIcon]="Icons.Close" [ngClass]="focused ? 'visible opacity-100' : 'invisible opacity-0'"

@@ -1,22 +1,18 @@
-<div class="flex h-[340px] w-full mb-14 items-center justify-center bg-[--navbar] text-center lg:h-[440px]">
+<div class="mb-14 flex h-[340px] w-full items-center justify-center bg-[--navbar] text-center lg:h-[440px]">
   <div>
-    <h1 style="font-weight: 500">Shiro Questions</h1>
-    <p class="text-xl font-light" i18n="@@home_desc">
-      A place to ask with confidence
-    </p>
-    <button i18n="@@new_question" mat-raised-button>
-      Ask a question
-    </button>
+    <h1 class="!font-medium">Shiro Questions</h1>
+    <p class="text-xl font-light" i18n="@@home_desc">A place to ask with confidence</p>
+    <button i18n="@@new_question" mat-raised-button>Ask a question</button>
   </div>
 </div>
 
-<mat-list class="grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6" style="display: grid">
+<mat-nav-list class="!mx-auto !grid w-max grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
   @for (category of $categories | async; track category.name) {
-    <mat-list-item>
-      <mat-icon fontIcon="apps" matListItemIcon></mat-icon>
+    <mat-list-item class="w-min" tabindex="0">
+      <mat-icon [fontIcon]="category.icon" matListItemIcon></mat-icon>
       {{ category.name }}
     </mat-list-item>
   } @empty {
     <mat-spinner diameter="50" class="col-span-4"></mat-spinner>
   }
-</mat-list>
+</mat-nav-list>

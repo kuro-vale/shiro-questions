@@ -60,16 +60,18 @@
 
 <!-- MOBILE MENU -->
 <mat-menu #menu="matMenu">
-  <button mat-menu-item>
-    <mat-icon [fontIcon]="Icons.Add"></mat-icon>
-    <span i18n="@@new_question">Ask a question</span>
-  </button>
-  <button mat-menu-item>
-    <mat-icon [fontIcon]="Icons.Login"></mat-icon>
-    <span i18n="@@login">Login</span>
-  </button>
-  <button mat-menu-item>
-    <mat-icon [fontIcon]="Icons.Register"></mat-icon>
-    <span i18n="@@register">Register</span>
-  </button>
+  <ng-template matMenuContent>
+    <button mat-menu-item>
+      <mat-icon [fontIcon]="Icons.Add"></mat-icon>
+      <span i18n="@@new_question">Ask a question</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon [fontIcon]="Icons.Login"></mat-icon>
+      <span i18n="@@login">Login</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon [fontIcon]="Icons.Register"></mat-icon>
+      <span i18n="@@register">Register</span>
+    </button>
+  </ng-template>
 </mat-menu>

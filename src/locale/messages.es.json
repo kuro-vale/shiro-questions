@@ -15,6 +15,19 @@
     "footer_silvervale": "Ve y sigue a una lindura. 💙",
     "home-component_title": "shiro-questions | Pregunte con confianza",
     "home_desc": "Un lugar para preguntar con confianza",
-    "cat_all_categories": "Todas las categorías"
+    "cat_all_categories": "Todas las categorías",
+    "cat_technology": "Tecnología",
+    "cat_geography": "Geografía",
+    "cat_food": "Comida",
+    "cat_literature": "Literatura",
+    "cat_animals": "Animales",
+    "cat_science": "Ciencia",
+    "cat_music": "Música",
+    "cat_general_knowledge": "Conocimientos generales",
+    "cat_history": "Historia",
+    "cat_arts": "Artes",
+    "cat_sports": "Deportes",
+    "cat_entertainment": "Entretenimiento",
+    "error_getAllCat": "Error al obtener las categorías"
   }
 }

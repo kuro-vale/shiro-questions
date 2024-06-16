@@ -6,11 +6,11 @@
   </div>
 </div>
 
-<mat-nav-list class="!mx-auto !grid w-max grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-  @for (category of $categories | async; track category.name) {
+<mat-nav-list class="!mx-auto !grid w-max grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+  @for (category of categories$ | async; track category.value) {
     <mat-list-item class="w-min" tabindex="0">
       <mat-icon [fontIcon]="category.icon" matListItemIcon></mat-icon>
-      {{ category.name }}
+      {{ category.label }}
     </mat-list-item>
   } @empty {
     <mat-spinner diameter="50" class="col-span-4"></mat-spinner>

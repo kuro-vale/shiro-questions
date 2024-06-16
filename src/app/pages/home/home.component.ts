@@ -6,7 +6,8 @@ import {CategoryService} from "../../components/category/category.service";
 import {AsyncPipe} from "@angular/common";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {map} from "rxjs";
-import {CategoriesIcons, Icons} from "../../constants";
+import {CategoriesIcons, CategoriesTranslations, Icons} from "../../constants";
+import {CategoryOption} from "../../components/category/category";
 
 @Component({
   selector: "app-home",
@@ -16,18 +17,36 @@ import {CategoriesIcons, Icons} from "../../constants";
   styleUrl: "./home.component.css"
 })
 export class HomeComponent {
-  categoriesIcons: { [key: string]: string } = CategoriesIcons;
-  $categories = this.categoryService.getAllCategories().pipe(map(cats => {
-    const allCats = {name: $localize`:@@cat_all_categories:All categories`, icon: Icons.Apps};
-    return [
-      allCats,
-      ...cats.map(c => ({
-        name: c.name,
-        icon: this.categoriesIcons[c.name]
-      }))
-    ];
-  }));
+  categories$ = this.categoryService.getAllCategories()
+    .pipe(map((cats): CategoryOption[] => {
+      return [
+        {label: $localize`:@@cat_all_categories:All categories`, icon: Icons.Apps, value: "all"},
+        ...cats.map(c => ({
+          label: this.getCategoryTranslation(c.name),
+          icon: this.getCategoryIcon(c.name),
+          value: c.name
+        }))
+      ].filter(c => c.label && c.icon);
+    }));
 
   constructor(private readonly categoryService: CategoryService) {
+  }
+
+  getCategoryTranslation(category: string) {
+    const categoriesTranslations: { [key: string]: string } = CategoriesTranslations;
+    if (Object.hasOwn(categoriesTranslations, category)) {
+      return categoriesTranslations[category];
+    }
+    console.warn("Missing translation for category:", category);
+    return "";
+  }
+
+  getCategoryIcon(category: string) {
+    const categoriesIcons: { [key: string]: string } = CategoriesIcons;
+    if (Object.hasOwn(categoriesIcons, category)) {
+      return categoriesIcons[category];
+    }
+    console.warn("Missing icon for category:", category);
+    return "";
   }
 }

@@ -27,3 +27,18 @@ export const CategoriesIcons = {
   Sports: "fitness_center",
   Entertainment: "sports_esports"
 } as const;
+
+export const CategoriesTranslations = {
+  Technology: $localize`:@@cat_technology:Technology`,
+  Geography: $localize`:@@cat_geography:Geography`,
+  Food: $localize`:@@cat_food:Food`,
+  Literature: $localize`:@@cat_literature:Literature`,
+  Animals: $localize`:@@cat_animals:Animals`,
+  Science: $localize`:@@cat_science:Science`,
+  Music: $localize`:@@cat_music:Music`,
+  "General Knowledge": $localize`:@@cat_general_knowledge:General Knowledge`,
+  History: $localize`:@@cat_history:History`,
+  Arts: $localize`:@@cat_arts:Arts`,
+  Sports: $localize`:@@cat_sports:Sports`,
+  Entertainment: $localize`:@@cat_entertainment:Entertainment`
+};

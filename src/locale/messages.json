@@ -15,6 +15,19 @@
     "footer_silvervale": "Go follow someone cute. 💙",
     "home-component_title": "shiro-questions | Ask with confidence",
     "home_desc": "A place to ask with confidence",
-    "cat_all_categories": "All categories"
+    "cat_all_categories": "All categories",
+    "cat_technology": "Technology",
+    "cat_geography": "Geography",
+    "cat_food": "Food",
+    "cat_literature": "Literature",
+    "cat_animals": "Animals",
+    "cat_science": "Science",
+    "cat_music": "Music",
+    "cat_general_knowledge": "General Knowledge",
+    "cat_history": "History",
+    "cat_arts": "Arts",
+    "cat_sports": "Sports",
+    "cat_entertainment": "Entertainment",
+    "error_getAllCat": "Error fetching the categories"
   }
 }

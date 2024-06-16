@@ -10,10 +10,11 @@
     "new_question": "Haz una pregunta",
     "login": "Entrar",
     "register": "Registrarse",
-    "footer_author": "Hecho por kurovale.",
+    "footer_author": "Hecho por kurovale 2024.",
     "footer_license": "Código bajo licencia MIT.",
     "footer_silvervale": "Ve y sigue a una lindura. 💙",
     "home-component_title": "shiro-questions | Pregunte con confianza",
-    "home_desc": "Un lugar para preguntar con confianza"
+    "home_desc": "Un lugar para preguntar con confianza",
+    "all_categories": "Todas las categorías"
   }
 }

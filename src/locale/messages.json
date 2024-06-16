@@ -10,10 +10,11 @@
     "new_question": "Ask a question",
     "login": "Login",
     "register": "Register",
-    "footer_author": "Made by kurovale.",
+    "footer_author": "Made by kurovale 2024.",
     "footer_license": "Code licensed under an MIT-style License.",
     "footer_silvervale": "Go follow someone cute. 💙",
     "home-component_title": "shiro-questions | Ask with confidence",
-    "home_desc": "A place to ask with confidence"
+    "home_desc": "A place to ask with confidence",
+    "all_categories": "All categories"
   }
 }

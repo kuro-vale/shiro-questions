@@ -6,7 +6,7 @@ import {CategoryService} from "../../components/category/category.service";
 import {AsyncPipe} from "@angular/common";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {map} from "rxjs";
-import {CategoriesIcons, CategoriesTranslations} from "../../constants";
+import {CategoriesIcons, CategoriesTranslations, Icons} from "../../constants";
 import {CategoryOption} from "../../components/category/category";
 import {Meta} from "@angular/platform-browser";
 
@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
         value: c.name
       })).filter(c => c.label && c.icon);
     }));
+  protected readonly Icons = Icons;
 
   constructor(private readonly categoryService: CategoryService, private readonly metaService: Meta) {
   }

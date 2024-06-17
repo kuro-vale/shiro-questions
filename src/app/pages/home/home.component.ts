@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {MatButton} from "@angular/material/button";
 import {MatListItem, MatListItemIcon, MatNavList} from "@angular/material/list";
 import {MatIcon} from "@angular/material/icon";
@@ -8,6 +8,7 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {map} from "rxjs";
 import {CategoriesIcons, CategoriesTranslations} from "../../constants";
 import {CategoryOption} from "../../components/category/category";
+import {Meta} from "@angular/platform-browser";
 
 @Component({
   selector: "app-home",
@@ -16,7 +17,7 @@ import {CategoryOption} from "../../components/category/category";
   templateUrl: "./home.component.html",
   styleUrl: "./home.component.css"
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   categories$ = this.categoryService.getAllCategories()
     .pipe(map((cats): CategoryOption[] => {
       return [{name: "All"}, ...cats].map(c => ({
@@ -26,7 +27,11 @@ export class HomeComponent {
       })).filter(c => c.label && c.icon);
     }));
 
-  constructor(private readonly categoryService: CategoryService) {
+  constructor(private readonly categoryService: CategoryService, private readonly metaService: Meta) {
+  }
+
+  ngOnInit() {
+    this.metaService.addTag({name: "description", content: $localize`:@@home_desc:A place to ask with confidence`});
   }
 
   getCategoryTranslation(category: string) {

@@ -10,10 +10,10 @@ export const Icons = {
   Add: "add",
   Login: "login",
   Register: "how_to_reg",
-  Apps: "apps",
 } as const;
 
 export const CategoriesIcons = {
+  All: "apps",
   Technology: "smart_toy",
   Geography: "public",
   Food: "lunch_dining",
@@ -29,6 +29,7 @@ export const CategoriesIcons = {
 } as const;
 
 export const CategoriesTranslations = {
+  All: $localize`:@@cat_all_categories:All categories`,
   Technology: $localize`:@@cat_technology:Technology`,
   Geography: $localize`:@@cat_geography:Geography`,
   Food: $localize`:@@cat_food:Food`,

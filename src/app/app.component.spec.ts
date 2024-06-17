@@ -27,4 +27,8 @@ describe("AppComponent", () => {
   it("should render navbar", () => {
     expect(compiled.querySelector("app-navbar")).toBeTruthy();
   });
+
+  it("should render footer", () => {
+    expect(compiled.querySelector("app-footer")).toBeTruthy();
+  });
 });

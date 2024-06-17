@@ -6,7 +6,7 @@ import {CategoryService} from "../../components/category/category.service";
 import {AsyncPipe} from "@angular/common";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {map} from "rxjs";
-import {CategoriesIcons, CategoriesTranslations, Icons} from "../../constants";
+import {CategoriesIcons, CategoriesTranslations} from "../../constants";
 import {CategoryOption} from "../../components/category/category";
 
 @Component({
@@ -19,14 +19,11 @@ import {CategoryOption} from "../../components/category/category";
 export class HomeComponent {
   categories$ = this.categoryService.getAllCategories()
     .pipe(map((cats): CategoryOption[] => {
-      return [
-        {label: $localize`:@@cat_all_categories:All categories`, icon: Icons.Apps, value: "all"},
-        ...cats.map(c => ({
-          label: this.getCategoryTranslation(c.name),
-          icon: this.getCategoryIcon(c.name),
-          value: c.name
-        }))
-      ].filter(c => c.label && c.icon);
+      return [{name: "All"}, ...cats].map(c => ({
+        label: this.getCategoryTranslation(c.name),
+        icon: this.getCategoryIcon(c.name),
+        value: c.name
+      })).filter(c => c.label && c.icon);
     }));
 
   constructor(private readonly categoryService: CategoryService) {

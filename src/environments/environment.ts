@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: ""
+  apiUrl: "https://kuro-questions-api.up.railway.app/"
 };

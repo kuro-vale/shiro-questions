@@ -28,6 +28,17 @@
     "cat_arts": "Artes",
     "cat_sports": "Deportes",
     "cat_entertainment": "Entretenimiento",
-    "error_getAllCat": "Error al obtener las categorías"
+    "error_getAllCat": "Error al obtener las categorías",
+    "error_alphanumeric_pattern": "Sólo son válidas las letras y los números",
+    "error_username_required": "El nombre de usuario es obligatorio",
+    "error_username_minlength": "El nombre de usuario debe tener más de 3 caracteres",
+    "error_username_maxlength": "El nombre de usuario debe tener menos de 18 caracteres",
+    "error_password_required": "La contraseña es obligatoria",
+    "error_password_minlength": "La contraseña debe tener más de 5 caracteres",
+    "error_password_maxlength": "La contraseña debe tener menos de 10 caracteres",
+    "register_title": "Únete a shiro-questions",
+    "register_subtitle": "Crea una cuenta para recibir respuesta a tus preguntas rápidamente",
+    "username": "Nombre de usuario",
+    "password": "Contraseña"
   }
 }

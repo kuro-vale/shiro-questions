@@ -1,0 +1,21 @@
+<form (ngSubmit)="submit()" [formGroup]="userForm" class="flex flex-col justify-center mt-8">
+  <mat-form-field class="mb-1">
+    <mat-label i18n="@@username">Username</mat-label>
+    <input formControlName="username" matInput>
+    @if (userForm.controls.username.invalid) {
+      <mat-error>{{ usernameErrorMessage }}</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field class="mb-1">
+    <mat-label i18n="@@password">Password</mat-label>
+    <input formControlName="password" matInput type="password">
+    @if (userForm.controls.password.invalid) {
+      <mat-error>{{ passwordErrorMessage }}</mat-error>
+    }
+  </mat-form-field>
+  @if (isLogin) {
+
+  } @else {
+    <button i18n="@@register" mat-flat-button type="submit">Register</button>
+  }
+</form>

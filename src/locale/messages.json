@@ -8,7 +8,7 @@
     "nav_login": "LOG IN",
     "nav_join": "JOIN FOR FREE",
     "new_question": "Ask a question",
-    "login": "Login",
+    "login": "Log in",
     "register": "Register",
     "footer_author": "Made by kurovale 2024.",
     "footer_license": "Code licensed under an MIT-style License.",
@@ -39,6 +39,9 @@
     "register_title": "Join shiro-questions",
     "register_subtitle": "Create an account to receive answers to your questions now",
     "username": "Username",
-    "password": "Password"
+    "password": "Password",
+    "keepme_logged": "Keep me logged in",
+    "login_title": "Welcome again",
+    "login_subtitle": "Get answers to your questions now"
   }
 }

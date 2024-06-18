@@ -14,4 +14,9 @@ export class UserService {
     // TODO:
     console.log(request);
   }
+
+  login(request: UserRequest) {
+    // TODO:
+    console.log(request);
+  }
 }

@@ -4,6 +4,7 @@ import {MatButton} from "@angular/material/button";
 import {MatError, MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {UserRequest} from "../user";
+import {MatCheckbox} from "@angular/material/checkbox";
 
 @Component({
   selector: "app-user-form",
@@ -14,7 +15,8 @@ import {UserRequest} from "../user";
     MatFormField,
     MatInput,
     MatLabel,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCheckbox
   ],
   templateUrl: "./user-form.component.html",
 })
@@ -31,7 +33,8 @@ export class UserFormComponent {
       Validators.pattern(/^[A-Za-z0-9]*$/),
       Validators.minLength(5),
       Validators.maxLength(10)
-    ])
+    ]),
+    rememberMe: new FormControl(false)
   });
 
   userNameErrorMessages: { [key: string]: string } = {

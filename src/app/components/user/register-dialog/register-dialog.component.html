@@ -1,8 +1,8 @@
-<h1 class="!text-2xl !font-extrabold text-center" i18n="@@register_title" matDialogTitle>Join shiro-questions</h1>
+<h1 class="text-center !text-2xl !font-extrabold" i18n="@@register_title" matDialogTitle>Join shiro-questions</h1>
 <mat-dialog-content>
-  <div class="max-w-[400px]">
+  <div class="max-w-[400px] md:min-w-[400px]">
     <h2
-      class="!text-lg text-center" i18n="@@register_subtitle"
+      class="text-center !text-lg" i18n="@@register_subtitle"
     >Create an account to receive answers to your questions now</h2>
     <app-user-form (onSubmit)="onSubmit($event)" [isLogin]="false"></app-user-form>
   </div>

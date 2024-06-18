@@ -8,7 +8,7 @@
     "nav_login": "ENTRAR",
     "nav_join": "ÚNETE GRATIS",
     "new_question": "Haz una pregunta",
-    "login": "Entrar",
+    "login": "Iniciar sesión",
     "register": "Registrarse",
     "footer_author": "Hecho por kurovale 2024.",
     "footer_license": "Código bajo licencia MIT.",
@@ -39,6 +39,9 @@
     "register_title": "Únete a shiro-questions",
     "register_subtitle": "Crea una cuenta para recibir respuesta a tus preguntas rápidamente",
     "username": "Nombre de usuario",
-    "password": "Contraseña"
+    "password": "Contraseña",
+    "keepme_logged": "No cerrar sesión",
+    "login_title": "Bienvenido de nuevo",
+    "login_subtitle": "Obtén respuestas a tus preguntas ahora mismo"
   }
 }

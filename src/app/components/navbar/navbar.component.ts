@@ -7,6 +7,7 @@ import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatMenu, MatMenuContent, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {MatDialog} from "@angular/material/dialog";
 import {RegisterDialogComponent} from "../user/register-dialog/register-dialog.component";
+import {LoginDialogComponent} from "../user/login-dialog/login-dialog.component";
 
 @Component({
   selector: "app-navbar",
@@ -25,5 +26,9 @@ export class NavbarComponent {
 
   openRegisterDialog() {
     this.dialog.open(RegisterDialogComponent);
+  }
+
+  openLoginDialog() {
+    this.dialog.open(LoginDialogComponent);
   }
 }

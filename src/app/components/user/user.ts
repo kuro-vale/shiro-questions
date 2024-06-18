@@ -3,5 +3,10 @@ export type User = {
 }
 
 export type UserRequest = {
-  password: string
+  password: string;
+  rememberMe: boolean;
+} & User;
+
+export type UserAuth = {
+  token: string;
 } & User;

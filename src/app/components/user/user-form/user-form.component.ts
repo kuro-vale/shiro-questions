@@ -54,6 +54,9 @@ export class UserFormComponent {
   @Input({required: true})
   isLogin!: boolean;
 
+  @Input({required: true})
+  openNext!: () => void;
+
   @Output()
   onSubmit = new EventEmitter<UserRequest>();
 

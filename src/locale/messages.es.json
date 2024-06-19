@@ -42,6 +42,8 @@
     "password": "Contraseña",
     "keepme_logged": "No cerrar sesión",
     "login_title": "Bienvenido de nuevo",
-    "login_subtitle": "Obtén respuestas a tus preguntas ahora mismo"
+    "login_subtitle": "Obtén respuestas a tus preguntas ahora mismo",
+    "register_to_login": "¿Ya tienes una cuenta? {$START_TAG_SPAN}Inicia sesión{$CLOSE_TAG_SPAN}",
+    "login_to_register": "¿No tienes una cuenta? {$START_TAG_SPAN}Regístrate{$CLOSE_TAG_SPAN}"
   }
 }

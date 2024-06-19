@@ -2,6 +2,6 @@
 <mat-dialog-content>
   <div class="max-w-[400px] md:min-w-[400px]">
     <h2 class="text-center !text-lg" i18n="@@login_subtitle">Get answers to your questions now</h2>
-    <app-user-form (onSubmit)="onSubmit($event)" [isLogin]="true"></app-user-form>
+    <app-user-form (onSubmit)="onSubmit($event)" [isLogin]="true" [openNext]="openNext.bind(this)"></app-user-form>
   </div>
 </mat-dialog-content>

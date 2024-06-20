@@ -4,11 +4,13 @@ import {provideRouter} from "@angular/router";
 import {MatIconRegistry} from "@angular/material/icon";
 import {DomSanitizer} from "@angular/platform-browser";
 import {provideHttpClient} from "@angular/common/http";
+import {MatDialog} from "@angular/material/dialog";
 
 describe("NavbarComponent", () => {
   let component: NavbarComponent;
   let fixture: ComponentFixture<NavbarComponent>;
   let compiled: HTMLElement;
+  let dialog: MatDialog;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -19,6 +21,7 @@ describe("NavbarComponent", () => {
     const mockSvgContent = "<svg><rect width=\"100\" height=\"100\" style=\"fill:blue;\" /></svg>";
     const iconService = TestBed.inject(MatIconRegistry);
     const sanitizer = TestBed.inject(DomSanitizer);
+    dialog = TestBed.inject(MatDialog);
     iconService.addSvgIconLiteral("app-logo", sanitizer.bypassSecurityTrustHtml(mockSvgContent));
     fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
@@ -33,5 +36,15 @@ describe("NavbarComponent", () => {
   it("should render nav items", () => {
     const items = compiled.querySelectorAll("li");
     expect(items.length).toBe(6);
+  });
+
+  it("should open register dialog", () => {
+    component.openRegisterDialog();
+    expect(dialog.openDialogs.length).toBe(1);
+  });
+
+  it("should open login dialog", () => {
+    component.openLoginDialog();
+    expect(dialog.openDialogs.length).toBe(1);
   });
 });

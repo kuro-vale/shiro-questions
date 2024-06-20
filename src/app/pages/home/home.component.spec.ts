@@ -3,6 +3,8 @@ import {CategoryService} from "../../components/category/category.service";
 import {Category} from "../../components/category/category";
 import {of} from "rxjs";
 import {CategoriesIcons, CategoriesTranslations} from "../../constants";
+import {TestBed} from "@angular/core/testing";
+import {Meta} from "@angular/platform-browser";
 
 describe("HomeComponent", () => {
   let component: HomeComponent;
@@ -11,7 +13,8 @@ describe("HomeComponent", () => {
     const categories: Category[] = [{name: "Food"}, {name: "Music"}, {name: "Hentai"}];
     const categoryServiceSpy = jasmine.createSpyObj<CategoryService>(["getAllCategories"]);
     categoryServiceSpy.getAllCategories.and.returnValue(of(categories));
-    component = new HomeComponent(categoryServiceSpy);
+    const meta = TestBed.inject(Meta);
+    component = new HomeComponent(categoryServiceSpy, meta);
   });
 
   it("should create", () => {

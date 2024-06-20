@@ -1,3 +1,5 @@
+import {AppSuccess} from "../../shared/types";
+
 export type User = {
   username: string;
 }
@@ -9,4 +11,4 @@ export type UserRequest = {
 
 export type UserAuth = {
   token: string;
-} & User;
+} & User & AppSuccess;

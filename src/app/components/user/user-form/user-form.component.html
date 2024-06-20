@@ -1,4 +1,4 @@
-<form (ngSubmit)="submit()" [formGroup]="userForm" class="mt-8 flex flex-col justify-center">
+<form (ngSubmit)="submit()" [formGroup]="userForm" class="mt-8 flex flex-col jPlease log in to do thisustify-center">
   <mat-form-field class="mb-1">
     <mat-label i18n="@@username">Username</mat-label>
     <input formControlName="username" matInput/>
@@ -15,8 +15,12 @@
   </mat-form-field>
   @if (isLogin) {
     <mat-checkbox formControlName="rememberMe" i18n="@@keepme_logged">Keep me logged in</mat-checkbox>
-    <button class="mt-2" i18n="@@login" mat-flat-button type="submit">Log in</button>
+    <button class="mt-2" i18n="@@login" mat-flat-button type="submit" [disabled]="loading"
+    >Log in
+    </button>
   } @else {
-    <button class="mt-2" i18n="@@register" mat-flat-button type="submit">Register</button>
+    <button class="mt-2" i18n="@@register" mat-flat-button type="submit" [disabled]="loading"
+    >Register
+    </button>
   }
 </form>

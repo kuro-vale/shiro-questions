@@ -6,7 +6,7 @@ import {CategoryService} from "../../components/category/category.service";
 import {AsyncPipe} from "@angular/common";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {map} from "rxjs";
-import {Icons} from "../../constants";
+import {Icons} from "../../shared/constants";
 import {CategoryOption} from "../../components/category/category";
 import {Meta} from "@angular/platform-browser";
 

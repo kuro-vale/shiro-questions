@@ -44,6 +44,10 @@
     "login_title": "Welcome again",
     "login_subtitle": "Get answers to your questions now",
     "register_to_login": "Already have an account? {$START_TAG_SPAN}Log in{$CLOSE_TAG_SPAN}",
-    "login_to_register": "Don't have an account? {$START_TAG_SPAN}Sign up{$CLOSE_TAG_SPAN}"
+    "login_to_register": "Don't have an account? {$START_TAG_SPAN}Sign up{$CLOSE_TAG_SPAN}",
+    "error_unauthorized": "Please, log in to do this",
+    "error_credentials": "Invalid credentials",
+    "error_fail_register": "Error while registering",
+    "error_fail_login": "Error while logging in"
   }
 }

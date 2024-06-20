@@ -2,7 +2,7 @@ import {HomeComponent} from "./home.component";
 import {CategoryService} from "../../components/category/category.service";
 import {Category} from "../../components/category/category";
 import {of} from "rxjs";
-import {CategoriesIcons, CategoriesTranslations} from "../../constants";
+import {CategoriesIcons, CategoriesTranslations} from "../../shared/constants";
 import {TestBed} from "@angular/core/testing";
 import {Meta} from "@angular/platform-browser";
 

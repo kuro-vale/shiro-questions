@@ -4,7 +4,7 @@ import {Subject} from "rxjs";
 @Component({template: ""})
 export abstract class BaseComponent implements OnDestroy {
   private readonly _destroy = new Subject<void>();
-  destroy$ = this._destroy.asObservable();
+  protected destroy$ = this._destroy.asObservable();
 
   ngOnDestroy() {
     this._destroy.next();

@@ -2,7 +2,7 @@ import {Component} from "@angular/core";
 import {MatDialog, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import {UserFormComponent} from "../user-form/user-form.component";
 import {LoginDialogComponent} from "../login-dialog/login-dialog.component";
-import {BaseComponent} from "../../../shared/BaseComponent";
+import {BaseComponent} from "../../../shared/base.component";
 import {takeUntil} from "rxjs";
 
 @Component({

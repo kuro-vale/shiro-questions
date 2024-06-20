@@ -1,6 +1,6 @@
 import {Routes} from "@angular/router";
 import {HomeComponent} from "./pages/home/home.component";
-import {Paths} from "./constants";
+import {Paths} from "./shared/constants";
 
 export const routes: Routes = [
   {

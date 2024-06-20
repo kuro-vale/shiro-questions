@@ -44,6 +44,10 @@
     "login_title": "Bienvenido de nuevo",
     "login_subtitle": "Obtén respuestas a tus preguntas ahora mismo",
     "register_to_login": "¿Ya tienes una cuenta? {$START_TAG_SPAN}Inicia sesión{$CLOSE_TAG_SPAN}",
-    "login_to_register": "¿No tienes una cuenta? {$START_TAG_SPAN}Regístrate{$CLOSE_TAG_SPAN}"
+    "login_to_register": "¿No tienes una cuenta? {$START_TAG_SPAN}Regístrate{$CLOSE_TAG_SPAN}",
+    "error_unauthorized": "Por favor, inicia sesión",
+    "error_credentials": "Credenciales inválidas",
+    "error_fail_register": "Error al registrarse",
+    "error_fail_login": "Error al iniciar sesión"
   }
 }

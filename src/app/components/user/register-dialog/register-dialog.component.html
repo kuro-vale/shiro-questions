@@ -4,6 +4,12 @@
     <h2
       class="text-center !text-lg" i18n="@@register_subtitle"
     >Create an account to receive answers to your questions now</h2>
-    <app-user-form (onSubmit)="onSubmit($event)" [isLogin]="false" [openNext]="openNext.bind(this)"></app-user-form>
+    <app-user-form [isLogin]="false"></app-user-form>
+    <p
+      class="pt-5" i18n="@@login_to_register"
+    >Don't have an account? <span
+      (click)="openNext()"
+      class="cursor-pointer text-[--primary] hover:underline"
+    >Sign up</span></p>
   </div>
 </mat-dialog-content>

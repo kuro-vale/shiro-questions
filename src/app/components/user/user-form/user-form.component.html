@@ -13,21 +13,10 @@
       <mat-error>{{ passwordErrorMessage }}</mat-error>
     }
   </mat-form-field>
-  @if (!isLogin) {
-    <button class="mt-2" i18n="@@register" mat-flat-button type="submit">Register</button>
-    <p
-      i18n="@@register_to_login" class="pt-5"
-    >Already have an account? <span
-      (click)="openNext()" class="cursor-pointer text-[--primary] hover:underline"
-    >Log in</span></p>
-  } @else {
+  @if (isLogin) {
     <mat-checkbox formControlName="rememberMe" i18n="@@keepme_logged">Keep me logged in</mat-checkbox>
     <button class="mt-2" i18n="@@login" mat-flat-button type="submit">Log in</button>
-    <p
-      i18n="@@login_to_register" class="pt-5"
-    >Don't have an account? <span
-      (click)="openNext()"
-      class="cursor-pointer text-[--primary] hover:underline"
-    >Sign up</span></p>
+  } @else {
+    <button class="mt-2" i18n="@@register" mat-flat-button type="submit">Register</button>
   }
 </form>

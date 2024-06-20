@@ -9,8 +9,7 @@ describe("RegisterDialogComponent", () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RegisterDialogComponent]
-    })
-      .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RegisterDialogComponent);
     component = fixture.componentInstance;

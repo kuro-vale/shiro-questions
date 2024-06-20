@@ -1,9 +1,9 @@
 import {Component} from "@angular/core";
 import {MatDialog, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import {UserFormComponent} from "../user-form/user-form.component";
-import {UserService} from "../user.service";
-import {UserRequest} from "../user";
 import {RegisterDialogComponent} from "../register-dialog/register-dialog.component";
+import {BaseComponent} from "../../../shared/BaseComponent";
+import {takeUntil} from "rxjs";
 
 @Component({
   selector: "app-login-dialog",
@@ -15,21 +15,19 @@ import {RegisterDialogComponent} from "../register-dialog/register-dialog.compon
   ],
   templateUrl: "./login-dialog.component.html",
 })
-export class LoginDialogComponent {
-  constructor(private readonly userService: UserService, private readonly dialog: MatDialog) {
-  }
-
-  onSubmit(request: UserRequest) {
-    this.userService.login(request);
+export class LoginDialogComponent extends BaseComponent {
+  constructor(private readonly dialog: MatDialog) {
+    super();
   }
 
   openNext() {
-    this.dialog.open(RegisterDialogComponent).afterOpened().subscribe(() => {
-      this.dialog.openDialogs.forEach(d => {
-        if (d.componentInstance instanceof LoginDialogComponent) {
-          d.close();
-        }
+    this.dialog.open(RegisterDialogComponent).afterOpened().pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.dialog.openDialogs.forEach(d => {
+          if (d.componentInstance instanceof LoginDialogComponent) {
+            d.close();
+          }
+        });
       });
-    });
   }
 }

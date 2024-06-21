@@ -5,6 +5,7 @@ import {catchError, of} from "rxjs";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {CategoriesIcons, CategoriesTranslations} from "../../shared/constants";
 import {BaseService} from "../../shared/base.service";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: "root"
@@ -12,8 +13,8 @@ import {BaseService} from "../../shared/base.service";
 export class CategoryService extends BaseService {
   private readonly endpoint = "/categories";
 
-  constructor(private readonly client: HttpClient, snackBar: MatSnackBar) {
-    super(snackBar);
+  constructor(private readonly client: HttpClient, snackBar: MatSnackBar, router: Router) {
+    super(snackBar, router);
   }
 
   static getCategoryTranslation(category: string) {

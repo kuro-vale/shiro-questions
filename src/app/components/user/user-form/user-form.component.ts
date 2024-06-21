@@ -5,10 +5,10 @@ import {MatError, MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {UserService} from "../user.service";
-import {UserAuth, UserRequest} from "../user";
+import {UserRequest} from "../user";
 import {BaseComponent} from "../../../shared/base.component";
 import {takeUntil} from "rxjs";
-import {AppError} from "../../../shared/types";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: "app-user-form",
@@ -39,7 +39,7 @@ export class UserFormComponent extends BaseComponent implements OnInit {
       Validators.minLength(5),
       Validators.maxLength(10)
     ]),
-    rememberMe: new FormControl(false)
+    rememberMe: new FormControl(false, {nonNullable: true})
   });
 
   userNameErrorMessages: { [key: string]: string } = {
@@ -47,7 +47,8 @@ export class UserFormComponent extends BaseComponent implements OnInit {
     pattern: $localize`:@@error_alphanumeric_pattern:Only letters and numbers are valid`,
     minlength: $localize`:@@error_username_minlength:Username must be greater than 3 characters long`,
     maxlength: $localize`:@@error_username_maxlength:Username must be less than 18 characters long`,
-    invalidCredentials: $localize`:@@error_credentials:Invalid credentials`
+    invalidCredentials: $localize`:@@error_credentials:Invalid credentials`,
+    usernameTaken: $localize`:@@error_username_taken:Username already exists`,
   };
 
   passwordErrorMessages: { [key: string]: string } = {
@@ -60,7 +61,7 @@ export class UserFormComponent extends BaseComponent implements OnInit {
   @Input({required: true})
   isLogin!: boolean;
 
-  constructor(private readonly userService: UserService) {
+  constructor(private readonly userService: UserService, private readonly dialog: MatDialog) {
     super();
   }
 
@@ -77,7 +78,10 @@ export class UserFormComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
     this.userForm.controls.password.valueChanges.pipe(takeUntil(this.destroy$))
       .subscribe(() => {
-        this.userForm.controls.username.updateValueAndValidity();
+        const usernameControl = this.userForm.controls.username;
+        if (usernameControl.hasError("invalidCredentials")) {
+          usernameControl.updateValueAndValidity();
+        }
       });
   }
 
@@ -92,16 +96,14 @@ export class UserFormComponent extends BaseComponent implements OnInit {
       ? this.userService.login(request)
       : this.userService.register(request);
     key$.pipe(takeUntil(this.destroy$))
-      .subscribe((credentials) => this.loginUser(credentials));
-  }
-
-  loginUser(credentials: UserAuth | AppError) {
-    this.loading = false;
-    if (credentials.error) {
-      this.userForm.controls.username.setErrors(credentials.validationErrors ?? null);
-    } else {
-      // TODO: set current user
-      console.log(credentials.token);
-    }
+      .subscribe(async credentials => {
+        this.loading = false;
+        if (credentials.error) {
+          this.userForm.controls.username.setErrors(credentials.validationErrors ?? null);
+        } else {
+          this.dialog.closeAll();
+          await this.userService.setCurrentUser(credentials, this.userForm.controls.rememberMe.value);
+        }
+      });
   }
 }

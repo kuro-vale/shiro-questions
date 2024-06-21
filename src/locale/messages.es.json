@@ -48,6 +48,7 @@
     "error_unauthorized": "Por favor, inicia sesión",
     "error_credentials": "Credenciales inválidas",
     "error_fail_register": "Error al registrarse",
-    "error_fail_login": "Error al iniciar sesión"
+    "error_fail_login": "Error al iniciar sesión",
+    "error_username_taken": "Username already exists"
   }
 }

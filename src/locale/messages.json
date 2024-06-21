@@ -48,6 +48,7 @@
     "error_unauthorized": "Please, log in to do this",
     "error_credentials": "Invalid credentials",
     "error_fail_register": "Error while registering",
-    "error_fail_login": "Error while logging in"
+    "error_fail_login": "Error while logging in",
+    "error_username_taken": "Username already exists"
   }
 }

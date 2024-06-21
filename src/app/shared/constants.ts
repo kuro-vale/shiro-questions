@@ -1,5 +1,6 @@
 export const Paths = {
   Home: "",
+  Profile: "profile",
 } as const;
 
 export const Icons = {
@@ -43,3 +44,7 @@ export const CategoriesTranslations = {
   Sports: $localize`:@@cat_sports:Sports`,
   Entertainment: $localize`:@@cat_entertainment:Entertainment`
 };
+
+export const StorageConstants = {
+  Token: "auth_token",
+} as const;

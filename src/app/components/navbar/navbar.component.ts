@@ -1,13 +1,15 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {MatIcon} from "@angular/material/icon";
 import {Icons, Paths} from "../../shared/constants";
-import {RouterModule} from "@angular/router";
+import {ActivatedRoute, RouterModule} from "@angular/router";
 import {NgClass} from "@angular/common";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatMenu, MatMenuContent, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {MatDialog} from "@angular/material/dialog";
 import {RegisterDialogComponent} from "../user/register-dialog/register-dialog.component";
 import {LoginDialogComponent} from "../user/login-dialog/login-dialog.component";
+import {BaseComponent} from "../../shared/base.component";
+import {takeUntil} from "rxjs";
 
 @Component({
   selector: "app-navbar",
@@ -16,12 +18,21 @@ import {LoginDialogComponent} from "../user/login-dialog/login-dialog.component"
   templateUrl: "./navbar.component.html",
   styleUrl: "navbar.component.css",
 })
-export class NavbarComponent {
+export class NavbarComponent extends BaseComponent implements OnInit {
   protected readonly Icons = Icons;
   protected readonly Paths = Paths;
   protected focused = false;
 
-  constructor(private readonly dialog: MatDialog) {
+  constructor(private readonly dialog: MatDialog, private readonly route: ActivatedRoute) {
+    super();
+  }
+
+  ngOnInit(): void {
+    this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(query => {
+      if (query["login"]) {
+        this.openLoginDialog();
+      }
+    });
   }
 
   openRegisterDialog() {

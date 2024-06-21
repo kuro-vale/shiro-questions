@@ -4,6 +4,7 @@ import {NavbarComponent} from "./components/navbar/navbar.component";
 import {FooterComponent} from "./components/footer/footer.component";
 import {MatIconRegistry} from "@angular/material/icon";
 import {DomSanitizer} from "@angular/platform-browser";
+import {Icons} from "./shared/constants";
 
 @Component({
   selector: "app-root",
@@ -13,6 +14,6 @@ import {DomSanitizer} from "@angular/platform-browser";
 })
 export class AppComponent {
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
-    iconRegistry.addSvgIcon("app-logo", sanitizer.bypassSecurityTrustResourceUrl("logo.svg"));
+    iconRegistry.addSvgIcon(Icons.AppLogo, sanitizer.bypassSecurityTrustResourceUrl("/logo.svg"));
   }
 }

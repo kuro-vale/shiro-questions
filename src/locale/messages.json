@@ -49,6 +49,7 @@
     "error_credentials": "Invalid credentials",
     "error_fail_register": "Error while registering",
     "error_fail_login": "Error while logging in",
-    "error_username_taken": "Username already exists"
+    "error_username_taken": "Username already exists",
+    "error_current_user": "Error getting your data, please log in again"
   }
 }

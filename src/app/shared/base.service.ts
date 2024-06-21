@@ -17,9 +17,11 @@ export abstract class BaseService {
   private readonly commonErrors: { [key: string]: () => Promise<AppError> } = {
     "Unauthorized": async () => {
       this.clearLoggedUser();
-      await this.router.navigate([Paths.Home], {queryParams: {login: true}, replaceUrl: true});
       const message = $localize`:@@error_unauthorized:Please, log in to do this`;
-      this.showError(message);
+      if (isPlatformBrowser(this.platformId)) {
+        await this.router.navigate([Paths.Home], {queryParams: {login: true}, replaceUrl: true});
+        this.showError(message);
+      }
       return {
         message,
         error: true

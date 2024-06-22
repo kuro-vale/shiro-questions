@@ -5,6 +5,7 @@ import {ProfileComponent} from "./pages/profile/profile.component";
 import {LoginComponent} from "./components/user/login/login.component";
 import {RegisterComponent} from "./components/user/register/register.component";
 import {tokenGuard} from "./shared/token/token.guard";
+import {userGuard} from "./components/user/user.guard";
 
 export const routes: Routes = [
   {
@@ -20,11 +21,13 @@ export const routes: Routes = [
   {
     path: Paths.Login,
     component: LoginComponent,
-    title: $localize`:@@login-component_title:Log in | shiro-questions`
+    title: $localize`:@@login-component_title:Log in | shiro-questions`,
+    canActivate: [userGuard]
   },
   {
     path: Paths.Register,
     component: RegisterComponent,
-    title: $localize`:@@register-component_title:Register | shiro-questions`
+    title: $localize`:@@register-component_title:Register | shiro-questions`,
+    canActivate: [userGuard]
   }
 ];

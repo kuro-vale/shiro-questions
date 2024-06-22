@@ -33,11 +33,11 @@ export abstract class BaseService {
       error: true
     };
     if (error instanceof HttpErrorResponse) {
-      if (error.status === 401) {
-        return fromPromise(this.unauthorizedError());
-      }
       if (Object.hasOwn(knownErrors, error.error?.reason)) {
         return of(knownErrors[error.error.reason]());
+      }
+      if (error.status === 401) {
+        return fromPromise(this.unauthorizedError());
       }
     }
     this.showError(appError.message!);

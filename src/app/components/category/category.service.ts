@@ -1,11 +1,8 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
 import {Category} from "./category";
 import {catchError, map, of} from "rxjs";
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {CategoriesIcons, CategoriesTranslations} from "../../shared/constants";
 import {BaseService} from "../../shared/base.service";
-import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: "root"
@@ -14,8 +11,8 @@ export class CategoryService extends BaseService {
   private readonly endpoint = "/categories";
   private categories: Category[] = [];
 
-  constructor(private readonly client: HttpClient, snackBar: MatSnackBar, router: Router) {
-    super(snackBar, router);
+  constructor() {
+    super();
   }
 
   static getCategoryTranslation(category: string) {

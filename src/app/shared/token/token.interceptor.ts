@@ -1,10 +1,10 @@
 import {HttpInterceptorFn} from "@angular/common/http";
 import {inject} from "@angular/core";
-import {UserService} from "../../components/user/user.service";
+import {TokenService} from "./token.service";
 
 export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
-  const userService = inject(UserService);
-  const token = userService.getToken();
+  const tokenService = inject(TokenService);
+  const token = tokenService.token;
   if (!token) {
     return next(req);
   }

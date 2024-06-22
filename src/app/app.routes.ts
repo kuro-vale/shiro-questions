@@ -4,6 +4,7 @@ import {Paths} from "./shared/constants";
 import {ProfileComponent} from "./pages/profile/profile.component";
 import {LoginComponent} from "./components/user/login/login.component";
 import {RegisterComponent} from "./components/user/register/register.component";
+import {tokenGuard} from "./shared/token/token.guard";
 
 export const routes: Routes = [
   {
@@ -14,6 +15,7 @@ export const routes: Routes = [
   {
     path: Paths.Profile,
     component: ProfileComponent,
+    canActivate: [tokenGuard]
   },
   {
     path: Paths.Login,

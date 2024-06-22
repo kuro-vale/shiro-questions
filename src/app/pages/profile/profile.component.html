@@ -1,3 +1,3 @@
-@if (currentUser$ | async; as user) {
-  <p>Hello {{ user.username }}</p>
+@if (user()) {
+  <p>Hello {{ user()!.username }}</p>
 }

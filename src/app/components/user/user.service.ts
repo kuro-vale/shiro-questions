@@ -1,7 +1,7 @@
-import {Injectable} from "@angular/core";
+import {Injectable, signal} from "@angular/core";
 import {User, UserAuth, UserRequest} from "./user";
 import {BaseService} from "../../shared/base.service";
-import {catchError, map, Observable, of, share} from "rxjs";
+import {catchError, Observable, of, tap} from "rxjs";
 import {AppError} from "../../shared/types";
 import {Paths} from "../../shared/constants";
 
@@ -9,6 +9,7 @@ import {Paths} from "../../shared/constants";
   providedIn: "root"
 })
 export class UserService extends BaseService {
+  currentUser = signal<User | null>(null);
   private readonly endpoint = "/auth";
   private readonly userErrors: { [key: string]: () => AppError } = {
     "invalid credentials": () => {
@@ -28,7 +29,6 @@ export class UserService extends BaseService {
       };
     }
   };
-  private loggedUser: User | null = null;
 
   constructor() {
     super();
@@ -46,22 +46,25 @@ export class UserService extends BaseService {
 
   async setCurrentUser(credentials: UserAuth, rememberMe: boolean) {
     this.tokenService.saveToken(credentials.token, rememberMe);
-    this.loggedUser = credentials;
+    this.currentUser.set(credentials);
     await this.router.navigate([Paths.Profile]);
   }
 
   getCurrentUser() {
     if (!this.tokenService.token) return of(null);
-    if (this.loggedUser) return of(this.loggedUser);
     return this.client.get<User | null>(`${this.apiUrl}${this.endpoint}/me`)
       .pipe(
-        share(),
-        map(u => this.loggedUser = u),
         catchError((err, caught) => {
           this.mapError(err, $localize`:@@error_current_user:Error getting your data, please log in again`);
           this.tokenService.clearToken();
           caught = of(null);
           return caught;
-        }));
+        }),
+        tap(u => this.currentUser.set(u))
+      );
+  }
+
+  clearCurrentUser() {
+    this.currentUser.set(null);
   }
 }

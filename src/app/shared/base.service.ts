@@ -47,7 +47,7 @@ export abstract class BaseService {
   private async unauthorizedError(): Promise<AppError> {
     this.tokenService.clearToken();
     const message = $localize`:@@error_unauthorized:Please, log in to do this`;
-    await this.router.navigate([Paths.Login]);
+    await this.router.navigate([Paths.Login], {replaceUrl: true});
     this.showError(message);
     return {
       error: true,

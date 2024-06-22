@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {MatDialog, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import {UserFormComponent} from "../user-form/user-form.component";
 import {RegisterComponent} from "../register/register.component";
@@ -7,6 +7,7 @@ import {takeUntil} from "rxjs";
 import {Router} from "@angular/router";
 import {Paths} from "../../../shared/constants";
 import {NgComponentOutlet, NgTemplateOutlet} from "@angular/common";
+import {UserService} from "../user.service";
 
 @Component({
   selector: "app-login",
@@ -20,14 +21,19 @@ import {NgComponentOutlet, NgTemplateOutlet} from "@angular/common";
   ],
   templateUrl: "./login.component.html",
 })
-export class LoginComponent extends BaseComponent {
+export class LoginComponent extends BaseComponent implements OnInit {
   onLoginPage = this.router.url.endsWith(Paths.Login);
 
   constructor(
     private readonly dialog: MatDialog,
     private readonly router: Router,
+    private readonly userService: UserService,
   ) {
     super();
+  }
+
+  ngOnInit(): void {
+    this.userService.clearCurrentUser();
   }
 
   async openNext() {

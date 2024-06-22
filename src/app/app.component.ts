@@ -5,6 +5,7 @@ import {FooterComponent} from "./components/footer/footer.component";
 import {MatIconRegistry} from "@angular/material/icon";
 import {DomSanitizer} from "@angular/platform-browser";
 import {Icons} from "./shared/constants";
+import {UserService} from "./components/user/user.service";
 
 @Component({
   selector: "app-root",
@@ -13,7 +14,8 @@ import {Icons} from "./shared/constants";
   templateUrl: "./app.component.html"
 })
 export class AppComponent {
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, userService: UserService) {
     iconRegistry.addSvgIcon(Icons.AppLogo, sanitizer.bypassSecurityTrustResourceUrl("/logo.svg"));
+    userService.getCurrentUser().subscribe();
   }
 }

@@ -43,12 +43,12 @@ export class UserService extends BaseService {
 
   register(request: UserRequest): Observable<UserAuth | AppError> {
     return this.client.post<UserAuth>(`${this.apiUrl}${this.endpoint}/register`, request)
-      .pipe(catchError(err => this.mapError(err, this.userErrors, $localize`:@@error_fail_register:Error while registering`)));
+      .pipe(catchError(err => this.mapError(err, $localize`:@@error_fail_register:Error while registering`, this.userErrors)));
   }
 
   login(request: UserRequest): Observable<UserAuth | AppError> {
     return this.client.post<UserAuth>(`${this.apiUrl}${this.endpoint}/login`, request)
-      .pipe(catchError(err => this.mapError(err, this.userErrors, $localize`:@@error_fail_login:Error while logging in`)));
+      .pipe(catchError(err => this.mapError(err, $localize`:@@error_fail_login:Error while logging in`, this.userErrors)));
   }
 
   async setCurrentUser(credentials: UserAuth, rememberMe: boolean) {
@@ -69,7 +69,7 @@ export class UserService extends BaseService {
         share(),
         map(u => this.loggedUser = u),
         catchError((err, caught) => {
-          this.mapError(err, {}, $localize`:@@error_current_user:Error getting your data, please log in again`);
+          this.mapError(err, $localize`:@@error_current_user:Error getting your data, please log in again`);
           this.clearLoggedUser();
           caught = of(null);
           return caught;

@@ -49,20 +49,24 @@
     <li class="ml-4 hidden lg:block">
       <button class="w-max" i18n="@@nav_new_question" mat-button type="button">ASK A QUESTION</button>
     </li>
-    <li class="ml-4 hidden md:block">
-      <button
-        (click)="openLoginDialog()" class="w-max"
-        i18n="@@nav_login" mat-button type="button"
-      >LOG IN
-      </button>
-    </li>
-    <li class="ml-4 hidden md:block">
-      <button
-        (click)="openRegisterDialog()" class="w-max"
-        i18n="@@nav_join" mat-flat-button type="button"
-      >JOIN FOR FREE
-      </button>
-    </li>
+    @if (!onLoginPage) {
+      <li class="ml-4 hidden md:block">
+        <button
+          (click)="openLoginDialog()" class="w-max"
+          i18n="@@nav_login" mat-button type="button"
+        >LOG IN
+        </button>
+      </li>
+    }
+    @if (!onRegisterPage) {
+      <li class="ml-4 hidden md:block">
+        <button
+          (click)="openRegisterDialog()" class="w-max"
+          i18n="@@nav_join" mat-flat-button type="button"
+        >JOIN FOR FREE
+        </button>
+      </li>
+    }
   </ul>
 </nav>
 
@@ -73,13 +77,17 @@
       <mat-icon [fontIcon]="Icons.Add"></mat-icon>
       <span i18n="@@new_question">Ask a question</span>
     </button>
-    <button (click)="openLoginDialog()" mat-menu-item>
-      <mat-icon [fontIcon]="Icons.Login"></mat-icon>
-      <span i18n="@@login">Log in</span>
-    </button>
-    <button (click)="openRegisterDialog()" mat-menu-item>
-      <mat-icon [fontIcon]="Icons.Register"></mat-icon>
-      <span i18n="@@register">Register</span>
-    </button>
+    @if (!onLoginPage) {
+      <button (click)="openLoginDialog()" mat-menu-item>
+        <mat-icon [fontIcon]="Icons.Login"></mat-icon>
+        <span i18n="@@login">Log in</span>
+      </button>
+    }
+    @if (!onRegisterPage) {
+      <button (click)="openRegisterDialog()" mat-menu-item>
+        <mat-icon [fontIcon]="Icons.Register"></mat-icon>
+        <span i18n="@@register">Register</span>
+      </button>
+    }
   </ng-template>
 </mat-menu>

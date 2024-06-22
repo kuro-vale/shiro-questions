@@ -1,6 +1,8 @@
 export const Paths = {
   Home: "",
   Profile: "profile",
+  Login: "login",
+  Register: "register",
 } as const;
 
 export const Icons = {

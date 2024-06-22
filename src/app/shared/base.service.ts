@@ -46,8 +46,8 @@ export abstract class BaseService {
 
   protected mapError(
     error: any,
-    knownErrors: { [key: string]: () => Promise<AppError> },
-    defaultMessage: string
+    defaultMessage: string,
+    knownErrors: { [key: string]: () => Promise<AppError> } = {},
   ): Observable<AppError> {
     let appError: AppError = {
       message: defaultMessage,

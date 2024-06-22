@@ -1,0 +1,26 @@
+@if (onLoginPage) {
+  <div class="mt-10">
+    <h1 class="text-center !text-2xl !font-extrabold" i18n="@@login_title">Welcome again</h1>
+    <div class="flex justify-center">
+      <ng-container *ngTemplateOutlet="content"></ng-container>
+    </div>
+  </div>
+} @else {
+  <h1 class="text-center !text-2xl !font-extrabold" i18n="@@login_title" matDialogTitle>Welcome again</h1>
+  <mat-dialog-content>
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+  </mat-dialog-content>
+}
+
+<ng-template #content>
+  <div class="max-w-[400px] md:min-w-[400px]">
+    <h2 class="text-center !text-lg" i18n="@@login_subtitle">Get answers to your questions now</h2>
+    <app-user-form [isLogin]="true"></app-user-form>
+    <p
+      class="pt-5" i18n="@@login_to_register"
+    >Don't have an account? <span
+      (click)="openNext()"
+      class="cursor-pointer text-[--primary] hover:underline"
+    >Sign up</span></p>
+  </div>
+</ng-template>

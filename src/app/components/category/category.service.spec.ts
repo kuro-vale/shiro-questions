@@ -3,6 +3,8 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Category} from "./category";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {of, throwError} from "rxjs";
+import {TestBed} from "@angular/core/testing";
+import {Router} from "@angular/router";
 
 describe("CategoryService", () => {
   let service: CategoryService;
@@ -12,7 +14,8 @@ describe("CategoryService", () => {
   beforeEach(() => {
     httpClientSpy = jasmine.createSpyObj("HttpClient", ["get"]);
     snackBarSpy = jasmine.createSpyObj("MatSnackBar", ["open"]);
-    service = new CategoryService(httpClientSpy, snackBarSpy);
+    const router = TestBed.inject(Router);
+    service = new CategoryService(httpClientSpy, snackBarSpy, router);
   });
 
   it("should be created", () => {

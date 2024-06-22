@@ -2,6 +2,8 @@ import {Routes} from "@angular/router";
 import {HomeComponent} from "./pages/home/home.component";
 import {Paths} from "./shared/constants";
 import {ProfileComponent} from "./pages/profile/profile.component";
+import {LoginComponent} from "./components/user/login/login.component";
+import {RegisterComponent} from "./components/user/register/register.component";
 
 export const routes: Routes = [
   {
@@ -12,5 +14,15 @@ export const routes: Routes = [
   {
     path: Paths.Profile,
     component: ProfileComponent,
+  },
+  {
+    path: Paths.Login,
+    component: LoginComponent,
+    title: $localize`:@@login-component_title:Log in | shiro-questions`
+  },
+  {
+    path: Paths.Register,
+    component: RegisterComponent,
+    title: $localize`:@@register-component_title:Register | shiro-questions`
   }
 ];

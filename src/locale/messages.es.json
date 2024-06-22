@@ -50,6 +50,8 @@
     "error_fail_register": "Error al registrarse",
     "error_fail_login": "Error al iniciar sesión",
     "error_username_taken": "Username already exists",
-    "error_current_user": "Error al obtener sus datos, por favor inicie sesión de nuevo"
+    "error_current_user": "Error al obtener sus datos, por favor inicie sesión de nuevo",
+    "login-component_title": "Iniciar sesión | shiro-questions",
+    "register-component_title": "Registrarse | shiro-questions"
   }
 }

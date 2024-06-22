@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Category} from "./category";
-import {catchError, map, of} from "rxjs";
+import {catchError, of} from "rxjs";
 import {CategoriesIcons, CategoriesTranslations} from "../../constants";
 import {BaseService} from "../base/base.service";
 
@@ -9,7 +9,6 @@ import {BaseService} from "../base/base.service";
 })
 export class CategoryService extends BaseService {
   private readonly endpoint = "/categories";
-  private categories: Category[] = [];
 
   constructor() {
     super();
@@ -34,10 +33,8 @@ export class CategoryService extends BaseService {
   }
 
   getAllCategories() {
-    if (this.categories.length > 0) return of(this.categories);
     return this.client.get<Category[]>(`${this.apiUrl}${this.endpoint}`)
       .pipe(
-        map(c => this.categories = c),
         catchError((_, caught) => {
           this.showError($localize`:@@error_getAllCat:Error fetching the categories`);
           caught = of([]);

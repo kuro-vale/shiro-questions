@@ -6,7 +6,7 @@ import {CategoryService} from "../category/category.service";
 import {AsyncPipe} from "@angular/common";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {map} from "rxjs";
-import {Icons} from "../../constants";
+import {Icons, MetaConstants} from "../../constants";
 import {CategoryOption} from "../category/category";
 import {Meta} from "@angular/platform-browser";
 
@@ -32,6 +32,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.metaService.addTag({name: "description", content: $localize`:@@home_desc:A place to ask with confidence`});
+    this.metaService.updateTag({
+      name: MetaConstants.Description,
+      content: $localize`:@@home_desc:A place to ask with confidence`
+    });
   }
 }

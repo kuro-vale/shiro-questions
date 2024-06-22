@@ -50,3 +50,7 @@ export const CategoriesTranslations = {
 export const StorageConstants = {
   Token: "auth_token",
 } as const;
+
+export const MetaConstants = {
+  Description: "description"
+} as const;

@@ -52,6 +52,10 @@
     "error_username_taken": "El nombre de usuario ya existe",
     "error_current_user": "Error al obtener sus datos, por favor inicie sesión de nuevo",
     "login-component_title": "Iniciar sesión | shiro-questions",
-    "register-component_title": "Registrarse | shiro-questions"
+    "register-component_title": "Registrarse | shiro-questions",
+    "login_desc": "Inicie sesión en el mejor lugar para plantear sus preguntas",
+    "profile_title": "Tu perfil",
+    "register_desc": "Regístrese en el mejor lugar para plantear sus preguntas",
+    "profile_desc": "¡Tu perfil personal en shiro-questions!"
   }
 }

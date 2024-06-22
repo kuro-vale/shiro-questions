@@ -5,9 +5,10 @@ import {LoginComponent} from "../login/login.component";
 import {BaseComponent} from "../../base/base.component";
 import {takeUntil} from "rxjs";
 import {Router} from "@angular/router";
-import {Paths} from "../../../constants";
+import {MetaConstants, Paths} from "../../../constants";
 import {NgTemplateOutlet} from "@angular/common";
 import {UserService} from "../user.service";
+import {Meta} from "@angular/platform-browser";
 
 @Component({
   selector: "app-register",
@@ -27,12 +28,17 @@ export class RegisterComponent extends BaseComponent implements OnInit {
     private readonly dialog: MatDialog,
     private readonly router: Router,
     private readonly userService: UserService,
+    private readonly meta: Meta,
   ) {
     super();
   }
 
   ngOnInit(): void {
     this.userService.clearCurrentUser();
+    this.meta.updateTag({
+      name: MetaConstants.Description,
+      content: $localize`:@@register_desc:Register to the best place for asking your questions`
+    });
   }
 
   async openNext() {

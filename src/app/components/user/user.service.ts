@@ -4,6 +4,7 @@ import {BaseService} from "../base/base.service";
 import {catchError, Observable, of, tap} from "rxjs";
 import {AppError} from "../../types";
 import {Paths} from "../../constants";
+import {jwtDecode} from "jwt-decode";
 
 @Injectable({
   providedIn: "root"
@@ -51,12 +52,19 @@ export class UserService extends BaseService {
   }
 
   getCurrentUser() {
-    if (!this.tokenService.token) return of(null);
+    const token = this.tokenService.token;
+    if (!token) return of(null);
+    const decoded = jwtDecode(token);
+    if (decoded) {
+      this.currentUser.set(decoded as User);
+      return of(decoded as User);
+    }
     return this.client.get<User | null>(`${this.apiUrl}${this.endpoint}/me`)
       .pipe(
         catchError((err, caught) => {
           this.mapError(err, $localize`:@@error_current_user:Error getting your data, please log in again`);
           this.tokenService.clearToken();
+          this.router.navigate([Paths.Login]).then();
           caught = of(null);
           return caught;
         }),

@@ -1,8 +1,8 @@
 import {Injectable} from "@angular/core";
 import {Category} from "./category";
 import {catchError, map, of} from "rxjs";
-import {CategoriesIcons, CategoriesTranslations} from "../../shared/constants";
-import {BaseService} from "../../shared/base.service";
+import {CategoriesIcons, CategoriesTranslations} from "../../constants";
+import {BaseService} from "../base/base.service";
 
 @Injectable({
   providedIn: "root"

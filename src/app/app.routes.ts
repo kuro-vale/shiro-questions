@@ -1,11 +1,11 @@
 import {Routes} from "@angular/router";
-import {HomeComponent} from "./pages/home/home.component";
-import {Paths} from "./shared/constants";
-import {ProfileComponent} from "./pages/profile/profile.component";
+import {HomeComponent} from "./components/home/home.component";
+import {Paths} from "./constants";
+import {ProfileComponent} from "./components/profile/profile.component";
 import {LoginComponent} from "./components/user/login/login.component";
 import {RegisterComponent} from "./components/user/register/register.component";
-import {tokenGuard} from "./shared/token/token.guard";
-import {userGuard} from "./components/user/user.guard";
+import {tokenGuard} from "./components/token/guards/token.guard";
+import {userGuard} from "./components/user/guards/user.guard";
 
 export const routes: Routes = [
   {

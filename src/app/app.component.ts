@@ -4,7 +4,7 @@ import {NavbarComponent} from "./components/navbar/navbar.component";
 import {FooterComponent} from "./components/footer/footer.component";
 import {MatIconRegistry} from "@angular/material/icon";
 import {DomSanitizer} from "@angular/platform-browser";
-import {Icons} from "./shared/constants";
+import {Icons} from "./constants";
 import {UserService} from "./components/user/user.service";
 
 @Component({

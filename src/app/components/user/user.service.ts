@@ -1,9 +1,9 @@
 import {Injectable, signal} from "@angular/core";
 import {User, UserAuth, UserRequest} from "./user";
-import {BaseService} from "../../shared/base.service";
+import {BaseService} from "../base/base.service";
 import {catchError, Observable, of, tap} from "rxjs";
-import {AppError} from "../../shared/types";
-import {Paths} from "../../shared/constants";
+import {AppError} from "../../types";
+import {Paths} from "../../constants";
 
 @Injectable({
   providedIn: "root"

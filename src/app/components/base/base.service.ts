@@ -1,11 +1,11 @@
-import {environment} from "../../environments/environment";
+import {environment} from "../../../environments/environment";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Observable, of} from "rxjs";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {AppError} from "./types";
-import {Paths} from "./constants";
+import {AppError} from "../../types";
+import {Paths} from "../../constants";
 import {inject} from "@angular/core";
-import {TokenService} from "./token/token.service";
+import {TokenService} from "../token/token.service";
 import {Router} from "@angular/router";
 import {fromPromise} from "rxjs/internal/observable/innerFrom";
 

@@ -1,4 +1,4 @@
-import {AppSuccess} from "../../shared/types";
+import {AppSuccess} from "../../types";
 
 export type User = {
   username: string;

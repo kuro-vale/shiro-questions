@@ -2,12 +2,12 @@ import {Component, OnInit} from "@angular/core";
 import {MatButton} from "@angular/material/button";
 import {MatListItem, MatListItemIcon, MatNavList} from "@angular/material/list";
 import {MatIcon} from "@angular/material/icon";
-import {CategoryService} from "../../components/category/category.service";
+import {CategoryService} from "../category/category.service";
 import {AsyncPipe} from "@angular/common";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {map} from "rxjs";
-import {Icons} from "../../shared/constants";
-import {CategoryOption} from "../../components/category/category";
+import {Icons} from "../../constants";
+import {CategoryOption} from "../category/category";
 import {Meta} from "@angular/platform-browser";
 
 @Component({

@@ -1,7 +1,7 @@
 import {CanActivateFn, Router} from "@angular/router";
 import {inject, PLATFORM_ID} from "@angular/core";
-import {TokenService} from "./token.service";
-import {Paths} from "../constants";
+import {TokenService} from "../token.service";
+import {Paths} from "../../../constants";
 import {isPlatformBrowser} from "@angular/common";
 
 export const tokenGuard: CanActivateFn = () => {

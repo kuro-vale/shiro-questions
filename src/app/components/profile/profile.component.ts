@@ -1,8 +1,8 @@
 import {Component, effect} from "@angular/core";
-import {UserService} from "../../components/user/user.service";
+import {UserService} from "../user/user.service";
 import {Title} from "@angular/platform-browser";
 import {AsyncPipe} from "@angular/common";
-import {BaseComponent} from "../../shared/base.component";
+import {BaseComponent} from "../base/base.component";
 
 @Component({
   selector: "app-profile",

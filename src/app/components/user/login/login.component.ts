@@ -2,10 +2,10 @@ import {Component, OnInit} from "@angular/core";
 import {MatDialog, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import {UserFormComponent} from "../user-form/user-form.component";
 import {RegisterComponent} from "../register/register.component";
-import {BaseComponent} from "../../../shared/base.component";
+import {BaseComponent} from "../../base/base.component";
 import {takeUntil} from "rxjs";
 import {Router} from "@angular/router";
-import {Paths} from "../../../shared/constants";
+import {Paths} from "../../../constants";
 import {NgComponentOutlet, NgTemplateOutlet} from "@angular/common";
 import {UserService} from "../user.service";
 

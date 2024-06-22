@@ -6,7 +6,7 @@ import {MatInput} from "@angular/material/input";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {UserService} from "../user.service";
 import {UserRequest} from "../user";
-import {BaseComponent} from "../../../shared/base.component";
+import {BaseComponent} from "../../base/base.component";
 import {takeUntil} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
 

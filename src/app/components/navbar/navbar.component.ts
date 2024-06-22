@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {MatIcon} from "@angular/material/icon";
-import {Icons, Paths} from "../../shared/constants";
+import {Icons, Paths} from "../../constants";
 import {Router, RouterModule} from "@angular/router";
 import {NgClass} from "@angular/common";
 import {MatButton, MatIconButton} from "@angular/material/button";
@@ -8,7 +8,7 @@ import {MatMenu, MatMenuContent, MatMenuItem, MatMenuTrigger} from "@angular/mat
 import {MatDialog} from "@angular/material/dialog";
 import {RegisterComponent} from "../user/register/register.component";
 import {LoginComponent} from "../user/login/login.component";
-import {BaseComponent} from "../../shared/base.component";
+import {BaseComponent} from "../base/base.component";
 
 @Component({
   selector: "app-navbar",

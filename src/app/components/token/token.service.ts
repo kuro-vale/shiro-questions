@@ -23,7 +23,7 @@ export class TokenService {
     return this._token;
   }
 
-  set token(value: string | null) {
+  private set token(value: string | null) {
     this._token = value;
   }
 

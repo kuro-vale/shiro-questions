@@ -1,16 +1,18 @@
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {NavbarComponent} from "./navbar.component";
-import {provideRouter} from "@angular/router";
+import {provideRouter, Router} from "@angular/router";
 import {MatIconRegistry} from "@angular/material/icon";
 import {DomSanitizer} from "@angular/platform-browser";
 import {provideHttpClient} from "@angular/common/http";
 import {MatDialog} from "@angular/material/dialog";
+import {Paths} from "../../constants";
 
 describe("NavbarComponent", () => {
   let component: NavbarComponent;
   let fixture: ComponentFixture<NavbarComponent>;
   let compiled: HTMLElement;
   let dialog: MatDialog;
+  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -22,6 +24,7 @@ describe("NavbarComponent", () => {
     const iconService = TestBed.inject(MatIconRegistry);
     const sanitizer = TestBed.inject(DomSanitizer);
     dialog = TestBed.inject(MatDialog);
+    router = TestBed.inject(Router);
     iconService.addSvgIconLiteral("app-logo", sanitizer.bypassSecurityTrustHtml(mockSvgContent));
     fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
@@ -43,8 +46,22 @@ describe("NavbarComponent", () => {
     expect(dialog.openDialogs.length).toBe(1);
   });
 
+  it("should redirect to register page", () => {
+    spyOnProperty(router, "url").and.returnValue(Paths.Login);
+    const navigateSpy = spyOn(router, "navigate");
+    component.openRegisterDialog();
+    expect(navigateSpy).toHaveBeenCalled();
+  });
+
   it("should open login dialog", () => {
     component.openLoginDialog();
     expect(dialog.openDialogs.length).toBe(1);
+  });
+
+  it("should redirect to login page", () => {
+    spyOnProperty(router, "url").and.returnValue(Paths.Register);
+    const navigateSpy = spyOn(router, "navigate");
+    component.openLoginDialog();
+    expect(navigateSpy).toHaveBeenCalled();
   });
 });

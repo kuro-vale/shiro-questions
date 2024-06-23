@@ -23,8 +23,6 @@ import {Meta} from "@angular/platform-browser";
   templateUrl: "./login.component.html",
 })
 export class LoginComponent extends BaseComponent implements OnInit {
-  onLoginPage = this.router.url.endsWith(Paths.Login);
-
   constructor(
     private readonly dialog: MatDialog,
     private readonly router: Router,
@@ -34,12 +32,18 @@ export class LoginComponent extends BaseComponent implements OnInit {
     super();
   }
 
+  get onLoginPage() {
+    return this.router.url.endsWith(Paths.Login);
+  }
+
   ngOnInit(): void {
     this.userService.clearCurrentUser();
-    this.meta.updateTag({
-      name: MetaConstants.Description,
-      content: $localize`:@@login_desc:Log in to the best place for asking your questions`
-    });
+    if (this.onLoginPage) {
+      this.meta.updateTag({
+        name: MetaConstants.Description,
+        content: $localize`:@@login_desc:Log in to the best place for asking your questions`
+      });
+    }
   }
 
   async openNext() {

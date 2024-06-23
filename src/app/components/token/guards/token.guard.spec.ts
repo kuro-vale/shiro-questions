@@ -10,12 +10,11 @@ describe("tokenGuard", () => {
   let route: ActivatedRouteSnapshot;
   let state: RouterStateSnapshot;
   let tokenService: TokenService;
-  let router: Router;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
     tokenService = TestBed.inject(TokenService);
-    router = TestBed.inject(Router);
+    TestBed.inject(Router);
   });
 
   it("should be created", () => {

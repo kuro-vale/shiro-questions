@@ -50,7 +50,6 @@
     "error_fail_register": "Error while registering",
     "error_fail_login": "Error while logging in",
     "error_username_taken": "Username already exists",
-    "error_current_user": "Error getting your data, please log in again",
     "login-component_title": "Log in | shiro-questions",
     "register-component_title": "Register | shiro-questions",
     "login_desc": "Log in to the best place for asking your questions",

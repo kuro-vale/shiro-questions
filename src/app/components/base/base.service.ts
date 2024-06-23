@@ -25,11 +25,11 @@ export abstract class BaseService {
 
   protected mapError(
     error: any,
-    defaultMessage: string,
-    knownErrors: { [key: string]: () => AppError } = {},
+    message: string,
+    knownErrors: { [key: string]: () => AppError },
   ): Observable<AppError> {
-    let appError: AppError = {
-      message: defaultMessage,
+    const defaultError: AppError = {
+      validationErrors: {},
       error: true
     };
     if (error instanceof HttpErrorResponse) {
@@ -40,8 +40,8 @@ export abstract class BaseService {
         return fromPromise(this.unauthorizedError());
       }
     }
-    this.showError(appError.message!);
-    return of(appError);
+    this.showError(message);
+    return of(defaultError);
   }
 
   private async unauthorizedError(): Promise<AppError> {
@@ -51,7 +51,7 @@ export abstract class BaseService {
     this.showError(message);
     return {
       error: true,
-      message: message
+      validationErrors: {}
     };
   }
 }

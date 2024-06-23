@@ -50,7 +50,6 @@
     "error_fail_register": "Error al registrarse",
     "error_fail_login": "Error al iniciar sesión",
     "error_username_taken": "El nombre de usuario ya existe",
-    "error_current_user": "Error al obtener sus datos, por favor inicie sesión de nuevo",
     "login-component_title": "Iniciar sesión | shiro-questions",
     "register-component_title": "Registrarse | shiro-questions",
     "login_desc": "Inicie sesión en el mejor lugar para plantear sus preguntas",

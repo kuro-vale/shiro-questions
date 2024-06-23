@@ -1,8 +1,7 @@
 import {ValidationErrors} from "@angular/forms";
 
 export type AppError = {
-  message?: string,
-  validationErrors?: ValidationErrors
+  validationErrors: ValidationErrors
   error: true
 }
 

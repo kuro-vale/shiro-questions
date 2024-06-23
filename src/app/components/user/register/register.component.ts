@@ -22,8 +22,6 @@ import {Meta} from "@angular/platform-browser";
   templateUrl: "./register.component.html"
 })
 export class RegisterComponent extends BaseComponent implements OnInit {
-  onRegisterPage = this.router.url.endsWith(Paths.Register);
-
   constructor(
     private readonly dialog: MatDialog,
     private readonly router: Router,
@@ -33,12 +31,18 @@ export class RegisterComponent extends BaseComponent implements OnInit {
     super();
   }
 
+  get onRegisterPage() {
+    return this.router.url.endsWith(Paths.Register);
+  }
+
   ngOnInit(): void {
     this.userService.clearCurrentUser();
-    this.meta.updateTag({
-      name: MetaConstants.Description,
-      content: $localize`:@@register_desc:Register to the best place for asking your questions`
-    });
+    if (this.onRegisterPage) {
+      this.meta.updateTag({
+        name: MetaConstants.Description,
+        content: $localize`:@@register_desc:Register to the best place for asking your questions`
+      });
+    }
   }
 
   async openNext() {

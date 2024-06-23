@@ -1,7 +1,7 @@
 import {Injectable, signal} from "@angular/core";
 import {User, UserAuth, UserRequest} from "./user";
 import {BaseService} from "../base/base.service";
-import {catchError, Observable, of, tap} from "rxjs";
+import {catchError, Observable} from "rxjs";
 import {AppError} from "../../types";
 import {Paths} from "../../constants";
 import {jwtDecode} from "jwt-decode";
@@ -51,25 +51,18 @@ export class UserService extends BaseService {
     await this.router.navigate([Paths.Profile]);
   }
 
-  getCurrentUser() {
+  getCurrentUser(): User | null {
     const token = this.tokenService.token;
-    if (!token) return of(null);
-    const decoded = jwtDecode(token);
-    if (decoded) {
+    if (!token) return null;
+    try {
+      const decoded = jwtDecode(token);
       this.currentUser.set(decoded as User);
-      return of(decoded as User);
+      return decoded as User;
+    } catch (_) {
+      this.tokenService.clearToken();
+      this.clearCurrentUser();
+      return null;
     }
-    return this.client.get<User | null>(`${this.apiUrl}${this.endpoint}/me`)
-      .pipe(
-        catchError((err, caught) => {
-          this.mapError(err, $localize`:@@error_current_user:Error getting your data, please log in again`);
-          this.tokenService.clearToken();
-          this.router.navigate([Paths.Login]).then();
-          caught = of(null);
-          return caught;
-        }),
-        tap(u => this.currentUser.set(u))
-      );
   }
 
   clearCurrentUser() {

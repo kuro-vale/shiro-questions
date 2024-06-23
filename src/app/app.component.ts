@@ -16,6 +16,6 @@ import {UserService} from "./components/user/user.service";
 export class AppComponent {
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, userService: UserService) {
     iconRegistry.addSvgIcon(Icons.AppLogo, sanitizer.bypassSecurityTrustResourceUrl("/logo.svg"));
-    userService.getCurrentUser().subscribe();
+    userService.getCurrentUser();
   }
 }

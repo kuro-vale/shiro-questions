@@ -66,12 +66,12 @@ export class UserFormComponent extends BaseComponent implements OnInit {
   }
 
   get usernameErrorMessage() {
-    const key = Object.keys(this.userForm.controls.username.errors ?? {})[0];
+    const key = Object.keys(this.userForm.controls.username.errors!)[0];
     return this.userNameErrorMessages[key];
   }
 
   get passwordErrorMessage() {
-    const key = Object.keys(this.userForm.controls.password.errors ?? {})[0];
+    const key = Object.keys(this.userForm.controls.password.errors!)[0];
     return this.passwordErrorMessages[key];
   }
 
@@ -99,7 +99,7 @@ export class UserFormComponent extends BaseComponent implements OnInit {
       .subscribe(async credentials => {
         this.loading = false;
         if (credentials.error) {
-          this.userForm.controls.username.setErrors(credentials.validationErrors ?? null);
+          this.userForm.controls.username.setErrors(credentials.validationErrors);
         } else {
           this.dialog.closeAll();
           await this.userService.setCurrentUser(credentials, this.userForm.controls.rememberMe.value);

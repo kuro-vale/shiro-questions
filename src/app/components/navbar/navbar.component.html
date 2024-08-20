@@ -52,7 +52,7 @@
     <li class="ml-4 hidden lg:block">
       <button class="w-max" i18n="@@nav_new_question" mat-button type="button">ASK A QUESTION</button>
     </li>
-    @if (!onLoginPage && !user) {
+    @if (!onLoginPage && !user()) {
       <li class="ml-4 hidden md:block">
         <button
           (click)="openLoginDialog()" class="w-max"
@@ -61,7 +61,7 @@
         </button>
       </li>
     }
-    @if (!onRegisterPage && !user) {
+    @if (!onRegisterPage && !user()) {
       <li class="ml-4 hidden md:block">
         <button
           (click)="openRegisterDialog()" class="w-max"
@@ -70,7 +70,7 @@
         </button>
       </li>
     }
-    @if (user) {
+    @if (user()) {
       <li class="ml-4">
         <button
           mat-icon-button
@@ -93,13 +93,13 @@
       <mat-icon [fontIcon]="Icons.Add"></mat-icon>
       <span i18n="@@new_question">Ask a question</span>
     </button>
-    @if (!onLoginPage && !user) {
+    @if (!onLoginPage && !user()) {
       <button (click)="openLoginDialog()" mat-menu-item>
         <mat-icon [fontIcon]="Icons.Login"></mat-icon>
         <span i18n="@@login">Log in</span>
       </button>
     }
-    @if (!onRegisterPage && !user) {
+    @if (!onRegisterPage && !user()) {
       <button (click)="openRegisterDialog()" mat-menu-item>
         <mat-icon [fontIcon]="Icons.Register"></mat-icon>
         <span i18n="@@register">Register</span>

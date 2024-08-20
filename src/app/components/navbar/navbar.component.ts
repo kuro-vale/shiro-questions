@@ -19,7 +19,7 @@ import {UserService} from "../user/user.service";
   styleUrl: "navbar.component.css",
 })
 export class NavbarComponent extends BaseComponent {
-  user = this.userService.currentUser();
+  user = this.userService.currentUser;
   focused = false;
   protected readonly Icons = Icons;
   protected readonly Paths = Paths;

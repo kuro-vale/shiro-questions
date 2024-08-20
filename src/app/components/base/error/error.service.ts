@@ -1,29 +1,30 @@
-import {environment} from "../../../environments/environment";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {Injectable} from "@angular/core";
+import {AppError} from "../../../types";
 import {Observable, of} from "rxjs";
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {AppError} from "../../types";
-import {Paths} from "../../constants";
-import {inject} from "@angular/core";
-import {TokenService} from "../token/token.service";
-import {Router} from "@angular/router";
+import {HttpErrorResponse} from "@angular/common/http";
 import {fromPromise} from "rxjs/internal/observable/innerFrom";
+import {Paths} from "../../../constants";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {TokenService} from "../../token/token.service";
+import {Router} from "@angular/router";
 
-export abstract class BaseService {
-  protected readonly apiUrl = new URL(environment.apiUrl).origin;
-  protected readonly snackBar = inject(MatSnackBar);
-  protected readonly client = inject(HttpClient);
-  protected readonly tokenService = inject(TokenService);
-  protected readonly router = inject(Router);
+@Injectable({
+  providedIn: "root"
+})
+export class ErrorService {
 
-  protected constructor() {
+  constructor(
+    private readonly snackBar: MatSnackBar,
+    private readonly tokenService: TokenService,
+    private readonly router: Router,
+  ) {
   }
 
-  protected showError(message: string) {
+  showError(message: string) {
     this.snackBar.open(message, "", {duration: 5000});
   }
 
-  protected mapError(
+  mapError(
     error: any,
     message: string,
     knownErrors: { [key: string]: () => AppError },
@@ -44,7 +45,7 @@ export abstract class BaseService {
     return of(defaultError);
   }
 
-  private async unauthorizedError(): Promise<AppError> {
+  async unauthorizedError(): Promise<AppError> {
     this.tokenService.clearToken();
     const message = $localize`:@@error_unauthorized:Please, log in to do this`;
     await this.router.navigate([Paths.Login], {replaceUrl: true});

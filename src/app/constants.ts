@@ -1,3 +1,5 @@
+import {environment} from "../environments/environment";
+
 export const Paths = {
   Home: "",
   Profile: "profile",
@@ -55,3 +57,5 @@ export const StorageConstants = {
 export const MetaConstants = {
   Description: "description"
 } as const;
+
+export const apiUrl = new URL(environment.apiUrl).origin;

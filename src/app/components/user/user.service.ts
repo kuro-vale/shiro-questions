@@ -1,15 +1,18 @@
 import {Injectable, signal} from "@angular/core";
 import {User, UserAuth, UserRequest} from "./user";
-import {BaseService} from "../base/base.service";
 import {catchError, Observable} from "rxjs";
 import {AppError} from "../../types";
-import {Paths} from "../../constants";
+import {apiUrl, Paths} from "../../constants";
 import {jwtDecode} from "jwt-decode";
+import {HttpClient} from "@angular/common/http";
+import {ErrorService} from "../base/error/error.service";
+import {TokenService} from "../token/token.service";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: "root"
 })
-export class UserService extends BaseService {
+export class UserService {
   currentUser = signal<User | null>(null);
   private readonly endpoint = "/auth";
   private readonly userErrors: { [key: string]: () => AppError } = {
@@ -31,18 +34,22 @@ export class UserService extends BaseService {
     }
   };
 
-  constructor() {
-    super();
+  constructor(
+    private readonly client: HttpClient,
+    private readonly tokenService: TokenService,
+    private readonly errorService: ErrorService,
+    private readonly router: Router
+  ) {
   }
 
   register(request: UserRequest): Observable<UserAuth | AppError> {
-    return this.client.post<UserAuth>(`${this.apiUrl}${this.endpoint}/register`, request)
-      .pipe(catchError(err => this.mapError(err, $localize`:@@error_fail_register:Error while registering`, this.userErrors)));
+    return this.client.post<UserAuth>(`${apiUrl}${this.endpoint}/register`, request)
+      .pipe(catchError(err => this.errorService.mapError(err, $localize`:@@error_fail_register:Error while registering`, this.userErrors)));
   }
 
   login(request: UserRequest): Observable<UserAuth | AppError> {
-    return this.client.post<UserAuth>(`${this.apiUrl}${this.endpoint}/login`, request)
-      .pipe(catchError(err => this.mapError(err, $localize`:@@error_fail_login:Error while logging in`, this.userErrors)));
+    return this.client.post<UserAuth>(`${apiUrl}${this.endpoint}/login`, request)
+      .pipe(catchError(err => this.errorService.mapError(err, $localize`:@@error_fail_login:Error while logging in`, this.userErrors)));
   }
 
   async setCurrentUser(credentials: UserAuth, rememberMe: boolean) {

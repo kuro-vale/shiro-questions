@@ -8,3 +8,13 @@ export type AppError = {
 export type AppSuccess = {
   error: false
 }
+
+export type PageOf<T> = {
+  items: T[];
+  metadata: PageMetadata;
+}
+
+type PageMetadata = {
+  per: number;
+  total: number;
+}

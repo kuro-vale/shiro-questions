@@ -1,20 +1,31 @@
 <div class="w-full h-28 banner"></div>
 
-<mat-tab-group>
+<mat-tab-group dynamicHeight>
   <mat-tab i18n-label="@@profile" label="Profile">
     <div class="flex items-center flex-col">
-      <div class="bg-gray-600 rounded-full mt-10 mb-5">
-        <img
-          [src]="'https://picsum.photos/seed/' + user.username + '/250/'"
-          alt="Your profile"
-          class="rounded-full"
-          height="250"
-          i18n-alt="@@profile_title"
-          width="250"
-        />
-      </div>
-      <h4>{{ user.username }}</h4>
+      @if (user()) {
+        <div class="bg-gray-600 rounded-full mt-10 mb-5">
+          <img
+            [src]="'https://picsum.photos/seed/' + user()!.username + '/250/'"
+            alt="Profile picture" i18n-alt="@@profile_picture"
+            class="rounded-full"
+            height="250" width="250"
+          />
+        </div>
+        <h4>{{ user()!.username }}</h4>
+      }
     </div>
   </mat-tab>
-  <mat-tab label="Questions">1</mat-tab>
+  <mat-tab i18n-label="@@questions" label="Questions">
+    <div class="flex items-center flex-col mt-10">
+      @if (questions$ | async; as questions) {
+        @for (question of questions.items; track question.id) {
+          <app-question-card [question]="question"></app-question-card>
+        } @empty {
+          <img ngSrc="empty-doc.svg" height="150" width="150" alt="error">
+          <h4 i18n="@@profile_emptyquestions">You still haven't asked anything</h4>
+        }
+      }
+    </div>
+  </mat-tab>
 </mat-tab-group>

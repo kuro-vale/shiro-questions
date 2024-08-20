@@ -9,7 +9,7 @@ import {ErrorService} from "../base/error/error.service";
   providedIn: "root"
 })
 export class CategoryService {
-  private readonly endpoint = "/categories";
+  private readonly endpoint = `${apiUrl}/categories`;
 
   constructor(
     private readonly client: HttpClient,
@@ -36,7 +36,7 @@ export class CategoryService {
   }
 
   getAllCategories() {
-    return this.client.get<Category[]>(`${apiUrl}${this.endpoint}`)
+    return this.client.get<Category[]>(`${this.endpoint}`)
       .pipe(
         catchError((_, caught) => {
           this.errorService.showError($localize`:@@error_getAllCat:Error fetching the categories`);

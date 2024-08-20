@@ -15,7 +15,9 @@ export const Icons = {
   Add: "add",
   Login: "login",
   Register: "how_to_reg",
-  Account: "account_circle"
+  Account: "account_circle",
+  Pending: "pending",
+  Done: "check_circle",
 } as const;
 
 export const CategoriesIcons = {

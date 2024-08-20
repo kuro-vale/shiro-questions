@@ -14,7 +14,7 @@ import {Router} from "@angular/router";
 })
 export class UserService {
   currentUser = signal<User | null>(null);
-  private readonly endpoint = "/auth";
+  private readonly endpoint = `${apiUrl}/auth`;
   private readonly userErrors: { [key: string]: () => AppError } = {
     "invalid credentials": () => {
       return {
@@ -43,12 +43,12 @@ export class UserService {
   }
 
   register(request: UserRequest): Observable<UserAuth | AppError> {
-    return this.client.post<UserAuth>(`${apiUrl}${this.endpoint}/register`, request)
+    return this.client.post<UserAuth>(`${this.endpoint}/register`, request)
       .pipe(catchError(err => this.errorService.mapError(err, $localize`:@@error_fail_register:Error while registering`, this.userErrors)));
   }
 
   login(request: UserRequest): Observable<UserAuth | AppError> {
-    return this.client.post<UserAuth>(`${apiUrl}${this.endpoint}/login`, request)
+    return this.client.post<UserAuth>(`${this.endpoint}/login`, request)
       .pipe(catchError(err => this.errorService.mapError(err, $localize`:@@error_fail_login:Error while logging in`, this.userErrors)));
   }
 

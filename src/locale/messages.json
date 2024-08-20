@@ -56,6 +56,14 @@
     "profile_title": "Your profile",
     "register_desc": "Register to the best place for asking your questions",
     "profile_desc": "Your personal profile in shiro-questions!",
-    "profile": "Profile"
+    "profile": "Profile",
+    "questions": "Questions",
+    "profile_emptyquestions": "You still haven't asked anything",
+    "profile_picture": "Profile picture",
+    "solved": "Solved",
+    "unsolved": "Unsolved",
+    "edit": "Edit",
+    "mark_solved": "Mark as solved",
+    "delete": "Delete"
   }
 }

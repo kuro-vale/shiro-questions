@@ -1,7 +1,7 @@
 .banner {
   background-color: #e5e5f7;
   opacity: 0.8;
-  background-image:  linear-gradient(30deg, #005cbb 12%, transparent 12.5%, transparent 87%, #005cbb 87.5%, #005cbb), linear-gradient(150deg, #005cbb 12%, transparent 12.5%, transparent 87%, #005cbb 87.5%, #005cbb), linear-gradient(30deg, #005cbb 12%, transparent 12.5%, transparent 87%, #005cbb 87.5%, #005cbb), linear-gradient(150deg, #005cbb 12%, transparent 12.5%, transparent 87%, #005cbb 87.5%, #005cbb), linear-gradient(60deg, #005cbb77 25%, transparent 25.5%, transparent 75%, #005cbb77 75%, #005cbb77), linear-gradient(60deg, #005cbb77 25%, transparent 25.5%, transparent 75%, #005cbb77 75%, #005cbb77);
+  background-image: linear-gradient(30deg, #005cbb 12%, transparent 12.5%, transparent 87%, #005cbb 87.5%, #005cbb), linear-gradient(150deg, #005cbb 12%, transparent 12.5%, transparent 87%, #005cbb 87.5%, #005cbb), linear-gradient(30deg, #005cbb 12%, transparent 12.5%, transparent 87%, #005cbb 87.5%, #005cbb), linear-gradient(150deg, #005cbb 12%, transparent 12.5%, transparent 87%, #005cbb 87.5%, #005cbb), linear-gradient(60deg, #005cbb77 25%, transparent 25.5%, transparent 75%, #005cbb77 75%, #005cbb77), linear-gradient(60deg, #005cbb77 25%, transparent 25.5%, transparent 75%, #005cbb77 75%, #005cbb77);
   background-size: 40px 70px;
   background-position: 0 0, 0 0, 20px 35px, 20px 35px, 0 0, 20px 35px;
 }

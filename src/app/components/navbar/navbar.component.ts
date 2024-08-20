@@ -9,6 +9,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {RegisterComponent} from "../user/register/register.component";
 import {LoginComponent} from "../user/login/login.component";
 import {BaseComponent} from "../base/base.component";
+import {UserService} from "../user/user.service";
 
 @Component({
   selector: "app-navbar",
@@ -18,13 +19,15 @@ import {BaseComponent} from "../base/base.component";
   styleUrl: "navbar.component.css",
 })
 export class NavbarComponent extends BaseComponent {
+  user = this.userService.currentUser();
   focused = false;
   protected readonly Icons = Icons;
   protected readonly Paths = Paths;
 
   constructor(
     private readonly dialog: MatDialog,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly userService: UserService
   ) {
     super();
   }

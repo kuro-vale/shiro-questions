@@ -1,3 +1,20 @@
-@if (user()) {
-  <p>Hello {{ user()!.username }}</p>
-}
+<div class="w-full h-28 banner"></div>
+
+<mat-tab-group>
+  <mat-tab i18n-label="@@profile" label="Profile">
+    <div class="flex items-center flex-col">
+      <div class="bg-gray-600 rounded-full mt-10 mb-5">
+        <img
+          [src]="'https://picsum.photos/seed/' + user.username + '/250/'"
+          alt="Your profile"
+          class="rounded-full"
+          height="250"
+          i18n-alt="@@profile_title"
+          width="250"
+        />
+      </div>
+      <h4>{{ user.username }}</h4>
+    </div>
+  </mat-tab>
+  <mat-tab label="Questions">1</mat-tab>
+</mat-tab-group>

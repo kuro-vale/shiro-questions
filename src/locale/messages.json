@@ -55,6 +55,7 @@
     "login_desc": "Log in to the best place for asking your questions",
     "profile_title": "Your profile",
     "register_desc": "Register to the best place for asking your questions",
-    "profile_desc": "Your personal profile in shiro-questions!"
+    "profile_desc": "Your personal profile in shiro-questions!",
+    "profile": "Profile"
   }
 }

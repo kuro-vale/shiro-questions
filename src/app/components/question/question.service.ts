@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {apiUrl} from "../../constants";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Question} from "./question";
 import {PageOf} from "../../types";
 
@@ -15,7 +15,8 @@ export class QuestionService {
   ) {
   }
 
-  getUserQuestions() {
-    return this.client.get<PageOf<Question>>(`${this.endpoint}/me`);
+  getUserQuestions(page = 1) {
+    const params = new HttpParams().set("page", page);
+    return this.client.get<PageOf<Question>>(`${this.endpoint}/me`, {params});
   }
 }

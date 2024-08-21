@@ -1,7 +1,8 @@
 import {Component, Input} from "@angular/core";
 import {Question} from "../question";
 import {
-  MatCard, MatCardActions,
+  MatCard,
+  MatCardActions,
   MatCardAvatar,
   MatCardContent,
   MatCardHeader,
@@ -42,7 +43,7 @@ export class QuestionCardComponent {
   solvedTranslations = {
     Solved: $localize`:@@solved:Solved`,
     Unsolved: $localize`:@@unsolved:Unsolved`
-  }
+  };
 
   constructor(
     private readonly userService: UserService

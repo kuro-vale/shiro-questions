@@ -5,6 +5,7 @@ export const Paths = {
   Profile: "profile",
   Login: "login",
   Register: "register",
+  Questions: "questions",
 } as const;
 
 export const Icons = {

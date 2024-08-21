@@ -1,35 +1,34 @@
 import {Component, effect, OnInit} from "@angular/core";
 import {UserService} from "../user.service";
 import {Meta, Title} from "@angular/platform-browser";
-import {AsyncPipe, NgOptimizedImage} from "@angular/common";
 import {BaseComponent} from "../../base/base.component";
-import {MetaConstants} from "../../../constants";
-import {MatTab, MatTabGroup} from "@angular/material/tabs";
-import {QuestionService} from "../../question/question.service";
-import {QuestionCardComponent} from "../../question/question-card/question-card.component";
+import {MetaConstants, Paths} from "../../../constants";
+import {MatTabLink, MatTabNav, MatTabNavPanel} from "@angular/material/tabs";
+import {Router, RouterLink, RouterOutlet} from "@angular/router";
 
 @Component({
   selector: "app-profile",
   standalone: true,
   imports: [
-    AsyncPipe,
-    MatTabGroup,
-    MatTab,
-    NgOptimizedImage,
-    QuestionCardComponent
+    MatTabNav,
+    MatTabNavPanel,
+    MatTabLink,
+    RouterOutlet,
+    RouterLink
   ],
   templateUrl: "./profile.component.html",
   styleUrl: "profile.component.css"
 })
 export class ProfileComponent extends BaseComponent implements OnInit {
   user = this.userService.currentUser;
-  questions$ = this.questionService.getUserQuestions();
+  url = this.router.url;
+  protected readonly Paths = Paths;
 
   constructor(
     private readonly userService: UserService,
     title: Title,
     private readonly meta: Meta,
-    private readonly questionService: QuestionService,
+    private readonly router: Router,
   ) {
     super();
     effect(() => {

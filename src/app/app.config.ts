@@ -6,6 +6,8 @@ import {provideClientHydration, withHttpTransferCacheOptions, withI18nSupport} f
 import {provideHttpClient, withFetch, withInterceptors} from "@angular/common/http";
 import {provideAnimationsAsync} from "@angular/platform-browser/animations/async";
 import {tokenInterceptor} from "./components/token/interceptors/token.interceptor";
+import {MatPaginatorIntl} from "@angular/material/paginator";
+import {PaginatorIntl} from "../locale/PaginatorIntl";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,5 +16,6 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(withI18nSupport(), withHttpTransferCacheOptions({includeRequestsWithAuthHeaders: true})),
     provideAnimationsAsync(),
     provideHttpClient(withFetch(), withInterceptors([tokenInterceptor])),
+    {provide: MatPaginatorIntl, useClass: PaginatorIntl}
   ]
 };

@@ -64,6 +64,13 @@
     "unsolved": "Unsolved",
     "edit": "Edit",
     "mark_solved": "Mark as solved",
-    "delete": "Delete"
+    "delete": "Delete",
+    "next_page": "Next page",
+    "previous_page": "Previous page",
+    "first_page": "First page",
+    "last_page": "Last page",
+    "no_results": "No results",
+    "total_results": "{$PH} Results",
+    "page_of": "Page {$PH} of {$PH_1}"
   }
 }

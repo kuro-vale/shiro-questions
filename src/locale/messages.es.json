@@ -64,6 +64,13 @@
     "unsolved": "Sin resolver",
     "edit": "Editar",
     "mark_solved": "Marcar como resuelto",
-    "delete": "Borrar"
+    "delete": "Borrar",
+    "next_page": "Página siguiente",
+    "previous_page": "Página anterior",
+    "first_page": "Primera página",
+    "last_page": "Última página",
+    "no_results": "Sin resultados",
+    "total_results": "{$PH} Resultados",
+    "page_of": "Página {$PH} de {$PH_1}"
   }
 }

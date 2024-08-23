@@ -33,7 +33,7 @@
     <!-- MENU BUTTON -->
     <li class="ml-4 md:hidden">
       <button
-        [matMenuTriggerFor]="menu"
+        [matMenuTriggerFor]="focused ? null : menu"
         aria-label="Menu" i18n-aria-label="@@menu"
         title="Menu" i18n-title="@@menu"
         mat-icon-button
@@ -49,8 +49,14 @@
         ></mat-icon>
       </button>
     </li>
-    <li class="ml-4 hidden lg:block">
-      <button class="w-max" i18n="@@nav_new_question" mat-button type="button">ASK A QUESTION</button>
+    <li class="ml-4 hidden md:block">
+      <button
+        class="w-max"
+        i18n="@@nav_new_question"
+        mat-button type="button"
+        (click)="openAskQuestionDialog()"
+      >ASK A QUESTION
+      </button>
     </li>
     @if (!onLoginPage && !user()) {
       <li class="ml-4 hidden md:block">
@@ -82,6 +88,14 @@
           <mat-icon [fontIcon]="Icons.Account"></mat-icon>
         </button>
       </li>
+      <li class="ml-4 hidden md:block">
+        <!-- TODO-->
+        <button
+          class="w-max !text-gray-800"
+          i18n="@@nav_logout" mat-button type="button"
+        >LOGOUT
+        </button>
+      </li>
     }
   </ul>
 </nav>
@@ -89,7 +103,7 @@
 <!-- MOBILE MENU -->
 <mat-menu #menu="matMenu">
   <ng-template matMenuContent>
-    <button mat-menu-item>
+    <button mat-menu-item (click)="openAskQuestionDialog()">
       <mat-icon [fontIcon]="Icons.Add"></mat-icon>
       <span i18n="@@new_question">Ask a question</span>
     </button>
@@ -103,6 +117,13 @@
       <button (click)="openRegisterDialog()" mat-menu-item>
         <mat-icon [fontIcon]="Icons.Register"></mat-icon>
         <span i18n="@@register">Register</span>
+      </button>
+    }
+    @if (user()) {
+      <button mat-menu-item>
+        <mat-icon [fontIcon]="Icons.Logout"></mat-icon>
+        <!-- TODO-->
+        <span i18n="@@logout">Logout</span>
       </button>
     }
   </ng-template>

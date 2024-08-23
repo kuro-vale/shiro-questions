@@ -71,6 +71,8 @@
     "last_page": "Last page",
     "no_results": "No results",
     "total_results": "{$PH} Results",
-    "page_of": "Page {$PH} of {$PH_1}"
+    "page_of": "Page {$PH} of {$PH_1}",
+    "nav_logout": "LOGOUT",
+    "logout": "Logout"
   }
 }

@@ -4,7 +4,8 @@ import {Meta, Title} from "@angular/platform-browser";
 import {BaseComponent} from "../../base/base.component";
 import {MetaConstants, Paths} from "../../../constants";
 import {MatTabLink, MatTabNav, MatTabNavPanel} from "@angular/material/tabs";
-import {Router, RouterLink, RouterOutlet} from "@angular/router";
+import {NavigationEnd, Router, RouterLink, RouterOutlet} from "@angular/router";
+import {filter, takeUntil} from "rxjs";
 
 @Component({
   selector: "app-profile",
@@ -21,7 +22,7 @@ import {Router, RouterLink, RouterOutlet} from "@angular/router";
 })
 export class ProfileComponent extends BaseComponent implements OnInit {
   user = this.userService.currentUser;
-  url = this.router.url;
+  url = "";
   protected readonly Paths = Paths;
 
   constructor(
@@ -33,6 +34,12 @@ export class ProfileComponent extends BaseComponent implements OnInit {
     super();
     effect(() => {
       title.setTitle(`${this.user()?.username || $localize`:@@profile_title:Your profile`} | shiro-questions`);
+    });
+    this.router.events.pipe(
+      filter((e): e is NavigationEnd => e instanceof NavigationEnd),
+      takeUntil(this.destroy$)
+    ).subscribe(ne => {
+      this.url = ne.url;
     });
   }
 

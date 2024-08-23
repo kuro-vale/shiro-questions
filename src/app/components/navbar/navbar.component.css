@@ -1,9 +1,0 @@
-:host {
-  --navbar: #d7e3ff;
-  --search-placeholder: var(--mdc-filled-text-field-label-text-color);
-  --search-icon: var(--mat-form-field-trailing-icon-color);
-  --search-bg: var(--mdc-filled-text-field-container-color);
-  --search-text: var(--mdc-filled-text-field-input-text-color);
-  --backdrop: #00000052;
-  --search-hover: #d0d2dc;
-}

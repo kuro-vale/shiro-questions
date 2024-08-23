@@ -10,13 +10,13 @@ import {RegisterComponent} from "../user/register/register.component";
 import {LoginComponent} from "../user/login/login.component";
 import {BaseComponent} from "../base/base.component";
 import {UserService} from "../user/user.service";
+import {AskQuestionComponent} from "../question/ask-question/ask-question.component";
 
 @Component({
   selector: "app-navbar",
   standalone: true,
   imports: [MatIcon, RouterModule, NgClass, MatIconButton, MatMenu, MatMenuTrigger, MatMenuItem, MatButton, MatMenuContent],
   templateUrl: "./navbar.component.html",
-  styleUrl: "navbar.component.css",
 })
 export class NavbarComponent extends BaseComponent {
   user = this.userService.currentUser;
@@ -54,5 +54,9 @@ export class NavbarComponent extends BaseComponent {
       return;
     }
     this.dialog.open(LoginComponent);
+  }
+
+  openAskQuestionDialog() {
+    this.dialog.open(AskQuestionComponent, {backdropClass: "bg-[--navbar]"});
   }
 }

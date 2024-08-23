@@ -19,6 +19,7 @@ export const Icons = {
   Account: "account_circle",
   Pending: "pending",
   Done: "check_circle",
+  Logout: "logout",
 } as const;
 
 export const CategoriesIcons = {

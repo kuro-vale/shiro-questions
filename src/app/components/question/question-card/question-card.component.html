@@ -25,10 +25,13 @@
   </mat-card-content>
   @if (user?.username == question.createdBy) {
     <mat-card-actions>
+      <!-- TODO -->
       <button mat-button type="button" i18n="@@edit">Edit</button>
       @if (!question.solved) {
+        <!-- TODO -->
         <button mat-button class="!text-green-700" type="button" i18n="@@mark_solved">Mark as solved</button>
       }
+      <!-- TODO -->
       <button mat-button class="!text-red-700" type="button" i18n="@@delete">Delete</button>
     </mat-card-actions>
   }

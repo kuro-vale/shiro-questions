@@ -14,8 +14,7 @@ import {Meta} from "@angular/platform-browser";
   selector: "app-home",
   standalone: true,
   imports: [MatButton, MatListItem, MatIcon, MatListItemIcon, AsyncPipe, MatProgressSpinner, MatNavList],
-  templateUrl: "./home.component.html",
-  styleUrl: "./home.component.css"
+  templateUrl: "./home.component.html"
 })
 export class HomeComponent implements OnInit {
   categories$ = this.categoryService.getAllCategories()

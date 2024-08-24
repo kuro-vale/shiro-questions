@@ -73,6 +73,16 @@
     "total_results": "{$PH} Results",
     "page_of": "Page {$PH} of {$PH_1}",
     "nav_logout": "LOGOUT",
-    "logout": "Logout"
+    "logout": "Logout",
+    "ask_question_title": "What do you wanna ask?",
+    "ask_question_label": "Type your question...",
+    "ask_question_category_label": "Select the category",
+    "ask_question_submit": "ASK",
+    "error_body_required": "Your question is required",
+    "error_body_minlength": "Your question must be greater than 3 characters long",
+    "error_body_maxlength": "Your question must be less than 1000 characters long",
+    "error_category_required": "Category is required",
+    "error_getUserQuestions": "Error fetching your questions",
+    "error_createQuestions": "Error creating the question"
   }
 }

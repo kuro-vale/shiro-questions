@@ -56,7 +56,11 @@ export class NavbarComponent extends BaseComponent {
     this.dialog.open(LoginComponent);
   }
 
-  openAskQuestionDialog() {
+  async openAskQuestionDialog() {
+    if (!this.user()) {
+      await this.router.navigate([Paths.Register]);
+      return;
+    }
     this.dialog.open(AskQuestionComponent, {backdropClass: "bg-[--navbar]"});
   }
 }

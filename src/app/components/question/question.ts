@@ -6,3 +6,8 @@ export type Question = {
   createdBy: string;
   createdAt: string;
 }
+
+export type QuestionRequest = {
+  body: string,
+  category: string
+}

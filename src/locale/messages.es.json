@@ -73,6 +73,16 @@
     "total_results": "{$PH} Resultados",
     "page_of": "Página {$PH} de {$PH_1}",
     "nav_logout": "CERRAR SESIÓN",
-    "logout": "Cerrar sesión"
+    "logout": "Cerrar sesión",
+    "ask_question_title": "¿Qué quieres preguntar?",
+    "ask_question_label": "Escribe tu pregunta...",
+    "ask_question_category_label": "Selecciona la categoría",
+    "ask_question_submit": "PREGUNTAR",
+    "error_body_required": "Su pregunta es obligatoria",
+    "error_body_minlength": "Su pregunta debe tener más de 3 caracteres",
+    "error_body_maxlength": "Su pregunta debe tener menos de 1000 caracteres",
+    "error_category_required": "La categoría es obligatoria",
+    "error_getUserQuestions": "Error en la búsqueda de sus preguntas",
+    "error_createQuestions": "Error al crear la pregunta"
   }
 }

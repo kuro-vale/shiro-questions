@@ -86,7 +86,7 @@ export class UserFormComponent extends BaseComponent implements OnInit {
   }
 
   submit() {
-    if (this.userForm.invalid) {
+    if (this.userForm.invalid || this.loading) {
       return;
     }
 

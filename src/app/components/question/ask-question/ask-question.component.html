@@ -1,3 +1,25 @@
-<p>
-  <!--  TODO-->
-</p>
+<mat-dialog-content class="sm:w-[560px]">
+  <h1 matDialogTitle class="!pl-0" i18n="@@ask_question_title">What do you wanna ask?</h1>
+  <form class="flex flex-col" [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="mb-1">
+      <mat-label i18n="@@ask_question_label">Type your question...</mat-label>
+      <textarea matInput class="!h-24" formControlName="body"></textarea>
+      @if (questionForm.controls.body.invalid) {
+        <mat-error>{{ getErrorMessage(questionForm.controls.body, bodyErrorMessages) }}</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field class="sm:w-1/2">
+      <mat-label i18n="@@ask_question_category_label">Select the category</mat-label>
+      <mat-select formControlName="category">
+        @for (category of categories$ | async; track category.name) {
+          <mat-option [value]="category.name">{{ category.name | categoryName }}</mat-option>
+        }
+      </mat-select>
+      @if (questionForm.controls.category.invalid) {
+        <mat-error>{{ getErrorMessage(questionForm.controls.category, categoryErrorMessages) }}</mat-error>
+      }
+    </mat-form-field>
+    <button class="mt-2" mat-flat-button type="submit" i18n="@@ask_question_submit" [disabled]="loading">ASK</button>
+  </form>
+</mat-dialog-content>
+

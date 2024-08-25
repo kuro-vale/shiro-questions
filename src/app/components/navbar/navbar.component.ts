@@ -63,4 +63,9 @@ export class NavbarComponent extends BaseComponent {
     }
     this.dialog.open(AskQuestionComponent, {backdropClass: "bg-[--navbar]"});
   }
+
+  async logout() {
+    this.userService.logout();
+    await this.router.navigate([Paths.Home]);
+  }
 }

@@ -2,10 +2,11 @@
   @if (user()) {
     <div class="bg-gray-600 rounded-full mt-10 mb-5">
       <img
-        [src]="'https://picsum.photos/seed/' + user()!.username + '/250/'"
+        [ngSrc]="'https://picsum.photos/seed/' + user()!.username + '/250/'"
         alt="Profile picture" i18n-alt="@@profile_picture"
         class="rounded-full"
         height="250" width="250"
+        priority
       />
     </div>
     <h4>{{ user()!.username }}</h4>

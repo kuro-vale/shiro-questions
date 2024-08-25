@@ -49,49 +49,51 @@
         ></mat-icon>
       </button>
     </li>
-    <li class="ml-4 hidden md:block">
-      <button
-        class="w-max"
-        i18n="@@nav_new_question"
-        mat-button type="button"
-        (click)="openAskQuestionDialog()"
-      >ASK A QUESTION</button>
-    </li>
-    @if (!onLoginPage && !user()) {
+    @defer () {
       <li class="ml-4 hidden md:block">
         <button
-          (click)="openLoginDialog()" class="w-max"
-          i18n="@@nav_login" mat-button type="button"
-        >LOG IN</button>
+          class="w-max"
+          i18n="@@nav_new_question"
+          mat-button type="button"
+          (click)="openAskQuestionDialog()"
+        >ASK A QUESTION</button>
       </li>
-    }
-    @if (!onRegisterPage && !user()) {
-      <li class="ml-4 hidden md:block">
-        <button
-          (click)="openRegisterDialog()" class="w-max"
-          i18n="@@nav_join" mat-flat-button type="button"
-        >JOIN FOR FREE</button>
-      </li>
-    }
-    @if (user()) {
-      <li class="ml-4">
-        <button
-          mat-icon-button
-          title="Profile" i18n-title="@@profile"
-          aria-label="Profile" i18n-aria-label="@@profile"
-          type="button"
-          [routerLink]="Paths.Profile"
-        >
-          <mat-icon [fontIcon]="Icons.Account"></mat-icon>
-        </button>
-      </li>
-      <li class="ml-4 hidden md:block">
-        <!-- TODO-->
-        <button
-          class="w-max !text-gray-800"
-          i18n="@@nav_logout" mat-button type="button"
-        >LOGOUT</button>
-      </li>
+      @if (!onLoginPage && !user()) {
+        <li class="ml-4 hidden md:block">
+          <button
+            (click)="openLoginDialog()" class="w-max"
+            i18n="@@nav_login" mat-button type="button"
+          >LOG IN</button>
+        </li>
+      }
+      @if (!onRegisterPage && !user()) {
+        <li class="ml-4 hidden md:block">
+          <button
+            (click)="openRegisterDialog()" class="w-max"
+            i18n="@@nav_join" mat-flat-button type="button"
+          >JOIN FOR FREE</button>
+        </li>
+      }
+      @if (user()) {
+        <li class="ml-4">
+          <button
+            mat-icon-button
+            title="Profile" i18n-title="@@profile"
+            aria-label="Profile" i18n-aria-label="@@profile"
+            type="button"
+            [routerLink]="Paths.Profile"
+          >
+            <mat-icon [fontIcon]="Icons.Account"></mat-icon>
+          </button>
+        </li>
+        <li class="ml-4 hidden md:block">
+          <button
+            class="w-max !text-gray-800"
+            i18n="@@nav_logout" mat-button type="button"
+            (click)="logout()"
+          >LOGOUT</button>
+        </li>
+      }
     }
   </ul>
 </nav>
@@ -118,8 +120,7 @@
     @if (user()) {
       <button mat-menu-item>
         <mat-icon [fontIcon]="Icons.Logout"></mat-icon>
-        <!-- TODO-->
-        <span i18n="@@logout">Logout</span>
+        <span i18n="@@logout" (click)="logout()">Logout</span>
       </button>
     }
   </ng-template>

@@ -2,8 +2,13 @@
   <div>
     <h1 class="!mb-4 !font-medium">Shiro Questions</h1>
     <p class="text-xl font-light" i18n="@@home_desc">A place to ask with confidence</p>
-    <!-- TODO -->
-    <button class="mt-8" i18n="@@new_question" mat-raised-button type="button">Ask a question</button>
+    <button
+      class="mt-8"
+      i18n="@@new_question"
+      mat-raised-button
+      type="button"
+      (click)="openAskQuestionDialog()"
+    >Ask a question</button>
   </div>
   <div
     class="pointer-events-none absolute left-1/2 ml-[330px] mt-[100px] hidden h-[500px] w-[500px] -translate-x-1/2 opacity-10 lg:block">

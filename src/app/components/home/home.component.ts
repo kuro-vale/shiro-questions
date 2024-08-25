@@ -6,9 +6,13 @@ import {CategoryService} from "../category/category.service";
 import {AsyncPipe} from "@angular/common";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {map} from "rxjs";
-import {Icons, MetaConstants} from "../../constants";
+import {Icons, MetaConstants, Paths} from "../../constants";
 import {CategoryOption} from "../category/category";
 import {Meta} from "@angular/platform-browser";
+import {UserService} from "../user/user.service";
+import {AskQuestionComponent} from "../question/ask-question/ask-question.component";
+import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: "app-home",
@@ -17,6 +21,7 @@ import {Meta} from "@angular/platform-browser";
   templateUrl: "./home.component.html"
 })
 export class HomeComponent implements OnInit {
+  user = this.userService.currentUser;
   categories$ = this.categoryService.getAllCategories()
     .pipe(map((cats): CategoryOption[] => {
       return [{name: "All"}, ...cats].map(c => ({
@@ -26,8 +31,15 @@ export class HomeComponent implements OnInit {
       })).filter(c => c.label && c.icon);
     }));
   protected readonly Icons = Icons;
+  protected readonly Paths = Paths;
 
-  constructor(private readonly categoryService: CategoryService, private readonly metaService: Meta) {
+  constructor(
+    private readonly categoryService: CategoryService,
+    private readonly metaService: Meta,
+    private readonly userService: UserService,
+    private readonly router: Router,
+    private readonly dialog: MatDialog,
+  ) {
   }
 
   ngOnInit() {
@@ -35,5 +47,13 @@ export class HomeComponent implements OnInit {
       name: MetaConstants.Description,
       content: $localize`:@@home_desc:A place to ask with confidence`
     });
+  }
+
+  async openAskQuestionDialog() {
+    if (!this.user()) {
+      await this.router.navigate([Paths.Register]);
+      return;
+    }
+    this.dialog.open(AskQuestionComponent, {backdropClass: "bg-[--navbar]"});
   }
 }

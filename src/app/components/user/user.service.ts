@@ -66,13 +66,17 @@ export class UserService {
       this.currentUser.set(decoded as User);
       return decoded as User;
     } catch (_) {
-      this.tokenService.clearToken();
-      this.clearCurrentUser();
+      this.logout();
       return null;
     }
   }
 
   clearCurrentUser() {
     this.currentUser.set(null);
+  }
+
+  logout() {
+    this.tokenService.clearToken();
+    this.clearCurrentUser();
   }
 }

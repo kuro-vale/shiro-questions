@@ -1,9 +1,13 @@
 <mat-dialog-content class="sm:w-[560px]">
-  <h1 matDialogTitle class="!pl-0" i18n="@@ask_question_title">What do you wanna ask?</h1>
-  <form class="flex flex-col" [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+  @if (question) {
+    <h1 class="!pl-0" i18n="@@ask_question_title_edit" matDialogTitle>Edit your question</h1>
+  } @else {
+    <h1 class="!pl-0" i18n="@@ask_question_title" matDialogTitle>What do you wanna ask?</h1>
+  }
+  <form (ngSubmit)="onSubmit()" [formGroup]="questionForm" class="flex flex-col">
     <mat-form-field class="mb-1">
       <mat-label i18n="@@ask_question_label">Type your question...</mat-label>
-      <textarea matInput class="!h-24" formControlName="body"></textarea>
+      <textarea class="!h-24" formControlName="body" matInput></textarea>
       @if (questionForm.controls.body.invalid) {
         <mat-error>{{ getErrorMessage(questionForm.controls.body, bodyErrorMessages) }}</mat-error>
       }
@@ -19,7 +23,11 @@
         <mat-error>{{ getErrorMessage(questionForm.controls.category, categoryErrorMessages) }}</mat-error>
       }
     </mat-form-field>
-    <button class="mt-2" mat-flat-button type="submit" i18n="@@ask_question_submit" [disabled]="loading">ASK</button>
+    @if (question) {
+      <button [disabled]="loading" class="mt-2" i18n="@@ask_question_submit_edit" mat-flat-button type="submit">EDIT</button>
+    } @else {
+      <button [disabled]="loading" class="mt-2" i18n="@@ask_question_submit" mat-flat-button type="submit">ASK</button>
+    }
   </form>
 </mat-dialog-content>
 

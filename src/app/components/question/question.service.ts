@@ -34,4 +34,12 @@ export class QuestionService {
       return caught;
     }));
   }
+
+  editQuestion(id: string, request: QuestionRequest) {
+    return this.client.put<Question | null>(`${this.endpoint}/${id}`, request).pipe(catchError((_, caught) => {
+      this.errorService.showError($localize`:@@error_editQuestions:Error editing this question`);
+      caught = of(null);
+      return caught;
+    }));
+  }
 }

@@ -14,7 +14,9 @@ import {MatButton} from "@angular/material/button";
 import {CategoryNamePipe} from "../../category/category-name.pipe";
 import {MatIcon} from "@angular/material/icon";
 import {Icons} from "../../../constants";
-import {NgClass} from "@angular/common";
+import {NgClass, NgOptimizedImage} from "@angular/common";
+import {MatDialog} from "@angular/material/dialog";
+import {AskQuestionComponent} from "../ask-question/ask-question.component";
 
 @Component({
   selector: "app-question-card",
@@ -30,7 +32,8 @@ import {NgClass} from "@angular/common";
     MatButton,
     CategoryNamePipe,
     MatIcon,
-    NgClass
+    NgClass,
+    NgOptimizedImage
   ],
   templateUrl: "./question-card.component.html",
   styleUrl: "question-card.component.css"
@@ -46,7 +49,12 @@ export class QuestionCardComponent {
   };
 
   constructor(
-    private readonly userService: UserService
+    private readonly userService: UserService,
+    private readonly dialog: MatDialog,
   ) {
+  }
+
+  editQuestion() {
+    this.dialog.open(AskQuestionComponent, {data: this.question});
   }
 }

@@ -1,7 +1,7 @@
 <mat-card appearance="outlined">
   <mat-card-header>
     <img
-      [src]="'https://picsum.photos/seed/' + question.createdBy + '/100/'"
+      [ngSrc]="'https://picsum.photos/seed/' + question.createdBy + '/100/'"
       alt="Profile picture" height="100"
       i18n-alt="@@profile_picture" mat-card-avatar
       width="100"
@@ -21,12 +21,11 @@
   </mat-card-header>
   <mat-card-content>
     <!-- TODO: href -->
-    <p>{{ question.body }}</p>
+    <p class="whitespace-pre-line">{{ question.body }}</p>
   </mat-card-content>
   @if (user?.username == question.createdBy) {
     <mat-card-actions>
-      <!-- TODO -->
-      <button mat-button type="button" i18n="@@edit">Edit</button>
+      <button mat-button type="button" i18n="@@edit" (click)="editQuestion()">Edit</button>
       @if (!question.solved) {
         <!-- TODO -->
         <button mat-button class="!text-green-700" type="button" i18n="@@mark_solved">Mark as solved</button>

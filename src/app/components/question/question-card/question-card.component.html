@@ -1,4 +1,4 @@
-<mat-card appearance="outlined">
+<mat-card appearance="outlined" [@slideToLeft]="animationState">
   <mat-card-header>
     <img
       [ngSrc]="'https://picsum.photos/seed/' + question.createdBy + '/100/'"
@@ -23,15 +23,19 @@
     <!-- TODO: href -->
     <p class="whitespace-pre-line">{{ question.body }}</p>
   </mat-card-content>
-  @if (user?.username == question.createdBy) {
+  @if (user()?.username == question.createdBy) {
     <mat-card-actions>
       <button mat-button type="button" i18n="@@edit" (click)="editQuestion()">Edit</button>
       @if (!question.solved) {
-        <!-- TODO -->
-        <button mat-button class="!text-green-700" type="button" i18n="@@mark_solved">Mark as solved</button>
+        <button
+          mat-button
+          class="!text-green-700"
+          type="button"
+          i18n="@@mark_solved"
+          (click)="markAsSolved()"
+        >Mark as solved</button>
       }
-      <!-- TODO -->
-      <button mat-button class="!text-red-700" type="button" i18n="@@delete">Delete</button>
+      <button mat-button class="!text-red-700" type="button" i18n="@@delete" (click)="deleteQuestion()">Delete</button>
     </mat-card-actions>
   }
 </mat-card>

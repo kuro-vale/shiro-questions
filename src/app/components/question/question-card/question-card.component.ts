@@ -17,6 +17,11 @@ import {Icons} from "../../../constants";
 import {NgClass, NgOptimizedImage} from "@angular/common";
 import {MatDialog} from "@angular/material/dialog";
 import {AskQuestionComponent} from "../ask-question/ask-question.component";
+import {QuestionService} from "../question.service";
+import {BaseComponent} from "../../base/base.component";
+import {takeUntil} from "rxjs";
+import {DeleteQuestionComponent} from "../delete-question/delete-question.component";
+import {slideToLeft} from "../../../animations";
 
 @Component({
   selector: "app-question-card",
@@ -36,25 +41,53 @@ import {AskQuestionComponent} from "../ask-question/ask-question.component";
     NgOptimizedImage
   ],
   templateUrl: "./question-card.component.html",
-  styleUrl: "question-card.component.css"
+  styleUrl: "question-card.component.css",
+  animations: [slideToLeft]
 })
-export class QuestionCardComponent {
+export class QuestionCardComponent extends BaseComponent {
   @Input({required: true})
   question!: Question;
-  user = this.userService.currentUser();
-  Icons = Icons;
+  user = this.userService.currentUser;
+  protected readonly Icons = Icons;
   solvedTranslations = {
     Solved: $localize`:@@solved:Solved`,
     Unsolved: $localize`:@@unsolved:Unsolved`
   };
+  animationState = "in";
 
   constructor(
     private readonly userService: UserService,
     private readonly dialog: MatDialog,
+    private readonly questionService: QuestionService,
   ) {
+    super();
   }
 
   editQuestion() {
     this.dialog.open(AskQuestionComponent, {data: this.question});
+  }
+
+  markAsSolved() {
+    this.question.solved = true;
+    this.questionService.solveQuestion(this.question.id).pipe(takeUntil(this.destroy$))
+      .subscribe(q => {
+        if (!q) {
+          this.question.solved = false;
+        }
+      });
+  }
+
+  deleteQuestion() {
+    const dialogRef = this.dialog.open(DeleteQuestionComponent, {data: this.question});
+    dialogRef.afterClosed().pipe(takeUntil(this.destroy$)).subscribe((e: boolean) => {
+      if (e) {
+        this.animationState = "out";
+        this.questionService.deleteQuestion(this.question.id).subscribe(q => {
+          if (q != null) {
+            this.animationState = "in";
+          }
+        });
+      }
+    });
   }
 }

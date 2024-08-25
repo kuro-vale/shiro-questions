@@ -43,10 +43,9 @@ export class CategoryService {
         tap(c => {
           this.categoryCache = c;
         }),
-        catchError((_, caught) => {
+        catchError(_ => {
           this.errorService.showError($localize`:@@error_getAllCat:Error fetching the categories`);
-          caught = of([]);
-          return caught;
+          return of([]);
         })
       );
   }

@@ -79,6 +79,9 @@ export class NavbarComponent extends BaseComponent {
 
   async search() {
     const path = this.router.url.includes(Paths.Questions) ? [] : [Paths.Questions];
-    await this.router.navigate(path, {queryParams: {q: this.searchControl.value}});
+    await this.router.navigate(path, {
+      queryParams: {q: this.searchControl.value, page: 1},
+      queryParamsHandling: "merge"
+    });
   }
 }

@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
-import {Category} from "./category";
-import {catchError, of, tap} from "rxjs";
-import {apiUrl, CategoriesIcons, CategoriesTranslations} from "../../constants";
+import {Category, CategoryOption} from "./category";
+import {catchError, map, of, tap} from "rxjs";
+import {AllCategories, apiUrl, CategoriesIcons, CategoriesTranslations} from "../../constants";
 import {HttpClient} from "@angular/common/http";
 import {ErrorService} from "../base/error/error.service";
 
@@ -48,5 +48,15 @@ export class CategoryService {
           return of([]);
         })
       );
+  }
+
+  getAllCategoryOptions() {
+    return this.getAllCategories().pipe(map((cats): CategoryOption[] => {
+      return [{name: AllCategories}, ...cats].map(c => ({
+        label: CategoryService.getCategoryTranslation(c.name),
+        icon: CategoryService.getCategoryIcon(c.name),
+        value: c.name
+      })).filter(c => c.label && c.icon);
+    }));
   }
 }

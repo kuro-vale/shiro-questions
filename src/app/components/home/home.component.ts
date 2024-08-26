@@ -5,9 +5,7 @@ import {MatIcon} from "@angular/material/icon";
 import {CategoryService} from "../category/category.service";
 import {AsyncPipe} from "@angular/common";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
-import {map} from "rxjs";
-import {AllCategories, Icons, MetaConstants, Paths} from "../../constants";
-import {CategoryOption} from "../category/category";
+import {Icons, MetaConstants, Paths} from "../../constants";
 import {Meta} from "@angular/platform-browser";
 import {UserService} from "../user/user.service";
 import {AskQuestionComponent} from "../question/ask-question/ask-question.component";
@@ -22,14 +20,7 @@ import {MatDialog} from "@angular/material/dialog";
 })
 export class HomeComponent implements OnInit {
   user = this.userService.currentUser;
-  categories$ = this.categoryService.getAllCategories()
-    .pipe(map((cats): CategoryOption[] => {
-      return [{name: AllCategories}, ...cats].map(c => ({
-        label: CategoryService.getCategoryTranslation(c.name),
-        icon: CategoryService.getCategoryIcon(c.name),
-        value: c.name
-      })).filter(c => c.label && c.icon);
-    }));
+  categories$ = this.categoryService.getAllCategoryOptions();
   protected readonly Icons = Icons;
   protected readonly Paths = Paths;
 

@@ -58,7 +58,7 @@
     "profile_desc": "¡Tu perfil personal en shiro-questions!",
     "profile": "Perfil",
     "questions": "Preguntas",
-    "profile_emptyquestions": "Todavía no has preguntado nada",
+    "emptyquestions": "No se han encontrado preguntas",
     "profile_picture": "Foto de perfil",
     "solved": "Resuelto",
     "unsolved": "Sin resolver",
@@ -90,6 +90,7 @@
     "error_solveQuestions": "Error al resolver su pregunta",
     "error_deleteQuestion": "Error al borrar su pregunta",
     "delete_question_confirmation": "¿Quieres borrar esta pregunta?",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "error_searchQuestions": "Error al buscar preguntas"
   }
 }

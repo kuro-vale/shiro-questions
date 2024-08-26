@@ -18,10 +18,24 @@ export class QuestionService {
   ) {
   }
 
-  getUserQuestions(page = 1) {
-    const params = new HttpParams().set("page", page);
+  getUserQuestions(page = 1, query: string = "") {
+    let params = new HttpParams().set("page", page);
+    if (query) {
+      params = params.append("q", query);
+    }
     return this.client.get<PageOf<Question>>(`${this.endpoint}/me`, {params}).pipe(catchError(_ => {
       this.errorService.showError($localize`:@@error_getUserQuestions:Error fetching your questions`);
+      return of({items: [], metadata: {per: 0, total: 0}});
+    }));
+  }
+
+  searchQuestions(page = 1, query: string = "") {
+    let params = new HttpParams().set("page", page);
+    if (query) {
+      params = params.append("q", query);
+    }
+    return this.client.get<PageOf<Question>>(`${this.endpoint}/search`, {params}).pipe(catchError(_ => {
+      this.errorService.showError($localize`:@@error_searchQuestions:Error while searching questions`);
       return of({items: [], metadata: {per: 0, total: 0}});
     }));
   }

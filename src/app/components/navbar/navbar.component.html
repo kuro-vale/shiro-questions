@@ -19,14 +19,16 @@
     <!-- SEARCH -->
     <li class="w-full focus-within:grow">
       <form
-        (click)="q.focus()"
+        (click)="q.focus()" ngForm
         class="flex h-10 items-center rounded-full border-2 border-transparent bg-[--search-bg] transition-all duration-300 focus-within:border-[--primary] hover:bg-[--search-hover] hover:focus-within:bg-[--search-bg]"
       >
         <mat-icon [fontIcon]="Icons.Search" class="mx-1 text-[--search-icon]"></mat-icon>
         <input
           #q (blur)="focused = false" (focus)="focused = true"
+          (keydown.enter)="search();q.blur()"
           class="w-full rounded-r-full bg-inherit text-[--search-text] placeholder-[--search-placeholder] focus:outline-none"
           i18n-placeholder="@@nav_search" id="q" placeholder="Search questions" type="text"
+          [formControl]="searchControl"
         />
       </form>
     </li>

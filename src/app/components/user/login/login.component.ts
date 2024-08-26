@@ -33,7 +33,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
   }
 
   get onLoginPage() {
-    return this.router.url.endsWith(Paths.Login);
+    return this.router.url.includes(Paths.Login);
   }
 
   ngOnInit(): void {

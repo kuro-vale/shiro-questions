@@ -1,0 +1,20 @@
+<div class="flex flex-col items-center mt-10">
+  @if (questions$ | async; as questions) {
+    @for (question of questions.items; track question.id) {
+      <app-question-card [question]="question"></app-question-card>
+    } @empty {
+      <img ngSrc="empty-doc.svg" height="150" width="150" alt="error">
+      <h4 i18n="@@emptyquestions">Questions not found</h4>
+    }
+    <mat-paginator
+      (page)="nextPage($event)"
+      [length]="questions.metadata.total"
+      [pageSize]="questions.metadata.per"
+      [pageIndex]="page - 1"
+      showFirstLastButtons
+      hidePageSize
+    ></mat-paginator>
+  } @else {
+    <mat-spinner diameter="50" class="col-span-4"></mat-spinner>
+  }
+</div>

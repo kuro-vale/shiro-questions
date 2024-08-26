@@ -32,7 +32,7 @@ export class RegisterComponent extends BaseComponent implements OnInit {
   }
 
   get onRegisterPage() {
-    return this.router.url.endsWith(Paths.Register);
+    return this.router.url.includes(Paths.Register);
   }
 
   ngOnInit(): void {

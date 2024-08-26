@@ -3,7 +3,7 @@
 <nav [tabPanel]="tabPanel" mat-tab-nav-bar>
   <a
     (click)="url = Paths.Profile"
-    [active]="url.endsWith(Paths.Profile)"
+    [active]="!url.includes(Paths.Questions)"
     i18n="@@profile"
     mat-tab-link
     routerLink="./"

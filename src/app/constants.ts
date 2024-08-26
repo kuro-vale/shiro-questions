@@ -22,6 +22,8 @@ export const Icons = {
   Logout: "logout",
 } as const;
 
+export const AllCategories = "All";
+
 export const CategoriesIcons = {
   All: "apps",
   Technology: "smart_toy",

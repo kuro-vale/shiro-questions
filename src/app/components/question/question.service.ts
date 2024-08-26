@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {apiUrl} from "../../constants";
+import {AllCategories, apiUrl} from "../../constants";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Question, QuestionRequest} from "./question";
 import {PageOf} from "../../types";
@@ -18,22 +18,27 @@ export class QuestionService {
   ) {
   }
 
-  getUserQuestions(page = 1, query: string = "") {
+  private getParams(page: number, query: string, category: string) {
     let params = new HttpParams().set("page", page);
     if (query) {
       params = params.append("q", query);
     }
+    if (category && category !== AllCategories) {
+      params = params.append("category", category);
+    }
+    return params;
+  }
+
+  getUserQuestions(page = 1, query = "", category = "") {
+    const params = this.getParams(page, query, category);
     return this.client.get<PageOf<Question>>(`${this.endpoint}/me`, {params}).pipe(catchError(_ => {
       this.errorService.showError($localize`:@@error_getUserQuestions:Error fetching your questions`);
       return of({items: [], metadata: {per: 0, total: 0}});
     }));
   }
 
-  searchQuestions(page = 1, query: string = "") {
-    let params = new HttpParams().set("page", page);
-    if (query) {
-      params = params.append("q", query);
-    }
+  searchQuestions(page = 1, query = "", category = "") {
+    const params = this.getParams(page, query, category);
     return this.client.get<PageOf<Question>>(`${this.endpoint}/search`, {params}).pipe(catchError(_ => {
       this.errorService.showError($localize`:@@error_searchQuestions:Error while searching questions`);
       return of({items: [], metadata: {per: 0, total: 0}});

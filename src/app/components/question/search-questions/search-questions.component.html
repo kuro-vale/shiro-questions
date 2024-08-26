@@ -1,4 +1,28 @@
 <div class="flex flex-col items-center mt-10">
+  <mat-button-toggle-group
+    #categoryButtons
+    class="max-w-[660px] w-full mb-10"
+    hideSingleSelectionIndicator
+    [formControl]="categoryControl"
+  >
+    <mat-button-toggle
+      class="!bg-[--navbar] !sticky left-0 !text-black z-10"
+      disabled disabledInteractive
+      (click)="scrollLeft()"
+    >
+      <
+    </mat-button-toggle>
+    @for (category of categories$ | async; track category.value) {
+      <mat-button-toggle [value]="category.value">{{ category.label }}</mat-button-toggle>
+    }
+    <mat-button-toggle
+      class="!bg-[--navbar] !sticky right-0 !text-black z-10"
+      disabled disabledInteractive
+      (click)="scrollRight()"
+    >
+      >
+    </mat-button-toggle>
+  </mat-button-toggle-group>
   @if (questions$ | async; as questions) {
     @for (question of questions.items; track question.id) {
       <app-question-card [question]="question"></app-question-card>

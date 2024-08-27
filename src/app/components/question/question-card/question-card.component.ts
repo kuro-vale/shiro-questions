@@ -13,7 +13,7 @@ import {UserService} from "../../user/user.service";
 import {MatButton} from "@angular/material/button";
 import {CategoryNamePipe} from "../../category/category-name.pipe";
 import {MatIcon} from "@angular/material/icon";
-import {Icons} from "../../../constants";
+import {Icons, Paths} from "../../../constants";
 import {NgClass, NgOptimizedImage} from "@angular/common";
 import {MatDialog} from "@angular/material/dialog";
 import {AskQuestionComponent} from "../ask-question/ask-question.component";
@@ -22,6 +22,7 @@ import {BaseComponent} from "../../base/base.component";
 import {takeUntil} from "rxjs";
 import {DeleteQuestionComponent} from "../delete-question/delete-question.component";
 import {slideToLeft} from "../../../animations";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: "app-question-card",
@@ -38,7 +39,8 @@ import {slideToLeft} from "../../../animations";
     CategoryNamePipe,
     MatIcon,
     NgClass,
-    NgOptimizedImage
+    NgOptimizedImage,
+    RouterLink
   ],
   templateUrl: "./question-card.component.html",
   styleUrl: "question-card.component.css",
@@ -49,6 +51,7 @@ export class QuestionCardComponent extends BaseComponent {
   question!: Question;
   user = this.userService.currentUser;
   protected readonly Icons = Icons;
+  protected readonly Paths = Paths;
   solvedTranslations = {
     Solved: $localize`:@@solved:Solved`,
     Unsolved: $localize`:@@unsolved:Unsolved`

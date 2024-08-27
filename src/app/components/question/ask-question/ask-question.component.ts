@@ -12,6 +12,8 @@ import {CategoryNamePipe} from "../../category/category-name.pipe";
 import {QuestionService} from "../question.service";
 import {Question, QuestionRequest} from "../question";
 import {takeUntil} from "rxjs";
+import {Router} from "@angular/router";
+import {Paths} from "../../../constants";
 
 @Component({
   selector: "app-ask-question",
@@ -52,7 +54,8 @@ export class AskQuestionComponent extends BaseComponent {
     private readonly categoryService: CategoryService,
     private readonly questionService: QuestionService,
     private readonly dialogRef: MatDialogRef<AskQuestionComponent>,
-    @Inject(MAT_DIALOG_DATA) public readonly question?: Question
+    private readonly router: Router,
+    @Inject(MAT_DIALOG_DATA) public readonly question?: Question,
   ) {
     super();
   }
@@ -71,10 +74,10 @@ export class AskQuestionComponent extends BaseComponent {
       : this.questionService.createQuestion(request);
 
     key$.pipe(takeUntil(this.destroy$))
-      .subscribe(q => {
+      .subscribe(async q => {
         this.loading = false;
         if (q) {
-          // TODO redirect to question
+          await this.router.navigate([Paths.Questions, q.id]);
           this.dialogRef.close();
         }
       });

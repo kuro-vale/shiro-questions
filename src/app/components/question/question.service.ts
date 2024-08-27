@@ -45,6 +45,13 @@ export class QuestionService {
     }));
   }
 
+  getQuestion(id: string) {
+    return this.client.get<Question | null>(`${this.endpoint}/${id}`).pipe(catchError(_ => {
+      this.errorService.showError($localize`:@@error_getQuestion:Error while fetching this question`);
+      return of(null);
+    }));
+  }
+
   createQuestion(request: QuestionRequest) {
     return this.client.post<Question | null>(`${this.endpoint}`, request).pipe(catchError(_ => {
       this.errorService.showError($localize`:@@error_createQuestions:Error creating the question`);

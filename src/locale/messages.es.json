@@ -91,6 +91,7 @@
     "error_deleteQuestion": "Error al borrar su pregunta",
     "delete_question_confirmation": "¿Quieres borrar esta pregunta?",
     "close": "Cerrar",
-    "error_searchQuestions": "Error al buscar preguntas"
+    "error_searchQuestions": "Error al buscar preguntas",
+    "error_getQuestion": "Error al buscar esta pregunta"
   }
 }

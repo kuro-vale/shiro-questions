@@ -20,8 +20,7 @@
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <!-- TODO: href -->
-    <p class="whitespace-pre-line">{{ question.body }}</p>
+    <a [routerLink]="['/', Paths.Questions, question.id]" class="whitespace-pre-line hover:underline">{{ question.body }}</a>
   </mat-card-content>
   @if (user()?.username == question.createdBy) {
     <mat-card-actions>

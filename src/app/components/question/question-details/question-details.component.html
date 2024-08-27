@@ -1,0 +1,5 @@
+<div class="flex flex-col items-center mt-10">
+  @if (question$ | async; as question) {
+    <app-question-card [question]="question"></app-question-card>
+  }
+</div>

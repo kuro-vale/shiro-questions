@@ -15,12 +15,17 @@
         class="ml-2"
       ></mat-icon>
     </mat-card-title>
-    <mat-card-subtitle>
+    <mat-card-subtitle class="!text-sm">
       {{ question.category | categoryName }}
     </mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content>
-    <a [routerLink]="['/', Paths.Questions, question.id]" class="whitespace-pre-line hover:underline">{{ question.body }}</a>
+  <mat-card-content class="mt-2">
+    <a
+      [routerLink]="['/', Paths.Questions, question.id]"
+      class="whitespace-pre-line hover:underline text-lg"
+    >
+      {{ question.body }}
+    </a>
   </mat-card-content>
   @if (user()?.username == question.createdBy) {
     <mat-card-actions>

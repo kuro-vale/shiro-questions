@@ -98,6 +98,10 @@
     "error_answer_required": "Your answer is required",
     "error_answer_minlength": "Your answer must be greater than 3 characters long",
     "error_answer_maxlength": "Your answer must be less than 1000 characters long",
-    "error_addAnswer": "Error creating the answer"
+    "error_addAnswer": "Error creating the answer",
+    "explore": "Explore",
+    "search": "Search",
+    "questions_desc": "Search questions in shiro-questions!",
+    "question_detail_desc": "We need your help to solve this question!"
   }
 }

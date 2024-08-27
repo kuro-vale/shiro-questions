@@ -98,6 +98,10 @@
     "error_answer_required": "Su respuesta es obligatoria",
     "error_answer_minlength": "Su respuesta debe tener más de 3 caracteres",
     "error_answer_maxlength": "Su respuesta debe tener menos de 1000 caracteres",
-    "error_addAnswer": "Error al crear la respuesta"
+    "error_addAnswer": "Error al crear la respuesta",
+    "explore": "Explorar",
+    "search": "Búsqueda",
+    "questions_desc": "¡Buscar preguntas en shiro-questions!",
+    "question_detail_desc": "¡Necesitamos tu ayuda para resolver esta pregunta!"
   }
 }

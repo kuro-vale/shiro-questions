@@ -1,16 +1,18 @@
 import {Component} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {AsyncPipe, NgTemplateOutlet} from "@angular/common";
-import {map, switchMap} from "rxjs";
+import {map, switchMap, takeUntil, tap} from "rxjs";
 import {QuestionService} from "../question.service";
 import {QuestionCardComponent} from "../question-card/question-card.component";
 import {MatButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
-import {Icons} from "../../../constants";
+import {Icons, MetaConstants} from "../../../constants";
 import {MatError, MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {FormControl, ReactiveFormsModule, Validators} from "@angular/forms";
 import {StartFocusedDirective} from "../../base/directives/start-focused.directive";
+import {Meta, Title} from "@angular/platform-browser";
+import {BaseComponent} from "../../base/base.component";
 
 @Component({
   selector: "app-question-details",
@@ -30,12 +32,22 @@ import {StartFocusedDirective} from "../../base/directives/start-focused.directi
   ],
   templateUrl: "./question-details.component.html"
 })
-export class QuestionDetailsComponent {
+export class QuestionDetailsComponent extends BaseComponent {
   protected readonly Icons = Icons;
   question$ = this.route.params.pipe(
     map(p => p["id"]),
     switchMap((id: string) => {
       return this.questionService.getQuestion(id);
+    }),
+    tap(q => {
+      this.title.setTitle(`${q?.createdBy}: ${q?.body}`);
+      if (!q?.solved) {
+        // TODO update tag on solved with first answer
+        this.meta.updateTag({
+          name: MetaConstants.Description,
+          content: $localize`:@@question_detail_desc:We need your help to solve this question!`
+        });
+      }
     })
   );
   showForm = false;
@@ -50,7 +62,10 @@ export class QuestionDetailsComponent {
   constructor(
     private readonly route: ActivatedRoute,
     private readonly questionService: QuestionService,
+    private readonly meta: Meta,
+    private readonly title: Title,
   ) {
+    super();
   }
 
   getErrorMessage(control: FormControl, errorMessages: { [key: string]: string }) {
@@ -65,7 +80,7 @@ export class QuestionDetailsComponent {
     }
     if (this.answerControl.invalid) return;
     this.loading = true;
-    this.questionService.addAnswer(id, this.answerControl.value!).subscribe(a => {
+    this.questionService.addAnswer(id, this.answerControl.value!).pipe(takeUntil(this.destroy$)).subscribe(a => {
       this.loading = false;
       if (a) {
         this.answerControl.reset();

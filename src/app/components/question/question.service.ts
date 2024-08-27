@@ -5,6 +5,7 @@ import {Question, QuestionRequest} from "./question";
 import {PageOf} from "../../types";
 import {catchError, of} from "rxjs";
 import {ErrorService} from "../base/error/error.service";
+import {Answer} from "../answer/answer";
 
 @Injectable({
   providedIn: "root"
@@ -77,6 +78,13 @@ export class QuestionService {
     return this.client.delete<null | false>(`${this.endpoint}/${id}`).pipe(catchError(_ => {
       this.errorService.showError($localize`:@@error_deleteQuestion:Error deleting your question`);
       return of(false);
+    }));
+  }
+
+  addAnswer(questionId: string, body: string) {
+    return this.client.post<Answer | null>(`${this.endpoint}/${questionId}/answers`, {body}).pipe(catchError(_ => {
+      this.errorService.showError($localize`:@@error_addAnswer:Error creating the answer`);
+      return of(null);
     }));
   }
 }

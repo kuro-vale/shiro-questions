@@ -92,6 +92,12 @@
     "delete_question_confirmation": "¿Quieres borrar esta pregunta?",
     "close": "Cerrar",
     "error_searchQuestions": "Error al buscar preguntas",
-    "error_getQuestion": "Error al buscar esta pregunta"
+    "error_getQuestion": "Error al buscar esta pregunta",
+    "add_answer": "{$START_TAG_MAT_ICON}{$CLOSE_TAG_MAT_ICON} Añadir una respuesta ",
+    "add_answer_label": "Escribe tu respuesta...",
+    "error_answer_required": "Su respuesta es obligatoria",
+    "error_answer_minlength": "Su respuesta debe tener más de 3 caracteres",
+    "error_answer_maxlength": "Su respuesta debe tener menos de 1000 caracteres",
+    "error_addAnswer": "Error al crear la respuesta"
   }
 }

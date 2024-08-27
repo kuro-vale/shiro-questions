@@ -1,5 +1,20 @@
 <div class="flex flex-col items-center mt-10">
   @if (question$ | async; as question) {
     <app-question-card [question]="question"></app-question-card>
+    <div class="w-full max-w-[660px]">
+      @if (showForm) {
+        <mat-form-field class="w-full mt-5">
+          <mat-label i18n="@@add_answer_label">Type your answer...</mat-label>
+          <textarea class="!h-24" matInput startFocused [formControl]="answerControl"></textarea>
+          @if (answerControl.invalid) {
+            <mat-error>{{ getErrorMessage(answerControl, answerErrorMessages) }}</mat-error>
+          }
+        </mat-form-field>
+      }
+      <button mat-flat-button type="button" i18n="@@add_answer" (click)="submit(question.id)" [disabled]="loading">
+        <mat-icon [fontIcon]="Icons.Add"></mat-icon>
+        Add answer
+      </button>
+    </div>
   }
 </div>

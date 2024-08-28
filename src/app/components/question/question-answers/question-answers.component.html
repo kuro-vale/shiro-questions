@@ -1,5 +1,5 @@
 @if (answers.metadata.total > 0) {
-  <h3 class="mt-5">Answers ({{ answers.metadata.total }})</h3>
+  <h4 class="!mt-5" i18n="@@total_answers">Answers ({{ answers.metadata.total }})</h4>
   @for (answer of answers.items; track answer.id) {
     <app-answer-card [answer]="answer"></app-answer-card>
   }

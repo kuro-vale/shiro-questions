@@ -20,6 +20,8 @@ export const Icons = {
   Pending: "pending",
   Done: "check_circle",
   Logout: "logout",
+  Upvote: "arrow_upward",
+  Downvote: "arrow_downward",
 } as const;
 
 export const AllCategories = "All";

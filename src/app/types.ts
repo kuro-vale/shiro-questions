@@ -14,6 +14,10 @@ export type PageOf<T> = {
   metadata: PageMetadata;
 }
 
+export function defaultPage<T>(): PageOf<T> {
+  return {items: [], metadata: {per: 0, total: 0}};
+}
+
 type PageMetadata = {
   per: number;
   total: number;

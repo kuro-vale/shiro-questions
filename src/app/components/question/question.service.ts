@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {AllCategories, apiUrl} from "../../constants";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Question, QuestionRequest} from "./question";
-import {PageOf} from "../../types";
+import {defaultPage, PageOf} from "../../types";
 import {catchError, of} from "rxjs";
 import {ErrorService} from "../base/error/error.service";
 import {Answer} from "../answer/answer";
@@ -34,7 +34,7 @@ export class QuestionService {
     const params = this.getParams(page, query, category);
     return this.client.get<PageOf<Question>>(`${this.endpoint}/me`, {params}).pipe(catchError(_ => {
       this.errorService.showError($localize`:@@error_getUserQuestions:Error fetching your questions`);
-      return of({items: [], metadata: {per: 0, total: 0}});
+      return of(defaultPage<Question>());
     }));
   }
 
@@ -42,7 +42,7 @@ export class QuestionService {
     const params = this.getParams(page, query, category);
     return this.client.get<PageOf<Question>>(`${this.endpoint}/search`, {params}).pipe(catchError(_ => {
       this.errorService.showError($localize`:@@error_searchQuestions:Error while searching questions`);
-      return of({items: [], metadata: {per: 0, total: 0}});
+      return of(defaultPage<Question>());
     }));
   }
 
@@ -85,6 +85,14 @@ export class QuestionService {
     return this.client.post<Answer | null>(`${this.endpoint}/${questionId}/answers`, {body}).pipe(catchError(_ => {
       this.errorService.showError($localize`:@@error_addAnswer:Error creating the answer`);
       return of(null);
+    }));
+  }
+
+  getAnswers(questionId: string, page: number) {
+    const params = new HttpParams().set("page", page);
+    return this.client.get<PageOf<Answer>>(`${this.endpoint}/${questionId}/answers`, {params}).pipe(catchError(_ => {
+      this.errorService.showError($localize`:@@error_getAnswers:Error getting this question's answers`);
+      return of(defaultPage<Answer>());
     }));
   }
 }

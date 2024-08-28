@@ -102,6 +102,7 @@
     "explore": "Explore",
     "search": "Search",
     "questions_desc": "Search questions in shiro-questions!",
-    "question_detail_desc": "We need your help to solve this question!"
+    "question_detail_desc": "We need your help to solve this question!",
+    "error_getAnswers": "Error getting this question's answers"
   }
 }

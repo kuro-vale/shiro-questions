@@ -13,6 +13,8 @@ import {FormControl, ReactiveFormsModule, Validators} from "@angular/forms";
 import {StartFocusedDirective} from "../../base/directives/start-focused.directive";
 import {Meta, Title} from "@angular/platform-browser";
 import {BaseComponent} from "../../base/base.component";
+import {QuestionAnswersComponent} from "../question-answers/question-answers.component";
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 @Component({
   selector: "app-question-details",
@@ -28,7 +30,9 @@ import {BaseComponent} from "../../base/base.component";
     MatLabel,
     ReactiveFormsModule,
     MatError,
-    StartFocusedDirective
+    StartFocusedDirective,
+    QuestionAnswersComponent,
+    MatProgressSpinner
   ],
   templateUrl: "./question-details.component.html"
 })
@@ -42,7 +46,6 @@ export class QuestionDetailsComponent extends BaseComponent {
     tap(q => {
       this.title.setTitle(`${q?.createdBy}: ${q?.body}`);
       if (!q?.solved) {
-        // TODO update tag on solved with first answer
         this.meta.updateTag({
           name: MetaConstants.Description,
           content: $localize`:@@question_detail_desc:We need your help to solve this question!`

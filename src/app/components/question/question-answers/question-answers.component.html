@@ -1,0 +1,13 @@
+@if (answers.metadata.total > 0) {
+  <h3 class="mt-5">Answers ({{ answers.metadata.total }})</h3>
+  @for (answer of answers.items; track answer.id) {
+    <app-answer-card [answer]="answer"></app-answer-card>
+  }
+  @if (answers.metadata.total > answers.items.length && !loading) {
+  <!-- TODO-->
+    <p (click)="getMoreAnswers()">View more</p>
+  }
+}
+@if (loading) {
+  <mat-spinner diameter="50" class="mx-auto"></mat-spinner>
+}

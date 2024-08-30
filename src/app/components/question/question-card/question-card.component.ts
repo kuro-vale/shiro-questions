@@ -81,12 +81,12 @@ export class QuestionCardComponent extends BaseComponent {
   }
 
   deleteQuestion() {
-    const dialogRef = this.dialog.open(DeleteQuestionComponent, {data: this.question});
+    const dialogRef = this.dialog.open(DeleteQuestionComponent);
     dialogRef.afterClosed().pipe(takeUntil(this.destroy$)).subscribe((e: boolean) => {
       if (e) {
         this.animationState = "out";
         this.questionService.deleteQuestion(this.question.id).subscribe(q => {
-          if (q != null) {
+          if (q === false) {
             this.animationState = "in";
           }
         });

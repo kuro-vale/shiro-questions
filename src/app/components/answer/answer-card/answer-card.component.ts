@@ -17,6 +17,9 @@ import {AnswerService} from "../answer.service";
 import {BaseComponent} from "../../base/base.component";
 import {takeUntil} from "rxjs";
 import {Router} from "@angular/router";
+import {slideToLeft} from "../../base/animations";
+import {DeleteAnswerComponent} from "../delete-answer/delete-answer.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: "app-answer-card",
@@ -32,7 +35,8 @@ import {Router} from "@angular/router";
     MatButton,
     MatIcon
   ],
-  templateUrl: "./answer-card.component.html"
+  templateUrl: "./answer-card.component.html",
+  animations: [slideToLeft]
 })
 export class AnswerCardComponent extends BaseComponent {
   protected readonly Icons = Icons;
@@ -41,11 +45,13 @@ export class AnswerCardComponent extends BaseComponent {
   answer!: Answer;
   upVotesAdded = 0;
   downVotesAdded = 0;
+  animationState = "in";
 
   constructor(
     private readonly userService: UserService,
     private readonly answerService: AnswerService,
     private readonly router: Router,
+    private readonly dialog: MatDialog,
   ) {
     super();
   }
@@ -76,6 +82,20 @@ export class AnswerCardComponent extends BaseComponent {
     this.answerService.addDownVote(this.answer.id).pipe(takeUntil(this.destroy$)).subscribe(x => {
       if (x === false) {
         this.downVotesAdded = 0;
+      }
+    });
+  }
+
+  deleteAnswer() {
+    const dialogRef = this.dialog.open(DeleteAnswerComponent);
+    dialogRef.afterClosed().pipe(takeUntil(this.destroy$)).subscribe((e: boolean) => {
+      if (e) {
+        this.animationState = "out";
+        this.answerService.deleteAnswer(this.answer.id).subscribe(q => {
+          if (q === false) {
+            this.animationState = "in";
+          }
+        });
       }
     });
   }

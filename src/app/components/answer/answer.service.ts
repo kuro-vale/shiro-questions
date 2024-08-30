@@ -29,4 +29,11 @@ export class AnswerService {
       return of(false);
     }));
   }
+
+  deleteAnswer(answerId: string) {
+    return this.client.delete<null>(`${this.endpoint}/${answerId}`).pipe(catchError(_ => {
+      this.errorService.showError($localize`:@@error_deleteAnswer:Error deleting this answer`);
+      return of(false);
+    }));
+  }
 }

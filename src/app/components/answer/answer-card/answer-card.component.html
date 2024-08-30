@@ -1,4 +1,4 @@
-<mat-card appearance="outlined" class="mb-4">
+<mat-card appearance="outlined" class="mb-4" [@slideToLeft]="animationState">
   <mat-card-header>
     <img
       [ngSrc]="'https://picsum.photos/seed/' + answer.createdBy + '/100/'"
@@ -20,10 +20,9 @@
       <mat-icon [fontIcon]="Icons.Downvote"></mat-icon>
       {{ answer.downvotes + downVotesAdded }}
     </button>
-  <!-- TODO-->
     @if (user()?.username === answer.createdBy) {
       <button mat-button type="button" i18n="@@edit">Edit</button>
-      <button mat-button class="!text-red-700" type="button" i18n="@@delete">Delete</button>
+      <button mat-button class="!text-red-700" type="button" i18n="@@delete" (click)="deleteAnswer()">Delete</button>
     }
   </mat-card-actions>
 </mat-card>

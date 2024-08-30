@@ -9,7 +9,9 @@ import {BaseComponent} from "../../base/base.component";
 import {defaultPage} from "../../base/types";
 import {Meta} from "@angular/platform-browser";
 import {Question} from "../question";
-import {MetaConstants} from "../../base/constants";
+import {Icons, MetaConstants} from "../../base/constants";
+import {MatFabButton} from "@angular/material/button";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: "app-question-answers",
@@ -17,11 +19,14 @@ import {MetaConstants} from "../../base/constants";
   imports: [
     AsyncPipe,
     MatProgressSpinner,
-    AnswerCardComponent
+    AnswerCardComponent,
+    MatFabButton,
+    MatIcon
   ],
   templateUrl: "./question-answers.component.html"
 })
 export class QuestionAnswersComponent extends BaseComponent implements OnInit {
+  protected readonly Icons = Icons;
   @Input({required: true})
   question!: Question;
   answers = defaultPage<Answer>();

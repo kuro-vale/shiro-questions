@@ -22,6 +22,7 @@ export const Icons = {
   Logout: "logout",
   Upvote: "arrow_upward",
   Downvote: "arrow_downward",
+  Expand: "expand_circle_down"
 } as const;
 
 export const AllCategories = "All";

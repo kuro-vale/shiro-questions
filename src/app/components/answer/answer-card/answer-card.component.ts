@@ -10,12 +10,13 @@ import {
 } from "@angular/material/card";
 import {NgOptimizedImage} from "@angular/common";
 import {MatButton} from "@angular/material/button";
-import {Icons} from "../../base/constants";
+import {Icons, Paths} from "../../base/constants";
 import {MatIcon} from "@angular/material/icon";
 import {UserService} from "../../user/user.service";
 import {AnswerService} from "../answer.service";
 import {BaseComponent} from "../../base/base.component";
 import {takeUntil} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: "app-answer-card",
@@ -44,11 +45,16 @@ export class AnswerCardComponent extends BaseComponent {
   constructor(
     private readonly userService: UserService,
     private readonly answerService: AnswerService,
+    private readonly router: Router,
   ) {
     super();
   }
 
-  createUpvote() {
+  async createUpvote() {
+    if (!this.user()) {
+      await this.router.navigate([Paths.Login]);
+      return;
+    }
     if (this.upVotesAdded > 0) return;
     this.upVotesAdded++;
     this.downVotesAdded = 0;
@@ -59,7 +65,11 @@ export class AnswerCardComponent extends BaseComponent {
     });
   }
 
-  createDownVote() {
+  async createDownVote() {
+    if (!this.user()) {
+      await this.router.navigate([Paths.Login]);
+      return;
+    }
     if (this.downVotesAdded > 0) return;
     this.upVotesAdded = 0;
     this.downVotesAdded++;

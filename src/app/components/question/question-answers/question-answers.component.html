@@ -4,8 +4,11 @@
     <app-answer-card [answer]="answer"></app-answer-card>
   }
   @if (answers.metadata.total > answers.items.length && !loading) {
-  <!-- TODO-->
-    <p (click)="getMoreAnswers()">View more</p>
+    <div class="flex justify-center">
+      <button mat-fab (click)="getMoreAnswers()">
+        <mat-icon [fontIcon]="Icons.Expand"></mat-icon>
+      </button>
+    </div>
   }
 }
 @if (loading) {

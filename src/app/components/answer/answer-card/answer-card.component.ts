@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, ElementRef, Input, ViewChild} from "@angular/core";
 import {Answer} from "../answer";
 import {
   MatCard,
@@ -41,8 +41,12 @@ import {MatDialog} from "@angular/material/dialog";
 export class AnswerCardComponent extends BaseComponent {
   protected readonly Icons = Icons;
   user = this.userService.currentUser;
+
   @Input({required: true})
   answer!: Answer;
+  @ViewChild("edited")
+  editedBody!: ElementRef<HTMLParagraphElement>;
+
   upVotesAdded = 0;
   downVotesAdded = 0;
   animationState = "in";
@@ -98,5 +102,22 @@ export class AnswerCardComponent extends BaseComponent {
         });
       }
     });
+  }
+
+  saveAnswer(event: Event) {
+    event.preventDefault();
+    this.editedBody.nativeElement.contentEditable = "false";
+    window.getSelection()?.removeAllRanges();
+    this.answerService.editAnswer(this.answer.id, this.editedBody.nativeElement.innerText)
+      .pipe(takeUntil(this.destroy$)).subscribe();
+  }
+
+  editAnswer() {
+    this.editedBody.nativeElement.contentEditable = "true";
+    const range = document.createRange();
+    range.selectNodeContents(this.editedBody.nativeElement);
+    const selection = window.getSelection();
+    selection?.removeAllRanges();
+    selection?.addRange(range);
   }
 }

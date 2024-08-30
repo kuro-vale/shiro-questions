@@ -108,6 +108,7 @@
     "error_addUpvote": "Error al votar esta respuesta",
     "error_addDownVote": "Error al votar esta respuesta negativamente",
     "delete_answer_confirmation": "¿Quieres borrar esta respuesta?",
-    "error_deleteAnswer": "Error al borrar esta respuesta"
+    "error_deleteAnswer": "Error al borrar esta respuesta",
+    "error_editAnswer": "Error al editar esta respuesta"
   }
 }

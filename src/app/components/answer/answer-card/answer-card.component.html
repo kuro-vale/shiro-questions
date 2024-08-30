@@ -9,7 +9,7 @@
     <mat-card-title>{{ answer.createdBy }}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <p class="whitespace-pre-line text-lg">{{ answer.body }}</p>
+    <p #edited class="whitespace-pre-line text-lg" (keydown.enter)="saveAnswer($event)">{{ answer.body }}</p>
   </mat-card-content>
   <mat-card-actions>
     <button mat-stroked-button (click)="createUpvote()">
@@ -21,7 +21,7 @@
       {{ answer.downvotes + downVotesAdded }}
     </button>
     @if (user()?.username === answer.createdBy) {
-      <button mat-button type="button" i18n="@@edit">Edit</button>
+      <button mat-button type="button" i18n="@@edit" (click)="editAnswer()">Edit</button>
       <button mat-button class="!text-red-700" type="button" i18n="@@delete" (click)="deleteAnswer()">Delete</button>
     }
   </mat-card-actions>

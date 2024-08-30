@@ -1,4 +1,4 @@
-import {AppSuccess} from "../../types";
+import {AppSuccess} from "../base/types";
 
 export type User = {
   username: string;

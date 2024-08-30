@@ -4,7 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Meta, Title} from "@angular/platform-browser";
 import {BaseComponent} from "../../base/base.component";
 import {takeUntil} from "rxjs";
-import {MetaConstants} from "../../../constants";
+import {MetaConstants} from "../../base/constants";
 
 @Component({
   selector: "app-questions",

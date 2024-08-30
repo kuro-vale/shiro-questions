@@ -12,15 +12,15 @@
     <p class="whitespace-pre-line text-lg">{{ answer.body }}</p>
   </mat-card-content>
   <mat-card-actions>
-    <!-- TODO -->
-    <button mat-stroked-button>
+    <button mat-stroked-button (click)="createUpvote()">
       <mat-icon [fontIcon]="Icons.Upvote"></mat-icon>
-      {{ answer.upvotes }}
+      {{ answer.upvotes + upVotesAdded }}
     </button>
-    <button mat-button>
+    <button mat-button (click)="createDownVote()">
       <mat-icon [fontIcon]="Icons.Downvote"></mat-icon>
-      {{ answer.downvotes }}
+      {{ answer.downvotes + downVotesAdded }}
     </button>
+  <!-- TODO-->
     @if (user()?.username === answer.createdBy) {
       <button mat-button type="button" i18n="@@edit">Edit</button>
       <button mat-button class="!text-red-700" type="button" i18n="@@delete">Delete</button>

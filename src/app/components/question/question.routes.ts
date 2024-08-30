@@ -1,5 +1,5 @@
 import {Routes} from "@angular/router";
-import {Paths} from "../../constants";
+import {Paths} from "../base/constants";
 import {QuestionsComponent} from "./questions/questions.component";
 import {QuestionDetailsComponent} from "./question-details/question-details.component";
 

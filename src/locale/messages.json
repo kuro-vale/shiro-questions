@@ -104,6 +104,8 @@
     "questions_desc": "Search questions in shiro-questions!",
     "question_detail_desc": "We need your help to solve this question!",
     "error_getAnswers": "Error getting this question's answers",
-    "total_answers": "Answers ({$INTERPOLATION})"
+    "total_answers": "Answers ({$INTERPOLATION})",
+    "error_addUpvote": "Error while up-voting this answer",
+    "error_addDownVote": "Error while down-voting this answer"
   }
 }

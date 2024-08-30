@@ -1,7 +1,7 @@
 import {CanActivateFn, Router} from "@angular/router";
 import {inject} from "@angular/core";
 import {TokenService} from "../../token/token.service";
-import {Paths} from "../../../constants";
+import {Paths} from "../../base/constants";
 
 export const userGuard: CanActivateFn = () => {
   const tokenService = inject(TokenService);

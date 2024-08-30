@@ -1,7 +1,7 @@
 import {TestBed} from "@angular/core/testing";
 
 import {TokenService} from "./token.service";
-import {StorageConstants} from "../../constants";
+import {StorageConstants} from "../base/constants";
 
 describe("TokenService", () => {
   let service: TokenService;

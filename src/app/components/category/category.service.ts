@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Category, CategoryOption} from "./category";
 import {catchError, map, of, tap} from "rxjs";
-import {AllCategories, apiUrl, CategoriesIcons, CategoriesTranslations} from "../../constants";
+import {AllCategories, apiUrl, CategoriesIcons, CategoriesTranslations} from "../base/constants";
 import {HttpClient} from "@angular/common/http";
 import {ErrorService} from "../base/error/error.service";
 

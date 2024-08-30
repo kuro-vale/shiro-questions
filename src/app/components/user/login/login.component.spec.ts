@@ -4,7 +4,7 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {UserService} from "../user.service";
 import {Meta} from "@angular/platform-browser";
-import {Paths} from "../../../constants";
+import {Paths} from "../../base/constants";
 import {of} from "rxjs";
 
 

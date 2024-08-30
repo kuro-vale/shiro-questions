@@ -13,7 +13,7 @@ import {QuestionService} from "../question.service";
 import {Question, QuestionRequest} from "../question";
 import {takeUntil} from "rxjs";
 import {Router} from "@angular/router";
-import {Paths} from "../../../constants";
+import {Paths} from "../../base/constants";
 
 @Component({
   selector: "app-ask-question",

@@ -104,6 +104,8 @@
     "questions_desc": "¡Buscar preguntas en shiro-questions!",
     "question_detail_desc": "¡Necesitamos tu ayuda para resolver esta pregunta!",
     "error_getAnswers": "Error al obtener las respuestas a esta pregunta",
-    "total_answers": "Respuestas ({$INTERPOLATION})"
+    "total_answers": "Respuestas ({$INTERPOLATION})",
+    "error_addUpvote": "Error al votar esta respuesta",
+    "error_addDownVote": "Error al votar esta respuesta negativamente"
   }
 }

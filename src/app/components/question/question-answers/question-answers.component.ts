@@ -6,10 +6,10 @@ import {Answer} from "../../answer/answer";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {AnswerCardComponent} from "../../answer/answer-card/answer-card.component";
 import {BaseComponent} from "../../base/base.component";
-import {defaultPage} from "../../../types";
+import {defaultPage} from "../../base/types";
 import {Meta} from "@angular/platform-browser";
 import {Question} from "../question";
-import {MetaConstants} from "../../../constants";
+import {MetaConstants} from "../../base/constants";
 
 @Component({
   selector: "app-question-answers",

@@ -1,9 +1,9 @@
 import {Injectable} from "@angular/core";
-import {AppError} from "../../../types";
+import {AppError} from "../types";
 import {Observable, of} from "rxjs";
 import {HttpErrorResponse} from "@angular/common/http";
 import {fromPromise} from "rxjs/internal/observable/innerFrom";
-import {Paths} from "../../../constants";
+import {Paths} from "../constants";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {TokenService} from "../../token/token.service";
 import {Router} from "@angular/router";

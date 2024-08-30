@@ -5,7 +5,7 @@ import {LoginComponent} from "../login/login.component";
 import {BaseComponent} from "../../base/base.component";
 import {takeUntil} from "rxjs";
 import {Router} from "@angular/router";
-import {MetaConstants, Paths} from "../../../constants";
+import {MetaConstants, Paths} from "../../base/constants";
 import {NgTemplateOutlet} from "@angular/common";
 import {UserService} from "../user.service";
 import {Meta} from "@angular/platform-browser";

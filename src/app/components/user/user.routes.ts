@@ -1,6 +1,6 @@
 import {Routes} from "@angular/router";
 import {ProfileRoutes} from "./profile/profile.routes";
-import {Paths} from "../../constants";
+import {Paths} from "../base/constants";
 import {LoginComponent} from "./login/login.component";
 import {userGuard} from "./guards/user.guard";
 import {RegisterComponent} from "./register/register.component";

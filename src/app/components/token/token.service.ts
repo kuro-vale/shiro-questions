@@ -1,6 +1,6 @@
 import {Inject, Injectable, PLATFORM_ID} from "@angular/core";
 import {isPlatformBrowser} from "@angular/common";
-import {StorageConstants} from "../../constants";
+import {StorageConstants} from "../base/constants";
 
 @Injectable({
   providedIn: "root"

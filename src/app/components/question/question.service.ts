@@ -1,8 +1,8 @@
 import {Injectable} from "@angular/core";
-import {AllCategories, apiUrl} from "../../constants";
+import {AllCategories, apiUrl} from "../base/constants";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Question, QuestionRequest} from "./question";
-import {defaultPage, PageOf} from "../../types";
+import {defaultPage, PageOf} from "../base/types";
 import {catchError, of} from "rxjs";
 import {ErrorService} from "../base/error/error.service";
 import {Answer} from "../answer/answer";

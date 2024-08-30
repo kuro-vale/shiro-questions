@@ -6,7 +6,7 @@ import {QuestionService} from "../question.service";
 import {QuestionCardComponent} from "../question-card/question-card.component";
 import {MatButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
-import {Icons, MetaConstants} from "../../../constants";
+import {Icons, MetaConstants} from "../../base/constants";
 import {MatError, MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {FormControl, ReactiveFormsModule, Validators} from "@angular/forms";

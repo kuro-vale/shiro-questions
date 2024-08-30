@@ -5,7 +5,7 @@ import {MatIcon} from "@angular/material/icon";
 import {CategoryService} from "../category/category.service";
 import {AsyncPipe} from "@angular/common";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
-import {Icons, MetaConstants, Paths} from "../../constants";
+import {Icons, MetaConstants, Paths} from "../base/constants";
 import {Meta} from "@angular/platform-browser";
 import {UserService} from "../user/user.service";
 import {AskQuestionComponent} from "../question/ask-question/ask-question.component";

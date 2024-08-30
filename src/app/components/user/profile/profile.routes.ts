@@ -1,5 +1,5 @@
 import {Routes} from "@angular/router";
-import {Paths} from "../../../constants";
+import {Paths} from "../../base/constants";
 import {ProfileComponent} from "./profile.component";
 import {tokenGuard} from "../../token/guards/token.guard";
 import {ProfileInfoComponent} from "./profile-info/profile-info.component";

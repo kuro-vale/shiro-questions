@@ -2,7 +2,7 @@ import {Component, effect, OnInit} from "@angular/core";
 import {UserService} from "../user.service";
 import {Meta, Title} from "@angular/platform-browser";
 import {BaseComponent} from "../../base/base.component";
-import {MetaConstants, Paths} from "../../../constants";
+import {MetaConstants, Paths} from "../../base/constants";
 import {MatTabLink, MatTabNav, MatTabNavPanel} from "@angular/material/tabs";
 import {NavigationEnd, Router, RouterLink, RouterOutlet} from "@angular/router";
 import {filter, takeUntil} from "rxjs";

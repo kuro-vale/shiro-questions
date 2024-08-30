@@ -6,12 +6,12 @@ import {AsyncPipe, NgOptimizedImage} from "@angular/common";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {QuestionCardComponent} from "../question-card/question-card.component";
 import {QuestionService} from "../question.service";
-import {PageOf} from "../../../types";
+import {PageOf} from "../../base/types";
 import {Question} from "../question";
 import {CategoryService} from "../../category/category.service";
 import {MatButtonToggle, MatButtonToggleGroup} from "@angular/material/button-toggle";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
-import {AllCategories} from "../../../constants";
+import {AllCategories} from "../../base/constants";
 import {BaseComponent} from "../../base/base.component";
 
 @Component({

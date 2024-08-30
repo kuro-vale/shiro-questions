@@ -5,7 +5,7 @@ import {UserService} from "../user.service";
 import {Meta} from "@angular/platform-browser";
 import {Router} from "@angular/router";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {Paths} from "../../../constants";
+import {Paths} from "../../base/constants";
 import {of} from "rxjs";
 
 describe("RegisterDialogComponent", () => {

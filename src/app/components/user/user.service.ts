@@ -1,8 +1,8 @@
 import {Injectable, signal} from "@angular/core";
 import {User, UserAuth, UserRequest} from "./user";
 import {catchError, Observable} from "rxjs";
-import {AppError} from "../../types";
-import {apiUrl, Paths} from "../../constants";
+import {AppError} from "../base/types";
+import {apiUrl, Paths} from "../base/constants";
 import {jwtDecode} from "jwt-decode";
 import {HttpClient} from "@angular/common/http";
 import {ErrorService} from "../base/error/error.service";

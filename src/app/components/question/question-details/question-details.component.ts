@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, ViewChild} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {AsyncPipe, NgTemplateOutlet} from "@angular/common";
 import {map, switchMap, takeUntil, tap} from "rxjs";
@@ -37,7 +37,6 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
   templateUrl: "./question-details.component.html"
 })
 export class QuestionDetailsComponent extends BaseComponent {
-  protected readonly Icons = Icons;
   question$ = this.route.params.pipe(
     map(p => p["id"]),
     switchMap((id: string) => {
@@ -61,6 +60,9 @@ export class QuestionDetailsComponent extends BaseComponent {
     minlength: $localize`:@@error_answer_minlength:Your answer must be greater than 3 characters long`,
     maxlength: $localize`:@@error_answer_maxlength:Your answer must be less than 1000 characters long`,
   };
+  @ViewChild(QuestionAnswersComponent)
+  questionAnswersRef!: QuestionAnswersComponent;
+  protected readonly Icons = Icons;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -88,8 +90,7 @@ export class QuestionDetailsComponent extends BaseComponent {
       if (a) {
         this.answerControl.reset();
         this.showForm = false;
-        // TODO
-        console.log(a);
+        this.questionAnswersRef.addAnswer(a);
       }
     });
   }

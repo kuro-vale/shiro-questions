@@ -1,4 +1,9 @@
-<mat-card appearance="outlined" class="mb-4" [@slideToLeft]="animationState">
+<mat-card
+  [@appearUp]="answer.animateAppendState ?? 'in'"
+  [@slideToLeft]="animateDeleteState"
+  appearance="outlined"
+  class="mb-4"
+>
   <mat-card-header>
     <img
       [ngSrc]="'https://picsum.photos/seed/' + answer.createdBy + '/100/'"
@@ -9,14 +14,20 @@
     <mat-card-title>{{ answer.createdBy }}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <p #edited class="whitespace-pre-line text-lg" (keydown.enter)="saveAnswer($event)">{{ answer.body }}</p>
+    <p #answerBody
+       (blur)="saveAnswer($event)"
+       (keydown.enter)="saveAnswer($event)"
+       class="whitespace-pre-line text-lg"
+    >
+      {{ answer.body }}
+    </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-stroked-button (click)="createUpvote()">
+    <button (click)="createUpvote()" mat-stroked-button>
       <mat-icon [fontIcon]="Icons.Upvote"></mat-icon>
       {{ answer.upvotes + upVotesAdded }}
     </button>
-    <button mat-button (click)="createDownVote()">
+    <button (click)="createDownVote()" mat-button>
       <mat-icon [fontIcon]="Icons.Downvote"></mat-icon>
       {{ answer.downvotes + downVotesAdded }}
     </button>

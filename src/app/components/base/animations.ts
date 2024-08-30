@@ -18,3 +18,19 @@ export const slideToLeft = trigger("slideToLeft", [
     ])
   ]),
 ]);
+
+export const appearUp = trigger("appearUp", [
+  state("out", style({
+    opacity: "0",
+    transform: "translateY(-100%)"
+  })),
+  state("in", style({
+    opacity: "1"
+  })),
+  transition("out => in", [
+    group([
+      animate("500ms ease-in-out", style({transform: "translateY(0%)"})),
+      animate("500ms ease-in-out", style({opacity: "1"}))
+    ])
+  ])
+]);

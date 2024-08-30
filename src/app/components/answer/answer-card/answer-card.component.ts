@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, ViewChild} from "@angular/core";
+import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, ViewChild} from "@angular/core";
 import {Answer} from "../answer";
 import {
   MatCard,
@@ -17,7 +17,7 @@ import {AnswerService} from "../answer.service";
 import {BaseComponent} from "../../base/base.component";
 import {takeUntil} from "rxjs";
 import {Router} from "@angular/router";
-import {slideToLeft} from "../../base/animations";
+import {appearUp, slideToLeft} from "../../base/animations";
 import {DeleteAnswerComponent} from "../delete-answer/delete-answer.component";
 import {MatDialog} from "@angular/material/dialog";
 
@@ -36,28 +36,32 @@ import {MatDialog} from "@angular/material/dialog";
     MatIcon
   ],
   templateUrl: "./answer-card.component.html",
-  animations: [slideToLeft]
+  animations: [slideToLeft, appearUp]
 })
-export class AnswerCardComponent extends BaseComponent {
-  protected readonly Icons = Icons;
+export class AnswerCardComponent extends BaseComponent implements AfterViewInit {
   user = this.userService.currentUser;
-
   @Input({required: true})
   answer!: Answer;
-  @ViewChild("edited")
-  editedBody!: ElementRef<HTMLParagraphElement>;
-
+  @ViewChild("answerBody")
+  answerBody!: ElementRef<HTMLParagraphElement>;
   upVotesAdded = 0;
   downVotesAdded = 0;
-  animationState = "in";
+  animateDeleteState = "in";
+  protected readonly Icons = Icons;
 
   constructor(
     private readonly userService: UserService,
     private readonly answerService: AnswerService,
     private readonly router: Router,
     private readonly dialog: MatDialog,
+    private readonly cd: ChangeDetectorRef,
   ) {
     super();
+  }
+
+  ngAfterViewInit() {
+    this.answer.animateAppendState = "in";
+    this.cd.detectChanges();
   }
 
   async createUpvote() {
@@ -94,10 +98,10 @@ export class AnswerCardComponent extends BaseComponent {
     const dialogRef = this.dialog.open(DeleteAnswerComponent);
     dialogRef.afterClosed().pipe(takeUntil(this.destroy$)).subscribe((e: boolean) => {
       if (e) {
-        this.animationState = "out";
+        this.animateDeleteState = "out";
         this.answerService.deleteAnswer(this.answer.id).subscribe(q => {
           if (q === false) {
-            this.animationState = "in";
+            this.animateDeleteState = "in";
           }
         });
       }
@@ -106,16 +110,16 @@ export class AnswerCardComponent extends BaseComponent {
 
   saveAnswer(event: Event) {
     event.preventDefault();
-    this.editedBody.nativeElement.contentEditable = "false";
+    this.answerBody.nativeElement.contentEditable = "false";
     window.getSelection()?.removeAllRanges();
-    this.answerService.editAnswer(this.answer.id, this.editedBody.nativeElement.innerText)
+    this.answerService.editAnswer(this.answer.id, this.answerBody.nativeElement.innerText)
       .pipe(takeUntil(this.destroy$)).subscribe();
   }
 
   editAnswer() {
-    this.editedBody.nativeElement.contentEditable = "true";
+    this.answerBody.nativeElement.contentEditable = "true";
     const range = document.createRange();
-    range.selectNodeContents(this.editedBody.nativeElement);
+    range.selectNodeContents(this.answerBody.nativeElement);
     const selection = window.getSelection();
     selection?.removeAllRanges();
     selection?.addRange(range);

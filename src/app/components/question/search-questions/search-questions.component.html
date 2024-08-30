@@ -1,14 +1,14 @@
 <div class="flex flex-col items-center mt-10">
   <mat-button-toggle-group
     #categoryButtons
+    [formControl]="categoryControl"
     class="max-w-[660px] w-full mb-10"
     hideSingleSelectionIndicator
-    [formControl]="categoryControl"
   >
     <mat-button-toggle
+      (click)="scrollLeft()"
       class="!bg-[--navbar] !sticky left-0 !text-black z-10"
       disabled disabledInteractive
-      (click)="scrollLeft()"
     >
       <
     </mat-button-toggle>
@@ -16,9 +16,9 @@
       <mat-button-toggle [value]="category.value">{{ category.label }}</mat-button-toggle>
     }
     <mat-button-toggle
+      (click)="scrollRight()"
       class="!bg-[--navbar] !sticky right-0 !text-black z-10"
       disabled disabledInteractive
-      (click)="scrollRight()"
     >
       >
     </mat-button-toggle>

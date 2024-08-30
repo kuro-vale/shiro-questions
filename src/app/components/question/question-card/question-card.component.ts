@@ -50,13 +50,13 @@ export class QuestionCardComponent extends BaseComponent {
   @Input({required: true})
   question!: Question;
   user = this.userService.currentUser;
-  protected readonly Icons = Icons;
-  protected readonly Paths = Paths;
   solvedTranslations = {
     Solved: $localize`:@@solved:Solved`,
     Unsolved: $localize`:@@unsolved:Unsolved`
   };
   animationState = "in";
+  protected readonly Icons = Icons;
+  protected readonly Paths = Paths;
 
   constructor(
     private readonly userService: UserService,

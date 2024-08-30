@@ -19,17 +19,6 @@ export class QuestionService {
   ) {
   }
 
-  private getParams(page: number, query: string, category: string) {
-    let params = new HttpParams().set("page", page);
-    if (query) {
-      params = params.append("q", query);
-    }
-    if (category && category !== AllCategories) {
-      params = params.append("category", category);
-    }
-    return params;
-  }
-
   getUserQuestions(page = 1, query = "", category = "") {
     const params = this.getParams(page, query, category);
     return this.client.get<PageOf<Question>>(`${this.endpoint}/me`, {params}).pipe(catchError(_ => {
@@ -94,5 +83,16 @@ export class QuestionService {
       this.errorService.showError($localize`:@@error_getAnswers:Error getting this question's answers`);
       return of(defaultPage<Answer>());
     }));
+  }
+
+  private getParams(page: number, query: string, category: string) {
+    let params = new HttpParams().set("page", page);
+    if (query) {
+      params = params.append("q", query);
+    }
+    if (category && category !== AllCategories) {
+      params = params.append("category", category);
+    }
+    return params;
   }
 }

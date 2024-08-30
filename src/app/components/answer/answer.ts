@@ -6,4 +6,5 @@ export type Answer = {
   createdAt: string;
   updatedAt: string;
   createdBy: string;
+  animateAppendState?: "in" | "out";
 }

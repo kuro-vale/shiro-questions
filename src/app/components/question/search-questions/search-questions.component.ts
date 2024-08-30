@@ -33,7 +33,8 @@ export class SearchQuestionsComponent extends BaseComponent implements OnInit {
   @Input({required: true})
   searchType!: "userQuestions" | "all";
   page = 1;
-
+  categories$ = this.categoryService.getAllCategoryOptions();
+  categoryControl = new FormControl(AllCategories);
   questions$ = this.route.queryParams.pipe(switchMap(qp => {
     this.page = parseInt(qp["page"]) || 1;
     const q = qp["q"];
@@ -52,9 +53,6 @@ export class SearchQuestionsComponent extends BaseComponent implements OnInit {
     }
     return key$.pipe(startWith(null));
   }));
-
-  categories$ = this.categoryService.getAllCategoryOptions();
-  categoryControl = new FormControl(AllCategories);
   @ViewChild("categoryButtons")
   categoryButtons!: ElementRef;
 

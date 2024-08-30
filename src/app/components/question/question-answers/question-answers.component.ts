@@ -26,12 +26,12 @@ import {MatIcon} from "@angular/material/icon";
   templateUrl: "./question-answers.component.html"
 })
 export class QuestionAnswersComponent extends BaseComponent implements OnInit {
-  protected readonly Icons = Icons;
   @Input({required: true})
   question!: Question;
   answers = defaultPage<Answer>();
   page = 1;
   loading = true;
+  protected readonly Icons = Icons;
 
   constructor(
     private readonly questionService: QuestionService,
@@ -61,5 +61,11 @@ export class QuestionAnswersComponent extends BaseComponent implements OnInit {
         this.answers.items.push(...pa.items);
         this.loading = false;
       });
+  }
+
+  addAnswer(answer: Answer) {
+    answer.animateAppendState = "out";
+    this.answers.metadata.total ||= 1;
+    this.answers.items = [answer, ...this.answers.items];
   }
 }

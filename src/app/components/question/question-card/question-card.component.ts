@@ -54,7 +54,7 @@ export class QuestionCardComponent extends BaseComponent {
     Solved: $localize`:@@solved:Solved`,
     Unsolved: $localize`:@@unsolved:Unsolved`
   };
-  animationState = "in";
+  animateDeleteState = "in";
   protected readonly Icons = Icons;
   protected readonly Paths = Paths;
 
@@ -84,10 +84,10 @@ export class QuestionCardComponent extends BaseComponent {
     const dialogRef = this.dialog.open(DeleteQuestionComponent);
     dialogRef.afterClosed().pipe(takeUntil(this.destroy$)).subscribe((e: boolean) => {
       if (e) {
-        this.animationState = "out";
+        this.animateDeleteState = "out";
         this.questionService.deleteQuestion(this.question.id).subscribe(q => {
           if (q === false) {
-            this.animationState = "in";
+            this.animateDeleteState = "in";
           }
         });
       }

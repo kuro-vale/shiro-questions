@@ -33,6 +33,7 @@ describe("tokenInterceptor", () => {
   });
 
   it("should continue request if not token", (done) => {
+    tokenService.clearToken();
     let request = new HttpRequest("GET", "");
     const next: any = (r: HttpRequest<any>): Observable<HttpRequest<any>> => of(r);
     interceptor(request, next).subscribe(r => {

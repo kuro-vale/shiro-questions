@@ -31,5 +31,6 @@ describe("userGuard", () => {
     tokenService.saveToken("redirect", false);
     const result = executeGuard(route, state);
     expect(result).toBeInstanceOf(UrlTree);
+    tokenService.clearToken();
   });
 });

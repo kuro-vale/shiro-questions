@@ -43,7 +43,9 @@ export class QuestionDetailsComponent extends BaseComponent {
       return this.questionService.getQuestion(id);
     }),
     tap(q => {
-      this.title.setTitle(`${q?.createdBy}: ${q?.body}`);
+      if (q) {
+        this.title.setTitle(`${q.createdBy}: ${q.body}`);
+      }
       if (!q?.solved) {
         this.meta.updateTag({
           name: MetaConstants.Description,

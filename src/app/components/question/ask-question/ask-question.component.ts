@@ -77,8 +77,8 @@ export class AskQuestionComponent extends BaseComponent {
       .subscribe(async q => {
         this.loading = false;
         if (q) {
-          await this.router.navigate([Paths.Questions, q.id]);
           this.dialogRef.close();
+          await this.router.navigate([Paths.Questions, q.id]);
         }
       });
   }

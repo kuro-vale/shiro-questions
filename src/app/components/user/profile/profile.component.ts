@@ -4,7 +4,7 @@ import {Meta, Title} from "@angular/platform-browser";
 import {BaseComponent} from "../../base/base.component";
 import {MetaConstants, Paths} from "../../base/constants";
 import {MatTabLink, MatTabNav, MatTabNavPanel} from "@angular/material/tabs";
-import {NavigationEnd, Router, RouterLink, RouterOutlet} from "@angular/router";
+import {EventType, NavigationEnd, Router, RouterLink, RouterOutlet} from "@angular/router";
 import {filter, takeUntil} from "rxjs";
 
 @Component({
@@ -36,7 +36,7 @@ export class ProfileComponent extends BaseComponent implements OnInit {
       title.setTitle(`${this.user()?.username || $localize`:@@profile_title:Your profile`} | shiro-questions`);
     });
     this.router.events.pipe(
-      filter((e): e is NavigationEnd => e instanceof NavigationEnd),
+      filter((e): e is NavigationEnd => e.type == EventType.NavigationEnd),
       takeUntil(this.destroy$)
     ).subscribe(ne => {
       this.url = ne.url;

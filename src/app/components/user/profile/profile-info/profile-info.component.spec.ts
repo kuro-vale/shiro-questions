@@ -1,20 +1,13 @@
-import {ComponentFixture, TestBed} from "@angular/core/testing";
-
 import {ProfileInfoComponent} from "./profile-info.component";
+import {UserService} from "../../user.service";
 
 describe("ProfileInfoComponent", () => {
   let component: ProfileInfoComponent;
-  let fixture: ComponentFixture<ProfileInfoComponent>;
+  let userService: UserService;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ProfileInfoComponent]
-    })
-      .compileComponents();
-
-    fixture = TestBed.createComponent(ProfileInfoComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    userService = jasmine.createSpyObj<UserService>(["currentUser"]);
+    component = new ProfileInfoComponent(userService);
   });
 
   it("should create", () => {

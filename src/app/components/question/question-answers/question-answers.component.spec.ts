@@ -1,20 +1,16 @@
-import {ComponentFixture, TestBed} from "@angular/core/testing";
-
 import {QuestionAnswersComponent} from "./question-answers.component";
+import {QuestionService} from "../question.service";
+import {Meta} from "@angular/platform-browser";
 
 describe("QuestionAnswersComponent", () => {
   let component: QuestionAnswersComponent;
-  let fixture: ComponentFixture<QuestionAnswersComponent>;
+  let questionService: QuestionService;
+  let meta: Meta;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [QuestionAnswersComponent]
-    })
-      .compileComponents();
-
-    fixture = TestBed.createComponent(QuestionAnswersComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    questionService = jasmine.createSpyObj<QuestionService>(["getAnswers"]);
+    meta = jasmine.createSpyObj<Meta>(["updateTag"]);
+    component = new QuestionAnswersComponent(questionService, meta);
   });
 
   it("should create", () => {

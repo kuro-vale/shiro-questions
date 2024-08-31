@@ -6,6 +6,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 import {provideHttpClient} from "@angular/common/http";
 import {MatDialog} from "@angular/material/dialog";
 import {Paths} from "../base/constants";
+import {UserService} from "../user/user.service";
 
 describe("NavbarComponent", () => {
   let component: NavbarComponent;
@@ -13,6 +14,7 @@ describe("NavbarComponent", () => {
   let compiled: HTMLElement;
   let dialog: MatDialog;
   let router: Router;
+  let userService: UserService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -23,6 +25,7 @@ describe("NavbarComponent", () => {
     const mockSvgContent = "<svg><rect width=\"100\" height=\"100\" style=\"fill:blue;\" /></svg>";
     const iconService = TestBed.inject(MatIconRegistry);
     const sanitizer = TestBed.inject(DomSanitizer);
+    userService = TestBed.inject(UserService);
     dialog = TestBed.inject(MatDialog);
     router = TestBed.inject(Router);
     iconService.addSvgIconLiteral("app-logo", sanitizer.bypassSecurityTrustHtml(mockSvgContent));
@@ -38,7 +41,7 @@ describe("NavbarComponent", () => {
 
   it("should render nav items", () => {
     const items = compiled.querySelectorAll("li");
-    expect(items.length).toBe(6);
+    expect(items.length).toBe(3);
   });
 
   it("should open register dialog", () => {
@@ -62,6 +65,38 @@ describe("NavbarComponent", () => {
     spyOnProperty(router, "url").and.returnValue(Paths.Register);
     const navigateSpy = spyOn(router, "navigate");
     component.openLoginDialog();
+    expect(navigateSpy).toHaveBeenCalled();
+  });
+
+  it("should redirect to register page if no logged user", () => {
+    const navigateSpy = spyOn(router, "navigate");
+    component.openAskQuestionDialog();
+    expect(navigateSpy).toHaveBeenCalled();
+  });
+
+  it("should open ask question dialog", () => {
+    userService.currentUser.set({username: "test"});
+    component.openAskQuestionDialog();
+    expect(dialog.openDialogs.length).toBe(1);
+  });
+
+  it("should logout user", () => {
+    const navigateSpy = spyOn(router, "navigate");
+    component.logout();
+    expect(navigateSpy).toHaveBeenCalled();
+  });
+
+  it("should search question on any route", () => {
+    const navigateSpy = spyOn(router, "navigate");
+    spyOnProperty(router, "url").and.returnValue(Paths.Home);
+    component.search();
+    expect(navigateSpy).toHaveBeenCalled();
+  });
+
+  it("should search question on profile route", () => {
+    const navigateSpy = spyOn(router, "navigate");
+    spyOnProperty(router, "url").and.returnValue(`${Paths.Profile}/${Paths.Questions}`);
+    component.search();
     expect(navigateSpy).toHaveBeenCalled();
   });
 });

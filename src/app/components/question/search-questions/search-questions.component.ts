@@ -1,13 +1,11 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
-import {Observable, startWith, switchMap, takeUntil} from "rxjs";
+import {startWith, switchMap, takeUntil} from "rxjs";
 import {AsyncPipe, NgOptimizedImage} from "@angular/common";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {QuestionCardComponent} from "../question-card/question-card.component";
 import {QuestionService} from "../question.service";
-import {PageOf} from "../../base/types";
-import {Question} from "../question";
 import {CategoryService} from "../../category/category.service";
 import {MatButtonToggle, MatButtonToggleGroup} from "@angular/material/button-toggle";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
@@ -42,15 +40,9 @@ export class SearchQuestionsComponent extends BaseComponent implements OnInit {
     if (category) {
       this.categoryControl.setValue(category, {emitEvent: false});
     }
-    let key$: Observable<PageOf<Question>>;
-    switch (this.searchType) {
-      case "all":
-        key$ = this.questionService.searchQuestions(this.page, q, category);
-        break;
-      case "userQuestions":
-        key$ = this.questionService.getUserQuestions(this.page, q, category);
-        break;
-    }
+    const key$ = this.searchType == "all"
+      ? this.questionService.searchQuestions(this.page, q, category)
+      : this.questionService.getUserQuestions(this.page, q, category);
     return key$.pipe(startWith(null));
   }));
   @ViewChild("categoryButtons")

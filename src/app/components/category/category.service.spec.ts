@@ -4,6 +4,7 @@ import {Category} from "./category";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {of, throwError} from "rxjs";
 import {TestBed} from "@angular/core/testing";
+import {CategoriesIcons, CategoriesTranslations} from "../base/constants";
 
 describe("CategoryService", () => {
   let service: CategoryService;
@@ -47,6 +48,39 @@ describe("CategoryService", () => {
         expect(snackBarSpy.open.calls.count()).toBe(1);
         expect(categories).toEqual([]);
         done();
+      }, error: () => done.fail
+    });
+  });
+
+  it("#getAllCategoryOptions should map categories", (done) => {
+    const categories: Category[] = [{name: "Food"}, {name: "Music"}, {name: "Hentai"}];
+    httpClientSpy.get.and.returnValue(of(categories));
+    const expectedCategories = [
+      {label: CategoriesTranslations.All, icon: CategoriesIcons.All, value: "All"},
+      {label: CategoriesTranslations.Food, icon: CategoriesIcons.Food, value: "Food"},
+      {label: CategoriesTranslations.Music, icon: CategoriesIcons.Music, value: "Music"}
+    ];
+    service.getAllCategoryOptions().subscribe({
+      next: categories => {
+        expect(categories).toEqual(expectedCategories);
+        done();
+      }, error: () => done.fail
+    });
+  });
+
+  it("#getAllCategories should return cached categories", (done) => {
+    const expectedCats: Category[] = [{name: "Tech"}, {name: "Test"}];
+    httpClientSpy.get.and.returnValue(of(expectedCats));
+    service.getAllCategories().subscribe({
+      next: _ => {
+        // call a second time
+        service.getAllCategories().subscribe({
+          next: categories => {
+            expect(categories).toEqual(expectedCats);
+            expect(httpClientSpy.get.calls.count()).toBe(1);
+            done();
+          }, error: () => done.fail
+        });
       }, error: () => done.fail
     });
   });

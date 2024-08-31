@@ -5,4 +5,11 @@ describe("CategoryNamePipe", () => {
     const pipe = new CategoryNamePipe();
     expect(pipe).toBeTruthy();
   });
+
+  it("should get translation", () => {
+    const pipe = new CategoryNamePipe();
+    const category = "Animals";
+    const result = pipe.transform(category);
+    expect(result).toBe(category);
+  });
 });

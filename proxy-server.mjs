@@ -10,7 +10,7 @@ function run() {
   server.use("/en", serverEn());
   server.use("/es", serverEs());
   server.use("/", (req, res) => {
-    res.redirect("/en");
+    res.redirect(`/en${req.path}`);
   });
   server.listen(port, () => {
     console.log(`Node Express server listening on http://localhost:${port}`);

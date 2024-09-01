@@ -12,6 +12,7 @@ import {Question} from "../question";
 import {Icons, MetaConstants} from "../../base/constants";
 import {MatFabButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
+import {AiAnswerComponent} from "../../answer/ai-answer/ai-answer.component";
 
 @Component({
   selector: "app-question-answers",
@@ -21,7 +22,8 @@ import {MatIcon} from "@angular/material/icon";
     MatProgressSpinner,
     AnswerCardComponent,
     MatFabButton,
-    MatIcon
+    MatIcon,
+    AiAnswerComponent
   ],
   templateUrl: "./question-answers.component.html"
 })

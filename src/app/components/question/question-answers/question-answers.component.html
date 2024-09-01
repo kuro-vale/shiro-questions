@@ -1,3 +1,7 @@
+@defer () {
+  <app-ai-answer [questionBody]="question.body"></app-ai-answer>
+}
+
 @if (answers.metadata.total > 0) {
   <h4 class="!mt-5" i18n="@@total_answers">Answers ({{ answers.metadata.total }})</h4>
   @for (answer of answers.items; track answer.id) {
@@ -5,7 +9,7 @@
   }
   @if (answers.metadata.total > answers.items.length && !loading) {
     <div class="flex justify-center">
-      <button mat-fab (click)="getMoreAnswers()">
+      <button mat-fab (click)="getMoreAnswers()" type="button">
         <mat-icon [fontIcon]="Icons.Expand"></mat-icon>
       </button>
     </div>

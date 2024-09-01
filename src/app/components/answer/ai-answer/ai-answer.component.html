@@ -1,0 +1,29 @@
+@if (supportWebGPU) {
+  <mat-card [@slideToLeft]="animateDiscardState" appearance="outlined" class="mt-5">
+    <mat-card-header>
+      <mat-icon [fontIcon]="Icons.Robot" mat-card-avatar></mat-icon>
+      <mat-card-title>{{ aiLabel }}</mat-card-title>
+    </mat-card-header>
+    @if (aiResponse) {
+      <mat-card-content>
+        <p class="whitespace-pre-line text-lg">{{ aiResponse }}</p>
+      </mat-card-content>
+    } @else if (loadingMessage) {
+      <mat-card-content>
+        <mat-progress-bar mode="buffer" class="mb-2"></mat-progress-bar>
+        <p class="whitespace-pre-line text-lg">{{ loadingMessage }}</p>
+      </mat-card-content>
+    } @else {
+      <mat-card-content>
+        <p
+          class="whitespace-pre-line text-lg"
+          i18n="@@ai_answer_label"
+        >Would you like to see an AI-generated response?</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button (click)="generateAIResponse()" mat-button type="button" i18n="@@yes">Yes</button>
+        <button (click)="animateDiscardState = 'out'" mat-button type="button" i18n="@@no">No</button>
+      </mat-card-actions>
+    }
+  </mat-card>
+}

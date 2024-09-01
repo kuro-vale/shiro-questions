@@ -83,6 +83,7 @@
               "baseHref": "/en/"
             },
             "es": {
+              "baseHref": "/es/",
               "localize": [
                 "es"
               ],

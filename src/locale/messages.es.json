@@ -109,6 +109,12 @@
     "error_addDownVote": "Error al votar esta respuesta negativamente",
     "delete_answer_confirmation": "¿Quieres borrar esta respuesta?",
     "error_deleteAnswer": "Error al borrar esta respuesta",
-    "error_editAnswer": "Error al editar esta respuesta"
+    "error_editAnswer": "Error al editar esta respuesta",
+    "yes": "Sí",
+    "no": "No",
+    "ai_answer_label": "¿Te gustaría ver una respuesta generada por la IA?",
+    "ai_start": "Intentando obtener el modelo de IA",
+    "ai_loading": "Cargando el modelo IA del cache",
+    "ai_fetching": "Descargando el modelo de IA"
   }
 }

@@ -1,7 +1,7 @@
 @if (supportWebGPU) {
   <mat-card [@slideToLeft]="animateDiscardState" appearance="outlined" class="mt-5">
     <mat-card-header>
-      <mat-icon [fontIcon]="Icons.Robot" mat-card-avatar></mat-icon>
+      <mat-icon [fontIcon]="Icons.Robot" mat-card-avatar class="!text-[40px]"></mat-icon>
       <mat-card-title>{{ aiLabel }}</mat-card-title>
     </mat-card-header>
     @if (aiResponse) {

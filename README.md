@@ -1,23 +1,19 @@
-# ShiroQuestions
+# shiro-questions
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
+Angular SSR application that uses [kuro-questions API](https://github.com/kuro-vale/kuro-questions), here you can share questions with others, and answer questions from others, or get a response of an AI model with WebLLM
 
-## Development server
+![image](https://github.com/user-attachments/assets/1fddcd62-b49a-4648-a5a2-76b0473175b1)
+![image](https://github.com/user-attachments/assets/23265068-4d45-4ef6-9230-2ef12353a3cd)
+![image](https://github.com/user-attachments/assets/bb06e4ab-14b2-43ce-9057-dec7b85804f6)
+![image](https://github.com/user-attachments/assets/7c667994-75cd-46a0-8506-5de3bbcd9fc1)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+### Docker
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+You can deploy this project (Database and backend included) by running ```docker compose up```
 
-## Build
+### Quick Setup
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. setup environment.development.ts;
+2. run ```npm install```
+3. run ```npm run start```

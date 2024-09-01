@@ -23,11 +23,11 @@
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <button (click)="createUpvote()" mat-stroked-button>
+    <button (click)="createUpvote()" mat-stroked-button type="button">
       <mat-icon [fontIcon]="Icons.Upvote"></mat-icon>
       {{ answer.upvotes + upVotesAdded }}
     </button>
-    <button (click)="createDownVote()" mat-button>
+    <button (click)="createDownVote()" mat-button type="button">
       <mat-icon [fontIcon]="Icons.Downvote"></mat-icon>
       {{ answer.downvotes + downVotesAdded }}
     </button>

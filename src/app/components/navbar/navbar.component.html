@@ -103,24 +103,24 @@
 <!-- MOBILE MENU -->
 <mat-menu #menu="matMenu">
   <ng-template matMenuContent>
-    <button (click)="openAskQuestionDialog()" mat-menu-item>
+    <button (click)="openAskQuestionDialog()" mat-menu-item type="button">
       <mat-icon [fontIcon]="Icons.Add"></mat-icon>
       <span i18n="@@new_question">Ask a question</span>
     </button>
     @if (!onLoginPage && !user()) {
-      <button (click)="openLoginDialog()" mat-menu-item>
+      <button (click)="openLoginDialog()" mat-menu-item type="button">
         <mat-icon [fontIcon]="Icons.Login"></mat-icon>
         <span i18n="@@login">Log in</span>
       </button>
     }
     @if (!onRegisterPage && !user()) {
-      <button (click)="openRegisterDialog()" mat-menu-item>
+      <button (click)="openRegisterDialog()" mat-menu-item type="button">
         <mat-icon [fontIcon]="Icons.Register"></mat-icon>
         <span i18n="@@register">Register</span>
       </button>
     }
     @if (user()) {
-      <button mat-menu-item>
+      <button mat-menu-item type="button">
         <mat-icon [fontIcon]="Icons.Logout"></mat-icon>
         <span i18n="@@logout" (click)="logout()">Logout</span>
       </button>

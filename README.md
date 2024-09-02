@@ -1,5 +1,7 @@
 # shiro-questions
 
+[![Tests](https://github.com/kuro-vale/shiro-questions/actions/workflows/tests.yml/badge.svg)](https://github.com/kuro-vale/shiro-questions/actions/workflows/tests.yml)
+
 Angular SSR application that uses [kuro-questions API](https://github.com/kuro-vale/kuro-questions), here you can share questions with others, and answer questions from others, or get a response of an AI model with WebLLM
 
 ![image](https://github.com/user-attachments/assets/1fddcd62-b49a-4648-a5a2-76b0473175b1)

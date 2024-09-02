@@ -6,7 +6,7 @@ RUN npm ci
 COPY . .
 # set on build time
 ENV APP_URL="http://localhost:8080/"
-RUN sed -i 's#<APP_URL>#'"$APP_URL"'#g' src/environments/environment.ts
+RUN sed -i 's#http://localhost:8080/#'"$APP_URL"'#g' src/environments/environment.ts
 RUN npm run build
 
 FROM node:20-alpine3.20

@@ -4,6 +4,7 @@ import {QuestionService} from "../question.service";
 import {Meta, Title} from "@angular/platform-browser";
 import {of} from "rxjs";
 import {QuestionAnswersComponent} from "../question-answers/question-answers.component";
+import {UserService} from "../../user/user.service";
 
 describe("QuestionDetailsComponent", () => {
   let component: QuestionDetailsComponent;
@@ -11,6 +12,7 @@ describe("QuestionDetailsComponent", () => {
   let questionService: jasmine.SpyObj<QuestionService>;
   let meta: Meta;
   let title: Title;
+  let userService: UserService;
 
   beforeEach(async () => {
     route = jasmine.createSpyObj<ActivatedRoute>([], {
@@ -19,7 +21,8 @@ describe("QuestionDetailsComponent", () => {
     questionService = jasmine.createSpyObj<QuestionService>(["addAnswer", "getQuestion"]);
     meta = jasmine.createSpyObj<Meta>(["updateTag"]);
     title = jasmine.createSpyObj<Title>(["setTitle"]);
-    component = new QuestionDetailsComponent(route, questionService, meta, title);
+    userService = jasmine.createSpyObj<UserService>(["currentUser"]);
+    component = new QuestionDetailsComponent(route, questionService, meta, title, userService);
   });
 
   it("should create", () => {

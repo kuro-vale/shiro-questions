@@ -15,6 +15,7 @@ import {Meta, Title} from "@angular/platform-browser";
 import {BaseComponent} from "../../base/base.component";
 import {QuestionAnswersComponent} from "../question-answers/question-answers.component";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
+import {UserService} from "../../user/user.service";
 
 @Component({
   selector: "app-question-details",
@@ -37,6 +38,7 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
   templateUrl: "./question-details.component.html"
 })
 export class QuestionDetailsComponent extends BaseComponent {
+  user = this.userService.currentUser;
   question$ = this.route.params.pipe(
     map(p => p["id"]),
     switchMap((id: string) => {
@@ -71,6 +73,7 @@ export class QuestionDetailsComponent extends BaseComponent {
     private readonly questionService: QuestionService,
     private readonly meta: Meta,
     private readonly title: Title,
+    private readonly userService: UserService,
   ) {
     super();
   }
